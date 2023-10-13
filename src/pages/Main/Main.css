@@ -1,0 +1,64 @@
+/* 슬라이드 메뉴 */
+
+input[id='menuicon'] {
+  display: none;
+}
+input[id='menuicon'] + label {
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+  margin: auto 10px;
+}
+input[id='menuicon'] + label #line {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  border-radius: 30px;
+  background: #f7f7f7;
+  transition: all 0.35s;
+}
+input[id='menuicon'] + label #line:nth-child(1) {
+  top: 0;
+}
+input[id='menuicon'] + label #line:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+input[id='menuicon'] + label #line:nth-child(3) {
+  bottom: 0;
+}
+input[id='menuicon']:checked + label {
+  z-index: 2;
+}
+input[id='menuicon']:checked + label #line {
+  background: #f7f7f7;
+}
+input[id='menuicon']:checked + label #line:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+input[id='menuicon']:checked + label #line:nth-child(2) {
+  opacity: 0;
+}
+input[id='menuicon']:checked + label #line:nth-child(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+div[class='sidebar'] {
+  width: 350px;
+  height: 100vh;
+  background: #000;
+  position: absolute;
+  top: 0;
+  right: -350px;
+  z-index: 1;
+  transition: all 0.35s;
+}
+input[id='menuicon']:checked + label + div {
+  right: 0;
+}
+
+/* 여기까지가 슬라이드 메뉴 */
