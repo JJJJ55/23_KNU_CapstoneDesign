@@ -10,6 +10,7 @@ import IntroPage from './pages/Intro/IntroPage.jsx';
 import CommuPage from './pages/Communicate/CommuPage.jsx';
 import ReadPage from './pages/Communicate/ReadPage.jsx';
 import WritePage from './pages/Communicate/WritePage.jsx';
+import CarPage from './pages/CarDamage/CarPage.jsx';
 
 const S = {
   Frame: styled.div`
@@ -49,8 +50,9 @@ function App() {
         {/* <MainPage /> */}
         {/* <IntroPage /> */}
         {/* <CommuPage /> */}
-        <ReadPage />
+        {/* <ReadPage /> */}
         {/* <WritePage /> */}
+        <CarPage />
       </S.Frame>
     </>
   );
