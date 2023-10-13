@@ -118,7 +118,7 @@ const InfoForm = ({ type }) => {
         </S.Info>
         <ButtonLong
           text={type === 'register' ? '가입하기' : '로그인'}
-          onclick={btnSubmit}
+          onClick={btnSubmit}
           active={btnOn}
         />
       </form>
