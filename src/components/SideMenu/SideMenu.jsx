@@ -17,6 +17,7 @@ const A = {
     color: #767676;
     text-align: center;
     transition: bottom 0.35s;
+    box-shadow: 0px 0px 30px #000;
   `,
   Name: styled.span`
     font-size: 20px;
