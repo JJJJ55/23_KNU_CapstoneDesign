@@ -11,6 +11,7 @@ import CommuPage from './pages/Communicate/CommuPage.jsx';
 import ReadPage from './pages/Communicate/ReadPage.jsx';
 import WritePage from './pages/Communicate/WritePage.jsx';
 import CarPage from './pages/CarDamage/CarPage.jsx';
+import MapPage from './pages/CarMap/MapPage.jsx';
 
 const S = {
   Frame: styled.div`
@@ -52,7 +53,8 @@ function App() {
         {/* <CommuPage /> */}
         {/* <ReadPage /> */}
         {/* <WritePage /> */}
-        <CarPage />
+        {/* <CarPage /> */}
+        <MapPage />
       </S.Frame>
     </>
   );

@@ -1,0 +1,136 @@
+import React from 'react';
+import styled from 'styled-components';
+import SideMenuBar from '../../components/SideMenu/SideMenuBar';
+import Logo from '../../assets/img/후면로고.png';
+import Intro1 from '../../assets/img/Intro1.png';
+import Intro2 from '../../assets/img/Intro2.png';
+import Intro3 from '../../assets/img/Intro3.png';
+import { useState } from 'react';
+import SideMenu from '../../components/SideMenu/SideMenu';
+import '../../assets/font/Font.css';
+import IntroImg from '../../assets/img/test.png';
+import sideImg from '../../assets/img/logo-removebg-preview.png';
+import Footer from '../../components/Main/Footer';
+import useScrollImg from '../../hook/useScrollImg';
+import Button from '../../components/common/Button';
+import searchImg from '../../assets/img/icon_search.svg';
+import Page from '../../components/communicate/Page';
+import MapBox from '../../components/CarMap/MapBox';
+const H = {
+  MainBox: styled.header`
+    position: fixed;
+    width: 390px;
+    height: 50px;
+    background-color: #fff;
+    z-index: 100;
+    opacity: 0.8;
+  `,
+
+  MenuBox: styled.div`
+    display: table-cell;
+    vertical-align: middle;
+    width: 390px;
+    height: 50px;
+  `,
+
+  Menu: styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 390px;
+    height: 35px;
+  `,
+
+  Logo: styled.img`
+    position: relative;
+    width: 100px;
+    height: 35px;
+    margin-left: 20px;
+    cursor: pointer;
+  `,
+  MenuBar: styled.div`
+    width: 30px;
+    height: 35px;
+    border: 1px solid red;
+  `,
+};
+
+const S = {
+  Frame: styled.div`
+    width: 390px;
+    min-height: 100vh;
+    position: relative;
+    margin: 0 auto;
+    background-color: #fff;
+    overflow: auto;
+    /* justify-content: center; */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  `,
+  Main: styled.div`
+    width: 390px;
+    height: 100%;
+    position: relative;
+    top: 50px;
+  `,
+  Title: styled.div`
+    padding-top: 40px;
+    padding-left: 20px;
+    position: relative;
+    width: 350px;
+    height: 110px;
+    font-size: 40px;
+    color: #05194d;
+    font-family: '공체Bold' !important;
+  `,
+  SubTitle: styled.div`
+    margin-top: 20px;
+    padding-left: 20px;
+    position: relative;
+    width: 350px;
+    height: 20px;
+    font-size: 15px;
+    color: #05194d;
+    font-family: '공체Medium' !important;
+  `,
+  FormLine: styled.line`
+    width: 370px;
+    display: block;
+    margin: 10px auto;
+    border: 3px solid black;
+  `,
+};
+
+const MapPage = () => {
+  const [sideOn, setSideOn] = useState(false);
+
+  const handleSideClick = () => {
+    setSideOn(!sideOn);
+  };
+  return (
+    <>
+      <S.Frame>
+        <H.MainBox>
+          <H.MenuBox>
+            <H.Menu>
+              <H.Logo src={Logo} />
+              <SideMenuBar onclick={handleSideClick} color={'#000'} />
+            </H.Menu>
+          </H.MenuBox>
+        </H.MainBox>
+        {/*여기부터 본문요소 */}
+        <S.Main>
+          <S.Title>주변 정비소 안내</S.Title>
+          <S.SubTitle>주변 정비소를 찾아보세요</S.SubTitle>
+          <S.FormLine />
+          <MapBox />
+          <Footer />
+        </S.Main>
+      </S.Frame>
+
+      <SideMenu sideOn={sideOn} />
+    </>
+  );
+};
+
+export default MapPage;
