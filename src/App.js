@@ -47,13 +47,13 @@ function App() {
         {/* <LodingPage /> */}
         {/* <HomePage /> */}
         {/* <RegisterPage /> */}
-        <LoginPage />
+        {/* <LoginPage /> */}
         {/* <MainPage /> */}
         {/* <IntroPage /> */}
         {/* <CommuPage /> */}
         {/* <ReadPage /> */}
         {/* <WritePage /> */}
-        {/* <CarPage /> */}
+        <CarPage />
         {/* <MapPage /> */}
       </S.Frame>
     </>
