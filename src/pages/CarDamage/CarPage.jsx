@@ -17,6 +17,7 @@ import searchImg from '../../assets/img/icon_search.svg';
 import Page from '../../components/communicate/Page';
 import ImgUpload from '../../components/CarDamage/ImgUpload';
 import CarText from '../../components/CarDamage/CarText';
+import ImgEx from '../../components/CarDamage/ImgEx';
 const H = {
   MainBox: styled.header`
     position: fixed;

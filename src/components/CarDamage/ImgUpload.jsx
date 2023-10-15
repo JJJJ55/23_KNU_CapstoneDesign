@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Icon1 from '../../assets/img/imgUpload.png';
 import Icon2 from '../../assets/img/imgUpload_icon.png';
+import { useRef } from 'react';
+import { useState } from 'react';
 const S = {
   NumBox: styled.div`
     width: 350px;
@@ -97,6 +99,21 @@ const S_UploadIcon = styled.img`
 `;
 
 const ImgUpload = () => {
+  const [selectedImage, setSelectedImage] = useState(Icon1);
+  const fileInputRef = useRef(null); // useRef를 생성
+
+  // 이미지 선택 시 호출되는 핸들러
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      // 선택한 파일을 미리보기로 표시
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setSelectedImage(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
   return (
     <>
       <S.NumBox>
@@ -110,26 +127,16 @@ const ImgUpload = () => {
         </S.Combo>
       </S.NumBox>
       <S.Box>
-        {/* <S_ImgUploadBox
-					onClick={() => {
-						photoInput.current.click();
-					}}
-				>
-					<label htmlFor="image"></label>
-					<S_ImgInput
-						name="image"
-						ref={photoInput}
-						accept="image/*"
-						onChange={handleImgChange}
-						type="file"
-						id="image"
-					/>
-					<S_ProfileImg src={currentImg || userInfo.image || defaultProfileImg} alt="기본프로필사진" />
-					<S_UploadIcon src={iconSrc} />
-				</S_ImgUploadBox> */}
         <S.Guide>2. 파손부위 사진을 업로드 해주세요</S.Guide>
-        <S.ImgBox>
-          <S.ImgIcon src={Icon1} />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          style={{ display: 'none' }}
+          ref={fileInputRef} // ref를 useRef로 연결
+        />
+        <S.ImgBox onClick={() => fileInputRef.current.click()}>
+          <S.ImgIcon src={selectedImage} />
           <S.UploadIcon src={Icon2} />
         </S.ImgBox>
       </S.Box>
