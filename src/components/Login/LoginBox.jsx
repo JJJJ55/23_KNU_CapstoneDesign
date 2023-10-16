@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import mainLogo from '../../assets/img/메인로고.png';
+import { Link } from 'react-router-dom';
 
 const fadeIn = keyframes`
   from {
@@ -51,7 +52,7 @@ const S = {
     text-align: center;
     bottom: 80px;
   `,
-  tag: styled.a`
+  tag: styled(Link)`
     text-decoration: none;
     text-decoration-line: underline;
     font-size: 16px;
@@ -77,8 +78,8 @@ const LoginBox = () => {
         </S.box>
         <S.loginContent>
           <S.tagBox>
-            <S.tag href="/">로그인</S.tag>
-            <S.tag href="/">회원가입</S.tag>
+            <S.tag to={'/login'}>이메일로 로그인</S.tag>
+            <S.tag to={'/register'}>회원가입</S.tag>
           </S.tagBox>
           <S.textBox>차량 파손도 예측 및 수리비 안내 플랫폼</S.textBox>
         </S.loginContent>
