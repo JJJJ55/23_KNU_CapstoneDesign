@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import mainLogo from '../assets/img/메인로고.png';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom/dist';
 
 const S = {
   content: styled.main`
@@ -24,6 +26,18 @@ const S = {
 };
 
 const LodingPage = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    setTimeout(async () => {
+      // if (isLogedIn && (await isValidToken())) {
+      // 	navigate('/home');
+      // } else {
+      // 	logout();
+      // 	navigate('/login');
+      // }
+      navigate('/home');
+    }, 1500);
+  }, []);
   return (
     <S.content>
       <S.box>
