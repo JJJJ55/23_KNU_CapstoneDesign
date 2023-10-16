@@ -1,4 +1,4 @@
-import { BrowserRouter, Link, Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import HomePage from './pages/HomePage.jsx';
 import GlobalStyle from './style/GlobalStyle.js';
@@ -44,17 +44,21 @@ function App() {
       <GlobalStyle />
       <S.Background />
       <S.Frame>
-        {/* <LodingPage /> */}
-        {/* <HomePage /> */}
-        {/* <RegisterPage /> */}
-        {/* <LoginPage /> */}
-        {/* <MainPage /> */}
-        {/* <IntroPage /> */}
-        {/* <CommuPage /> */}
-        {/* <ReadPage /> */}
-        {/* <WritePage /> */}
-        <CarPage />
-        {/* <MapPage /> */}
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LodingPage />} />
+            <Route path="/login" element={<HomePage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/login/email" element={<LoginPage />} />
+            <Route path="/main" element={<MainPage />} />
+            <Route path="/intro" element={<IntroPage />} />
+            <Route path="/commu" element={<CommuPage />} />
+            <Route path="/read" element={<ReadPage />} />
+            <Route path="/write" element={<WritePage />} />
+            <Route path="/car" element={<CarPage />} />
+            <Route path="/map" element={<MapPage />} />
+          </Routes>
+        </BrowserRouter>
       </S.Frame>
     </>
   );
