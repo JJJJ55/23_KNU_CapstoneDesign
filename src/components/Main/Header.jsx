@@ -4,6 +4,7 @@ import Logo from '../../assets/img/메인로고.png';
 import SideMenuBar from '../SideMenu/SideMenuBar';
 import { useState } from 'react';
 import SideMenu from '../SideMenu/SideMenu';
+import { useNavigate } from 'react-router-dom';
 // import '../../pages/Main/Main.css';
 
 const H = {
@@ -43,6 +44,7 @@ const H = {
 };
 
 const Header = () => {
+  const navigate = useNavigate();
   const [sideOn, setSideOn] = useState(false);
 
   const handleSideClick = () => {
@@ -52,7 +54,12 @@ const Header = () => {
     <H.MainBox>
       <H.MenuBox>
         <H.Menu>
-          <H.Logo src={Logo} />
+          <H.Logo
+            src={Logo}
+            onClick={() => {
+              navigate('/main');
+            }}
+          />
           <SideMenuBar onclick={handleSideClick} />
         </H.Menu>
       </H.MenuBox>

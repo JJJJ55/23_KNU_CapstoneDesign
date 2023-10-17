@@ -14,6 +14,7 @@ import { useState } from 'react';
 import SideMenuBar from '../../components/SideMenu/SideMenuBar';
 import Section4 from '../../components/Main/Section4';
 import IntroPage from '../Intro/IntroPage';
+import { useNavigate } from 'react-router-dom';
 
 const H = {
   MainBox: styled.header`
@@ -65,7 +66,7 @@ const S = {
     display: flex;
     position: relative;
     margin: 0 auto;
-    background-color: #b8e0fe;
+    background-color: #fff;
     box-shadow: 0px 0px 30px #000;
     flex-direction: column;
     /* justify-content: center; */
@@ -82,13 +83,14 @@ const MainPage = () => {
   const handleSideClick = () => {
     setSideOn(!sideOn);
   };
+  const navigate = useNavigate();
   return (
     <>
       <S.Frame>
         <H.MainBox>
           <H.MenuBox>
             <H.Menu>
-              <H.Logo src={Logo} />
+              <H.Logo src={Logo} onClick={() => navigate('/main')} />
               <SideMenuBar onclick={handleSideClick} color={'#fff'} />
             </H.Menu>
           </H.MenuBox>

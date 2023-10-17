@@ -12,6 +12,7 @@ import IntroImg from '../../assets/img/test.png';
 import sideImg from '../../assets/img/logo-removebg-preview.png';
 import Footer from '../../components/Main/Footer';
 import useScrollImg from '../../hook/useScrollImg';
+import { useNavigate } from 'react-router-dom';
 
 const H = {
   MainBox: styled.header`
@@ -195,13 +196,14 @@ const IntroPage = () => {
   const handleSideClick = () => {
     setSideOn(!sideOn);
   };
+  const navigate = useNavigate();
   return (
     <>
       <S.Frame>
         <H.MainBox>
           <H.MenuBox>
             <H.Menu>
-              <H.Logo src={Logo} />
+              <H.Logo src={Logo} onClick={() => navigate('/main')} />
               <SideMenuBar onclick={handleSideClick} color={'#000'} />
             </H.Menu>
           </H.MenuBox>

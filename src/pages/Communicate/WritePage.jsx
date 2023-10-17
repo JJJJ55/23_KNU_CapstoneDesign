@@ -17,6 +17,8 @@ import searchImg from '../../assets/img/icon_search.svg';
 import Page from '../../components/communicate/Page';
 import Read from '../../components/communicate/Read';
 import Make from '../../components/communicate/Make';
+import { useNavigate } from 'react-router-dom';
+
 const H = {
   MainBox: styled.header`
     position: fixed;
@@ -108,13 +110,15 @@ const WritePage = () => {
   const handleSideClick = () => {
     setSideOn(!sideOn);
   };
+
+  const navigate = useNavigate();
   return (
     <>
       <S.Frame>
         <H.MainBox>
           <H.MenuBox>
             <H.Menu>
-              <H.Logo src={Logo} />
+              <H.Logo src={Logo} onClick={() => navigate('/main')} />
               <SideMenuBar onclick={handleSideClick} color={'#000'} />
             </H.Menu>
           </H.MenuBox>

@@ -18,6 +18,8 @@ import Page from '../../components/communicate/Page';
 import ImgUpload from '../../components/CarDamage/ImgUpload';
 import CarText from '../../components/CarDamage/CarText';
 import ImgEx from '../../components/CarDamage/ImgEx';
+import { useNavigate } from 'react-router-dom';
+
 const H = {
   MainBox: styled.header`
     position: fixed;
@@ -109,13 +111,14 @@ const CarPage = () => {
   const handleSideClick = () => {
     setSideOn(!sideOn);
   };
+  const navigate = useNavigate();
   return (
     <>
       <S.Frame>
         <H.MainBox>
           <H.MenuBox>
             <H.Menu>
-              <H.Logo src={Logo} />
+              <H.Logo src={Logo} onClick={() => navigate('/main')} />
               <SideMenuBar onclick={handleSideClick} color={'#000'} />
             </H.Menu>
           </H.MenuBox>
