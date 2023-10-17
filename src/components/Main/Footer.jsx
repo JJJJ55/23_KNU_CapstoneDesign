@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import main_Logo2 from '../../assets/img/후면로고.png';
-
+import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -56,11 +56,12 @@ const S = {
     cursor: pointer;
   `,
 
-  InfoList: styled.a`
+  InfoList: styled.div`
     color: #143c56;
     display: inline-block;
     font-size: 10px;
     margin-right: 10px;
+    cursor: pointer;
     &::after {
       background: #143c56;
       content: '';
@@ -108,13 +109,13 @@ const LinkData = [
 ];
 
 const LinkData2 = [
-  { href: '/', text: '프로젝트 소개' },
-  { href: '/', text: '유저 커뮤니티' },
+  { href: '/intro', text: '프로젝트 소개' },
+  { href: '/commu', text: '유저 커뮤니티' },
   {
-    href: '/',
+    href: '/car',
     text: '차량수리비 안내',
   },
-  { href: '/', text: '주변 정비소 안내' },
+  { href: '/map', text: '주변 정비소 안내' },
 ];
 
 const settings = {
@@ -126,6 +127,7 @@ const settings = {
 };
 
 const Footer = () => {
+  const navigate = useNavigate();
   return (
     <S.Footer>
       <S.MenuBox>
@@ -150,7 +152,7 @@ const Footer = () => {
         <S.InfoBox>
           {LinkData2.map((link, index) => (
             <S.InfoList
-              href={link.href}
+              onClick={() => navigate(link.href)}
               target="_blank"
               rel="noopener noreferrer"
             >
