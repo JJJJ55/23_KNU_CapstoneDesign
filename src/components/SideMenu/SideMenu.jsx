@@ -3,6 +3,7 @@ import styled, { css, keyframes } from 'styled-components';
 import sideImg from '../../assets/img/logo-removebg-preview.png';
 import Button from '../common/Button';
 import SideMenuFooter from './SideMenuFooter';
+import { useNavigate } from 'react-router-dom';
 
 const A = {
   sidemenu: styled.div`
@@ -57,9 +58,8 @@ const A = {
     color: #05194d;
     font-weight: bold;
   `,
-  MenuList: styled.a`
+  MenuList: styled.div`
     width: 120px;
-    text-decoration: none;
     color: #000;
     display: block;
     font-size: 15px;
@@ -68,10 +68,12 @@ const A = {
     text-align: center;
     margin: 20px auto;
     border-bottom: 1px solid black;
+    cursor: pointer;
   `,
 };
 
 const SideMenu = ({ sideOn }) => {
+  const navigate = useNavigate();
   return (
     <A.sidemenu sideOn={sideOn}>
       <A.Sideimg />
@@ -84,16 +86,32 @@ const SideMenu = ({ sideOn }) => {
       <A.Sidebox>
         차 진단도, 수리비도 똑똑하게
         <A.SideTitle>리:페어</A.SideTitle>
-        <A.MenuList>
+        <A.MenuList
+          onClick={() => {
+            navigate('/intro');
+          }}
+        >
           <A.MenuSpan>프로젝트</A.MenuSpan> 소개
         </A.MenuList>
-        <A.MenuList>
+        <A.MenuList
+          onClick={() => {
+            navigate('/commu');
+          }}
+        >
           유저 <A.MenuSpan>커뮤니티</A.MenuSpan>
         </A.MenuList>
-        <A.MenuList>
+        <A.MenuList
+          onClick={() => {
+            navigate('/car');
+          }}
+        >
           <A.MenuSpan>차량수리비</A.MenuSpan> 안내
         </A.MenuList>
-        <A.MenuList>
+        <A.MenuList
+          onClick={() => {
+            navigate('/map');
+          }}
+        >
           주변 <A.MenuSpan>정비소</A.MenuSpan> 안내
         </A.MenuList>
       </A.Sidebox>

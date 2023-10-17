@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import RegisterPage from '../../pages/register/RegisterPage';
 import ButtonLong from '../common/ButtonLong';
 import ButtonMain from '../common/ButtonMain';
+import { useNavigate } from 'react-router-dom';
 
 const S = {
   container: styled.div`
@@ -20,12 +21,28 @@ const S = {
 };
 
 const Section4 = () => {
+  const navigate = useNavigate();
   return (
     <S.container>
       <S.cummuticate>
-        <ButtonMain text={'프로젝트 소개'} />
-        <ButtonMain text={'유저 커뮤니티'} />
-        <ButtonMain text={'주변 정비소 안내'} />
+        <ButtonMain
+          text={'프로젝트 소개'}
+          onClick={() => {
+            navigate('/intro');
+          }}
+        />
+        <ButtonMain
+          text={'유저 커뮤니티'}
+          onClick={() => {
+            navigate('/commu');
+          }}
+        />
+        <ButtonMain
+          text={'주변 정비소 안내'}
+          onClick={() => {
+            navigate('/map');
+          }}
+        />
       </S.cummuticate>
     </S.container>
   );
