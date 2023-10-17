@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import InfoForm from '../../components/Register/InfoForm';
+import InfoForm from '../../components/common/InfoForm';
 
 const S = {
   content: styled.main`
