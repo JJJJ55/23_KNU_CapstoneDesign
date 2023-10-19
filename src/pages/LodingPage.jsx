@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import mainLogo from '../assets/img/메인로고.png';
+import mainLogo from '../assets/img/후면로고.png';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom/dist';
 
 const S = {
   content: styled.main`
+    height: 100vh;
+    background-color: #fff;
     justify-content: center;
   `,
   box: styled.div`
