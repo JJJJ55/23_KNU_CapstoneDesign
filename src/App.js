@@ -12,6 +12,7 @@ import ReadPage from './pages/Communicate/ReadPage.jsx';
 import WritePage from './pages/Communicate/WritePage.jsx';
 import CarPage from './pages/CarDamage/CarPage.jsx';
 import MapPage from './pages/CarMap/MapPage.jsx';
+import ErrorPage from './pages/ErrorPage.jsx';
 
 const S = {
   Frame: styled.div`
@@ -57,6 +58,7 @@ function App() {
             <Route path="/write" element={<WritePage />} />
             <Route path="/car" element={<CarPage />} />
             <Route path="/map" element={<MapPage />} />
+            <Route path="/*" element={<ErrorPage />} />
           </Routes>
         </BrowserRouter>
       </S.Frame>
