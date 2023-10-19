@@ -29,26 +29,29 @@ const S = {
     /* border: 1px solid blue; */
   `,
   Tr: styled.tr`
-    border-bottom: 1px solid blue;
     height: 30px;
   `,
   Th: styled.th`
     width: 70px;
-    /* border: 1px solid blue; */
+    border-top: 1px solid #e2e2e5;
     background-color: white;
     color: #143c56;
     font-weight: 700;
     vertical-align: middle !important;
   `,
   Td: styled.td`
-    /* border: 1px solid blue; */
+    border-top: 1px solid #e2e2e5;
     vertical-align: middle !important;
+    &.num {
+      text-align: center;
+    }
     &.name {
       width: 70px;
       text-align: center;
     }
     &.Read {
       cursor: pointer;
+      padding-left: 5px;
     }
   `,
   body: styled.tbody`
@@ -104,7 +107,7 @@ const Page = () => {
         <S.Search
           type="text"
           maxlength="20"
-          placeholder="검색어를 입력하세요"
+          placeholder="검색할 제목을 입력하세요"
         />
         <S.SearchIcon src={searchImg} />
       </S.SearchBox>
@@ -112,52 +115,52 @@ const Page = () => {
         <S.Table>
           <S.body>
             <S.Tr>
-              <S.Th>1</S.Th>
+              <S.Th className="num">1</S.Th>
               <S.Td className="Read">1</S.Td>
               <S.Td className="name">1</S.Td>
             </S.Tr>
             <S.Tr>
-              <S.Th>1</S.Th>
+              <S.Th className="num">1</S.Th>
               <S.Td className="Read">1</S.Td>
               <S.Td className="name">1</S.Td>
             </S.Tr>
             <S.Tr>
-              <S.Th>1</S.Th>
+              <S.Th className="num">1</S.Th>
               <S.Td className="Read">1</S.Td>
               <S.Td className="name">1</S.Td>
             </S.Tr>
             <S.Tr>
-              <S.Th>1</S.Th>
+              <S.Th className="num">1</S.Th>
               <S.Td className="Read">1</S.Td>
               <S.Td className="name">1</S.Td>
             </S.Tr>
             <S.Tr>
-              <S.Th>1</S.Th>
+              <S.Th className="num">1</S.Th>
               <S.Td className="Read">1</S.Td>
               <S.Td className="name">1</S.Td>
             </S.Tr>
             <S.Tr>
-              <S.Th>1</S.Th>
+              <S.Th className="num">1</S.Th>
               <S.Td className="Read">1</S.Td>
               <S.Td className="name">1</S.Td>
             </S.Tr>
             <S.Tr>
-              <S.Th>1</S.Th>
+              <S.Th className="num">1</S.Th>
               <S.Td className="Read">1</S.Td>
               <S.Td className="name">1</S.Td>
             </S.Tr>
             <S.Tr>
-              <S.Th>1</S.Th>
+              <S.Th className="num">1</S.Th>
               <S.Td className="Read">1</S.Td>
               <S.Td className="name">1</S.Td>
             </S.Tr>
             <S.Tr>
-              <S.Th>1</S.Th>
+              <S.Th className="num">1</S.Th>
               <S.Td className="Read">1</S.Td>
               <S.Td className="name">1</S.Td>
             </S.Tr>
             <S.Tr>
-              <S.Th>1</S.Th>
+              <S.Th className="num">1</S.Th>
               <S.Td className="Read">1</S.Td>
               <S.Td className="name">1</S.Td>
             </S.Tr>
