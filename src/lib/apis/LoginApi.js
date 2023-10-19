@@ -56,7 +56,7 @@ import axios from 'axios';
 export const loginApi = async (inputs, types) => {
   try {
     const response = await axios.post(
-      'https://daishi7462.cafe24.com/php/loginProcess.php',
+      'https://daishi7462.cafe24.com/php/sign_in.php',
       {
         name: inputs.name,
         email: inputs.id,
