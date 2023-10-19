@@ -25,6 +25,8 @@ const LoginPage = () => {
       if (response.success) {
         console.log('로그인/가입 성공');
         setUserName(response.userName);
+        localStorage.clear();
+        localStorage.setItem('username', response.userName);
         setLoggedIn(true);
       } else {
         console.log('로그인/가입 실패');

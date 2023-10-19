@@ -4,7 +4,6 @@ import sideImg from '../../assets/img/logo-removebg-preview.png';
 import Button from '../common/Button';
 import SideMenuFooter from './SideMenuFooter';
 import { useNavigate } from 'react-router-dom';
-import { useUserContext } from '../../lib/context/UserProvider';
 
 const A = {
   sidemenu: styled.div`
@@ -74,13 +73,13 @@ const A = {
 };
 
 const SideMenu = ({ sideOn }) => {
-  const { userName } = useUserContext();
+  const user = localStorage.getItem('username');
   const navigate = useNavigate();
   return (
     <A.sidemenu sideOn={sideOn}>
       <A.Sideimg />
       <A.NameBox>
-        <A.Name>{userName}</A.Name>님 환영합니다.
+        <A.Name>{user}</A.Name>님 환영합니다.
         <br />
         <br />
         <Button text={'로그아웃'} />
