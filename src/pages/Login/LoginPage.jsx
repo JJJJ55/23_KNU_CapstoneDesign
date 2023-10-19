@@ -19,9 +19,9 @@ const LoginPage = () => {
   const { userName, setUserName } = useUserContext(null);
   const navigate = useNavigate();
 
-  const handleLogin = async (inputs, types) => {
+  const handleLogin = async (inputs) => {
     try {
-      const response = await loginApi(inputs, types);
+      const response = await loginApi(inputs);
       if (response.success) {
         console.log('로그인/가입 성공');
         setUserName(response.userName);

@@ -502,7 +502,7 @@ const InfoForm = ({ type, onSubmit }) => {
       //     LoginApi(data, type);
       //   }
       // }
-      onSubmit(data, type);
+      onSubmit(data);
     }
   };
 
