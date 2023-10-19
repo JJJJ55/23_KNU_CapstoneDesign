@@ -79,7 +79,7 @@ const SideMenu = ({ sideOn }) => {
     <A.sidemenu sideOn={sideOn}>
       <A.Sideimg />
       <A.NameBox>
-        <A.Name>{user}</A.Name>님 환영합니다.
+        <A.Name>{user}</A.Name> 님 환영합니다.
         <br />
         <br />
         <Button text={'로그아웃'} />
