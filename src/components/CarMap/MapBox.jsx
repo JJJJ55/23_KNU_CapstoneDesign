@@ -47,6 +47,7 @@ const S = {
       width: 80px;
       text-align: center;
       white-space: pre-line;
+      line-height: 15px;
     }
     &.Read {
       cursor: pointer;
@@ -74,6 +75,9 @@ const S = {
   PageButton: styled.button`
     margin: 0 5px;
     cursor: pointer;
+    &.active {
+      color: red;
+    }
   `,
 };
 
@@ -142,7 +146,11 @@ const MapBox = () => {
         {Array.from(
           { length: Math.ceil(totalItems / pageSize) },
           (_, index) => (
-            <S.PageButton key={index} onClick={() => paginate(index + 1)}>
+            <S.PageButton
+              className={currentPage === index + 1 ? 'active' : ''}
+              key={index}
+              onClick={() => paginate(index + 1)}
+            >
               {index + 1}
             </S.PageButton>
           ),
