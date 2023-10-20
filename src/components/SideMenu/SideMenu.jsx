@@ -4,6 +4,8 @@ import sideImg from '../../assets/img/logo-removebg-preview.png';
 import Button from '../common/Button';
 import SideMenuFooter from './SideMenuFooter';
 import { useNavigate } from 'react-router-dom';
+import { LoginDispatchContext } from '../../lib/context/LoginContext';
+import { useContext } from 'react';
 
 const A = {
   sidemenu: styled.div`
@@ -74,7 +76,14 @@ const A = {
 
 const SideMenu = ({ sideOn }) => {
   const user = localStorage.getItem('username');
+  const { logout } = useContext(LoginDispatchContext);
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
   return (
     <A.sidemenu sideOn={sideOn}>
       <A.Sideimg />
@@ -82,7 +91,7 @@ const SideMenu = ({ sideOn }) => {
         <A.Name>{user}</A.Name> 님 환영합니다.
         <br />
         <br />
-        <Button text={'로그아웃'} />
+        <Button text={'로그아웃'} onClick={handleLogout} />
       </A.NameBox>
       <A.Sidebox>
         차 진단도, 수리비도 똑똑하게
