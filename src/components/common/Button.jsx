@@ -12,10 +12,10 @@ const S = {
   `,
 };
 
-const Button = ({ text }) => {
+const Button = ({ text, onClick }) => {
   return (
     <>
-      <S.Button>{text}</S.Button>
+      <S.Button onClick={onClick}>{text}</S.Button>
     </>
   );
 };
