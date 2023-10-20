@@ -5,7 +5,6 @@ const S = {
   Box: styled.div`
     width: 350px;
     height: 230px;
-    border: 1px solid red;
     margin: 0 auto;
     text-align: center;
     padding-top: 30px;
@@ -26,12 +25,10 @@ const S = {
     font-weight: bold;
     font-size: 23px;
     color: #05194d;
-    border: 1px solid red;
   `,
   Text: styled.div`
     width: 250px;
     font-size: 20px;
-    border: 1px solid blue;
   `,
 };
 

@@ -2,13 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import Icon1 from '../../assets/img/imgUpload.png';
 import Icon2 from '../../assets/img/imgUpload_icon.png';
-import { useRef } from 'react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 const S = {
   NumBox: styled.div`
     width: 350px;
     display: flex;
-    border: 1px solid blue;
     align-items: center;
     margin: 0 auto;
   `,
@@ -16,30 +15,26 @@ const S = {
     font-size: 15px;
     font-weight: Bold;
   `,
-  Box: styled.div`
-    width: 350px;
-    height: 300px;
-    border: 1px solid red;
-    margin: 10px auto;
-  `,
-  Combo: styled.select`
+  SelectDamage: styled.div`
+    display: flex;
     width: 100px;
     height: 30px;
     margin: 0 auto;
     border-radius: 10px;
     font-weight: bold;
-    text-align: center;
-    appearance: none;
-    -webkit-appearance: none;
-    &::-ms-expand {
-      display: none;
-    }
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+  `,
+  Box: styled.div`
+    width: 350px;
+    height: 300px;
+    margin: 10px auto;
   `,
   ImgBox: styled.div`
     width: 200px;
     height: 200px;
-    border: 1px solid red;
-    margin: 20px auto;
+    margin: 40px auto;
     position: relative;
     cursor: pointer;
   `,
@@ -69,38 +64,10 @@ const S = {
   `,
 };
 
-const S_ImgUploadBox = styled.div`
-  width: 114px;
-  height: 112px;
-  margin: 35px;
-  position: relative;
-  label {
-    display: none;
-  }
-`;
-const S_ImgInput = styled.input`
-  display: none;
-`;
-const S_ProfileImg = styled.img`
-  width: 114px;
-  height: 112px;
-  border-radius: 50%;
-  object-fit: cover;
-  cursor: pointer;
-`;
-const S_UploadIcon = styled.img`
-  width: 36px;
-  height: 36px;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  z-index: 10;
-  cursor: pointer;
-`;
-
 const ImgUpload = () => {
   const [selectedImage, setSelectedImage] = useState(Icon1);
   const fileInputRef = useRef(null); // useRef를 생성
+  const DamageSelect = useLocation();
 
   // 이미지 선택 시 호출되는 핸들러
   const handleImageChange = (e) => {
@@ -117,14 +84,8 @@ const ImgUpload = () => {
   return (
     <>
       <S.NumBox>
-        <S.Guide>1. 차종을 선택해주세요</S.Guide>
-        <S.Combo>
-          <option>휠</option>
-          <option>휀더</option>
-          <option>앞 범퍼</option>
-          <option>뒷 범퍼</option>
-          <option>도어</option>
-        </S.Combo>
+        <S.Guide>1. 선택된 손상부위 입니다.</S.Guide>
+        <S.SelectDamage>{DamageSelect.state}</S.SelectDamage>
       </S.NumBox>
       <S.Box>
         <S.Guide>2. 파손부위 사진을 업로드 해주세요</S.Guide>
