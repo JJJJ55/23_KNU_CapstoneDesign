@@ -13,6 +13,8 @@ import WritePage from './pages/Communicate/WritePage.jsx';
 import CarPage from './pages/CarDamage/CarPage.jsx';
 import MapPage from './pages/CarMap/MapPage.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
+import { useContext } from 'react';
+import { LoginStateContext } from './lib/context/LoginContext.jsx';
 
 const S = {
   Frame: styled.div`
@@ -40,6 +42,7 @@ const S = {
 };
 
 function App() {
+  const userLogin = useContext(LoginStateContext);
   return (
     <>
       <GlobalStyle />
@@ -47,18 +50,27 @@ function App() {
       <S.Frame>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<LodingPage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/main" element={<MainPage />} />
-            <Route path="/intro" element={<IntroPage />} />
-            <Route path="/commu" element={<CommuPage />} />
-            <Route path="/read" element={<ReadPage />} />
-            <Route path="/write" element={<WritePage />} />
-            <Route path="/car" element={<CarPage />} />
-            <Route path="/map" element={<MapPage />} />
-            <Route path="/*" element={<ErrorPage />} />
+            {console.log('aa' + userLogin)}
+            {userLogin ? (
+              <>
+                <Route path="/main" element={<MainPage />} />
+                <Route path="/intro" element={<IntroPage />} />
+                <Route path="/commu" element={<CommuPage />} />
+                <Route path="/read" element={<ReadPage />} />
+                <Route path="/write" element={<WritePage />} />
+                <Route path="/car" element={<CarPage />} />
+                <Route path="/map" element={<MapPage />} />
+                <Route path="/*" element={<ErrorPage />} />
+              </>
+            ) : (
+              <>
+                <Route path="/" element={<LodingPage />} />
+                <Route path="/main" element={<HomePage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/*" element={<ErrorPage />} />
+              </>
+            )}
           </Routes>
         </BrowserRouter>
       </S.Frame>
