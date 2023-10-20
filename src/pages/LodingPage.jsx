@@ -37,7 +37,7 @@ const LodingPage = () => {
       // 	logout();
       // 	navigate('/login');
       // }
-      navigate('/home');
+      navigate('/main');
     }, 1500);
   }, []);
   return (

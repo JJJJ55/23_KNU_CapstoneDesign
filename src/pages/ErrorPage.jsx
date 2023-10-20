@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import img from '../assets/img/404.png';
 import Button from '../components/common/Button';
+import { useNavigate } from 'react-router-dom';
+
 const S = {
   content: styled.main`
     height: 100vh;
@@ -28,11 +30,12 @@ const S = {
 };
 
 const ErrorPage = () => {
+  const navigate = useNavigate();
   return (
     <S.content>
       <S.error src={img} />
       <S.errorText>페이지를 찾을 수 없습니다.</S.errorText>
-      <S.GoHome>홈으로 돌아가기</S.GoHome>
+      <S.GoHome onClick={() => navigate('/main')}>홈으로 돌아가기</S.GoHome>
     </S.content>
   );
 };
