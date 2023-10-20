@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import InfoForm from '../../components/common/InfoForm';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginApi } from '../../lib/apis/LoginApi';
-import { useUserContext } from '../../lib/context/UserProvider';
-
+import { useContext } from 'react';
+import { LoginDispatchContext } from '../../lib/context/LoginContext';
 const S = {
   content: styled.main`
     justify-content: flex-start;
@@ -15,8 +13,7 @@ const S = {
 };
 
 const LoginPage = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const { userName, setUserName } = useUserContext(null);
+  const { login } = useContext(LoginDispatchContext);
   const navigate = useNavigate();
 
   const handleLogin = async (inputs) => {
@@ -24,10 +21,10 @@ const LoginPage = () => {
       const response = await loginApi(inputs);
       if (response.success) {
         console.log('로그인/가입 성공');
-        setUserName(response.userName);
-        localStorage.clear();
-        localStorage.setItem('username', response.userName);
-        setLoggedIn(true);
+        login(response.userName);
+        // localStorage.clear();
+        // localStorage.setItem('username', response.userName);
+        navigate('/main');
       } else {
         console.log('로그인/가입 실패');
         alert('로그인에 실패하였습니다! : ' + response.message);
@@ -37,11 +34,6 @@ const LoginPage = () => {
     }
   };
 
-  useEffect(() => {
-    if (loggedIn) {
-      navigate('/main');
-    }
-  }, [loggedIn]);
   return (
     <S.content>
       <InfoForm type="login" onSubmit={handleLogin} />
