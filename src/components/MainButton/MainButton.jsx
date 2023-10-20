@@ -3,9 +3,14 @@ import styled from 'styled-components';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import car1 from '../../assets/img/logo.png';
-import car2 from '../../assets/img/logo.png';
-import car3 from '../../assets/img/logo.png';
+import car1 from '../../assets/img/앞범퍼.png';
+import car2 from '../../assets/img/뒷범퍼.png';
+import car3 from '../../assets/img/휠.png';
+import car4 from '../../assets/img/휀더.png';
+import car5 from '../../assets/img/도어.png';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useCallback } from 'react';
 
 const S = {
   ButtonBox: styled.div`
@@ -19,6 +24,7 @@ const S = {
     height: 110px;
     border-radius: 30px;
     box-shadow: 1px 1px 3px 3px #143c56;
+    cursor: pointer;
     &:active {
       box-shadow: 1px 1px 3px 1px #dadce0 inset;
     }
@@ -71,21 +77,41 @@ const StyledSlider = styled(Slider)`
   }
 `;
 const MainButton = () => {
-  const ImgButton = [{ car1 }, { car2 }, { car3 }];
+  const navigate = useNavigate();
+
   const settings = {
     dots: false,
     infinite: true,
     speed: 1000,
     slidesToShow: 2,
     slidesToScroll: 1,
+    draggable: true,
   };
+
   return (
     <S.MenuBox>
       <S.Menu>
         <StyledSlider {...settings}>
-          <S.CarButton src={car1} />
-          <S.CarButton src={car2} />
-          <S.CarButton src={car3} />
+          <S.CarButton
+            src={car1}
+            onClick={() => navigate('/car', { state: '앞 범퍼' })}
+          />
+          <S.CarButton
+            src={car2}
+            onClick={() => navigate('/car', { state: '뒷 범퍼' })}
+          />
+          <S.CarButton
+            src={car3}
+            onClick={() => navigate('/car', { state: '휠' })}
+          />
+          <S.CarButton
+            src={car4}
+            onClick={() => navigate('/car', { state: '휀더' })}
+          />
+          <S.CarButton
+            src={car5}
+            onClick={() => navigate('/car', { state: '도어' })}
+          />
         </StyledSlider>
       </S.Menu>
     </S.MenuBox>
