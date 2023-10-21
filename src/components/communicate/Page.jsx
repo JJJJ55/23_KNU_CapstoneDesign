@@ -2,7 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import searchImg from '../../assets/img/icon_search.svg';
 import Button from '../common/Button';
-
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { CommuListApi } from '../../lib/apis/CommuListApi';
+import { useEffect } from 'react';
 const S = {
   SearchBox: styled.div`
     display: block;
@@ -98,9 +101,68 @@ const S = {
     margin-top: -10px;
     cursor: pointer;
   `,
+  Pagination: styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  `,
+  PageButton: styled.button`
+    margin: 0 5px;
+    cursor: pointer;
+    &.active {
+      color: red;
+    }
+  `,
 };
 
 const Page = () => {
+  const navigate = useNavigate();
+  const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchText, setSearchText] = useState(''); // 검색어 상태
+  const [filteredData, setFilteredData] = useState([]); // 검색 결과를 저장할 상태
+  const pageSize = 10;
+
+  useEffect(() => {
+    GetCommuList(); // 컴포넌트가 마운트될 때 데이터를 가져옵니다.
+  }, []);
+
+  const GetCommuList = async () => {
+    try {
+      const response = await CommuListApi();
+      const sortedData = response.sort((a, b) => b.idx - a.idx);
+      setData(sortedData);
+      setFilteredData(sortedData);
+    } catch (error) {
+      console.error('데이터 가져오기 실패:', error);
+    }
+  };
+
+  const handleSearch = (e) => {
+    const text = e.target.value;
+    setSearchText(text);
+    // 데이터를 검색어에 따라 필터링
+    const filtered = data.filter((item) =>
+      item.name.toLowerCase().includes(text.toLowerCase()),
+    );
+    setFilteredData(filtered);
+  };
+
+  const handleTableRowClick = (itemIdx) => {
+    navigate('/commu/read', { state: { itemIdx } });
+  };
+
+  const indexOfLastItem = currentPage * pageSize;
+  const indexOfFirstItem = indexOfLastItem - pageSize;
+  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(filteredData.length / pageSize);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <>
       <S.SearchBox>
@@ -108,13 +170,27 @@ const Page = () => {
           type="text"
           maxlength="20"
           placeholder="검색할 제목을 입력하세요"
+          value={searchText}
+          onChange={handleSearch}
         />
         <S.SearchIcon src={searchImg} />
       </S.SearchBox>
       <S.Box>
         <S.Table>
           <S.body>
-            <S.Tr>
+            {currentItems.map((item, index) => (
+              <S.Tr key={index}>
+                <S.Th className="num">{item.idx}</S.Th>
+                <S.Td
+                  className="Read"
+                  onClick={() => handleTableRowClick(item.idx)}
+                >
+                  {item.title}
+                </S.Td>
+                <S.Td className="name">{item.name}</S.Td>
+              </S.Tr>
+            ))}
+            {/* <S.Tr>
               <S.Th className="num">1</S.Th>
               <S.Td className="Read">1</S.Td>
               <S.Td className="name">1</S.Td>
@@ -163,14 +239,30 @@ const Page = () => {
               <S.Th className="num">1</S.Th>
               <S.Td className="Read">1</S.Td>
               <S.Td className="name">1</S.Td>
-            </S.Tr>
+            </S.Tr> */}
           </S.body>
         </S.Table>
       </S.Box>
       <S.ButtonBox>
-        <Button text={'글 쓰 기'} />
+        <Button
+          text={'글 쓰 기'}
+          onClick={() => {
+            navigate('/commu/write');
+          }}
+        />
       </S.ButtonBox>
-      <S.PN></S.PN>
+      {/* <S.PN></S.PN> */}
+      <S.Pagination>
+        {Array.from({ length: totalPages }, (_, index) => (
+          <S.PageButton
+            key={index}
+            onClick={() => paginate(index + 1)}
+            className={index + 1 === currentPage ? 'active' : ''}
+          >
+            {index + 1}
+          </S.PageButton>
+        ))}
+      </S.Pagination>
     </>
   );
 };
