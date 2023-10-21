@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const S = {
   Button: styled.button`
@@ -9,13 +9,24 @@ const S = {
     font-weight: bold;
     background-color: #e2e2e2;
     cursor: pointer;
+    ${(props) =>
+      props.active === false &&
+      css`
+        background-color: #f7f7f7;
+        color: #000;
+        :hover {
+        }
+        pointer-events: none;
+      `}
   `,
 };
 
-const Button = ({ text, onClick }) => {
+const Button = ({ text, onClick, active }) => {
   return (
     <>
-      <S.Button onClick={onClick}>{text}</S.Button>
+      <S.Button onClick={onClick} active={active}>
+        {text}
+      </S.Button>
     </>
   );
 };
