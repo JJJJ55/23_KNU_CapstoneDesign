@@ -56,8 +56,8 @@ function App() {
                 <Route path="/main" element={<MainPage />} />
                 <Route path="/intro" element={<IntroPage />} />
                 <Route path="/commu" element={<CommuPage />} />
-                <Route path="/read" element={<ReadPage />} />
-                <Route path="/write" element={<WritePage />} />
+                <Route path="commu/read" element={<ReadPage />} />
+                <Route path="commu/write" element={<WritePage />} />
                 <Route path="/car" element={<CarPage />} />
                 <Route path="/map" element={<MapPage />} />
                 <Route path="/*" element={<ErrorPage />} />
