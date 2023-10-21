@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import InfoForm from '../../components/common/InfoForm';
 import { useNavigate } from 'react-router-dom';
-import { loginApi } from '../../lib/apis/LoginApi';
+import { LoginApi } from '../../lib/apis/LoginApi';
 import { useContext } from 'react';
 import { LoginDispatchContext } from '../../lib/context/LoginContext';
 const S = {
@@ -18,7 +18,7 @@ const LoginPage = () => {
 
   const handleLogin = async (inputs) => {
     try {
-      const response = await loginApi(inputs);
+      const response = await LoginApi(inputs);
       if (response.success) {
         console.log('로그인/가입 성공');
         login(response.userName);
