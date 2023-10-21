@@ -102,6 +102,7 @@ const S = {
     cursor: pointer;
   `,
   Pagination: styled.div`
+    height: 30px;
     display: flex;
     justify-content: center;
     margin-top: 10px;
@@ -144,7 +145,7 @@ const Page = () => {
     setSearchText(text);
     // 데이터를 검색어에 따라 필터링
     const filtered = data.filter((item) =>
-      item.name.toLowerCase().includes(text.toLowerCase()),
+      item.title.toLowerCase().includes(text.toLowerCase()),
     );
     setFilteredData(filtered);
   };
