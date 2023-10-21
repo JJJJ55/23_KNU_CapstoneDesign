@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../common/Button';
-
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useEffect } from 'react';
 const S = {
   InputBox: styled.div`
     display: block;
@@ -68,23 +70,70 @@ const S = {
   `,
 };
 
-const Make = () => {
+const Make = ({ Uname, onSubmit }) => {
+  const [btnOn, setBtnOn] = useState(false);
+  const [data, setData] = useState({
+    title: '',
+    name: Uname,
+    content: '',
+    password: '',
+  });
+
+  useEffect(() => {
+    btnOnOff();
+  }, [data]);
+
+  const InputChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const btnOnOff = () => {
+    if (!!data.title && !!data.content && data.password.length > 4) {
+      setBtnOn(true);
+    } else {
+      setBtnOn(false);
+    }
+  };
+
+  const btnSubmit = async (e) => {
+    e.preventDefault();
+    if (btnOn) {
+      onSubmit(data);
+    }
+  };
+
   return (
     <>
       <S.TitleInput
+        name="title"
         type="text"
         maxlength="30"
         placeholder="제목을 입력하세요."
+        value={data.title}
+        onChange={InputChange}
       />
-      <S.Text type="text" maxlength="1000" placeholder="내용을 입력하세요." />
+      <S.Text
+        name="content"
+        type="text"
+        maxlength="1000"
+        placeholder="내용을 입력하세요."
+        value={data.content}
+        onChange={InputChange}
+      />
       <S.Box>
         <S.PwInput
+          name="password"
           type="password"
           maxlength="20"
           placeholder="비밀번호를 입력하세요."
+          value={data.password}
+          onChange={InputChange}
         />
         <S.ButtonBox>
-          <Button text={'등 록 하 기'} />
+          <Button text={'등 록 하 기'} onClick={btnSubmit} active={btnOn} />
         </S.ButtonBox>
       </S.Box>
     </>

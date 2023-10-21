@@ -18,6 +18,7 @@ import Page from '../../components/communicate/Page';
 import Read from '../../components/communicate/Read';
 import Make from '../../components/communicate/Make';
 import { useNavigate } from 'react-router-dom';
+import { CommuWriteApi } from '../../lib/apis/CommuWriteApi';
 
 const H = {
   MainBox: styled.header`
@@ -106,9 +107,25 @@ const S = {
 
 const WritePage = () => {
   const [sideOn, setSideOn] = useState(false);
+  const userName = localStorage.getItem('username');
 
   const handleSideClick = () => {
     setSideOn(!sideOn);
+  };
+
+  const handleWrite = async (inputs) => {
+    try {
+      const response = await CommuWriteApi(inputs);
+      if (response.success) {
+        console.log('등록됐습니다');
+        navigate('/commu');
+      } else {
+        console.log('등록실패');
+        alert('로그인에 실패하였습니다! : ' + response.message);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const navigate = useNavigate();
@@ -128,7 +145,7 @@ const WritePage = () => {
           <S.Title>유저 커뮤니티</S.Title>
           <S.SubTitle>다양한 정보들을 공유해보세요</S.SubTitle>
           <S.FormLine />
-          <Make />
+          <Make Uname={userName} onSubmit={handleWrite} />
           <Footer />
         </S.Main>
       </S.Frame>
