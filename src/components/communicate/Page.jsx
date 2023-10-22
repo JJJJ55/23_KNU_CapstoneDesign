@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import searchImg from '../../assets/img/icon_search.svg';
 import Button from '../common/Button';
-import { useNavigate } from 'react-router-dom';
+import img from '../../assets/img/404.png';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { CommuListApi } from '../../lib/apis/CommuListApi';
 import { useEffect } from 'react';
@@ -23,8 +24,8 @@ const S = {
   Table: styled.table`
     width: 370px;
     margin: 0 auto;
-    border-bottom: 1px solid #5c5c5c;
-    border-top: 2px solid #2e2e2e;
+    /* border-bottom: 1px solid #5c5c5c;
+    border-top: 2px solid #2e2e2e; */
     font-size: 12px;
     margin-bottom: 10px;
   `,
@@ -33,6 +34,14 @@ const S = {
   `,
   Tr: styled.tr`
     height: 30px;
+    &:first-child {
+      // 마지막 <button> 태그에만 적용이 된다
+      border-top: 2px solid #2e2e2e;
+    }
+    &:last-child {
+      // 마지막 <button> 태그에만 적용이 된다
+      border-bottom: 1px solid #5c5c5c;
+    }
   `,
   Th: styled.th`
     width: 70px;
@@ -57,9 +66,7 @@ const S = {
       padding-left: 5px;
     }
   `,
-  body: styled.tbody`
-    /* border: 1px solid blue; */
-  `,
+  body: styled.tbody``,
   foot: styled.tfoot`
     /* border: 1px solid blue; */
   `,
@@ -115,50 +122,97 @@ const S = {
       color: red;
     }
   `,
+  error: styled.img`
+    width: 300px;
+    height: 300px;
+    display: flex;
+    margin: 0 auto;
+  `,
 };
 
 const Page = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const page = parseInt(queryParams.get('page')) || 1;
+
   const [data, setData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(page);
   const [searchText, setSearchText] = useState(''); // 검색어 상태
   const [filteredData, setFilteredData] = useState([]); // 검색 결과를 저장할 상태
   const pageSize = 10;
-
-  useEffect(() => {
-    GetCommuList(); // 컴포넌트가 마운트될 때 데이터를 가져옵니다.
-  }, []);
-
-  const GetCommuList = async () => {
-    try {
-      const response = await CommuListApi();
-      const sortedData = response.sort((a, b) => b.idx - a.idx);
-      setData(sortedData);
-      setFilteredData(sortedData);
-    } catch (error) {
-      console.error('데이터 가져오기 실패:', error);
-    }
-  };
-
-  const handleSearch = (e) => {
-    const text = e.target.value;
-    setSearchText(text);
-    // 데이터를 검색어에 따라 필터링
-    const filtered = data.filter((item) =>
-      item.title.toLowerCase().includes(text.toLowerCase()),
-    );
-    setFilteredData(filtered);
-  };
-
-  const handleTableRowClick = (itemIdx) => {
-    navigate('/commu/read', { state: { itemIdx } });
-  };
 
   const indexOfLastItem = currentPage * pageSize;
   const indexOfFirstItem = indexOfLastItem - pageSize;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
   const totalPages = Math.ceil(filteredData.length / pageSize);
+  console.log(location.search);
+
+  const GetCommuList = async () => {
+    try {
+      const response = await CommuListApi();
+      const sortedData = response.sort((a, b) => b.idx - a.idx);
+      setData(sortedData);
+
+      const filtered = sortedData.filter((item) =>
+        item.title.toLowerCase().includes(searchText.toLowerCase()),
+      );
+
+      setFilteredData(filtered);
+    } catch (error) {
+      console.error('데이터 가져오기 실패:', error);
+    }
+  };
+
+  useEffect(() => {
+    console.log(totalPages);
+    GetCommuList(); // 컴포넌트가 마운트될 때 데이터를 가져옵니다.
+  }, []);
+
+  // useEffect(() => {
+  //   const totalPages = Math.ceil(filteredData.length / pageSize);
+  //   if (currentPage > totalPages) {
+  //     // 페이지 번호가 범위를 벗어난 경우 /main으로 이동
+  //     navigate('/main');
+  //     return;
+  //   }
+  //   GetCommuList();
+  // }, [currentPage, searchText]);
+
+  // useEffect(() => {
+  //   if (currentPage > totalPages) {
+  //     navigate('/main');
+  //     return;
+  //   }
+  //   GetCommuList();
+  // }, [currentPage, searchText]);
+
+  useEffect(() => {
+    setCurrentPage(page);
+    GetCommuList();
+  }, [page]);
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+    navigate(`/commu?page=${newPage}`);
+  };
+
+  const handleSearch = (e) => {
+    const text = e.target.value;
+    setSearchText(text);
+    const filtered = data.filter((item) =>
+      item.title.toLowerCase().includes(text.toLowerCase()),
+    );
+    setFilteredData(filtered);
+    setCurrentPage(1);
+    navigate(`/commu?page=1`);
+  };
+  console.log(searchText); //searchText가 공백이면 전역변수로 설정해뒀던 페이지를 다시 설정함
+
+  const handleTableRowClick = (itemIdx) => {
+    navigate('/commu/read', { state: { itemIdx } });
+  };
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -179,7 +233,7 @@ const Page = () => {
       <S.Box>
         <S.Table>
           <S.body>
-            {currentItems.map((item, index) => (
+            {/* {currentItems.map((item, index) => (
               <S.Tr key={index}>
                 <S.Th className="num">{item.idx}</S.Th>
                 <S.Td
@@ -190,57 +244,23 @@ const Page = () => {
                 </S.Td>
                 <S.Td className="name">{item.name}</S.Td>
               </S.Tr>
-            ))}
-            {/* <S.Tr>
-              <S.Th className="num">1</S.Th>
-              <S.Td className="Read">1</S.Td>
-              <S.Td className="name">1</S.Td>
-            </S.Tr>
-            <S.Tr>
-              <S.Th className="num">1</S.Th>
-              <S.Td className="Read">1</S.Td>
-              <S.Td className="name">1</S.Td>
-            </S.Tr>
-            <S.Tr>
-              <S.Th className="num">1</S.Th>
-              <S.Td className="Read">1</S.Td>
-              <S.Td className="name">1</S.Td>
-            </S.Tr>
-            <S.Tr>
-              <S.Th className="num">1</S.Th>
-              <S.Td className="Read">1</S.Td>
-              <S.Td className="name">1</S.Td>
-            </S.Tr>
-            <S.Tr>
-              <S.Th className="num">1</S.Th>
-              <S.Td className="Read">1</S.Td>
-              <S.Td className="name">1</S.Td>
-            </S.Tr>
-            <S.Tr>
-              <S.Th className="num">1</S.Th>
-              <S.Td className="Read">1</S.Td>
-              <S.Td className="name">1</S.Td>
-            </S.Tr>
-            <S.Tr>
-              <S.Th className="num">1</S.Th>
-              <S.Td className="Read">1</S.Td>
-              <S.Td className="name">1</S.Td>
-            </S.Tr>
-            <S.Tr>
-              <S.Th className="num">1</S.Th>
-              <S.Td className="Read">1</S.Td>
-              <S.Td className="name">1</S.Td>
-            </S.Tr>
-            <S.Tr>
-              <S.Th className="num">1</S.Th>
-              <S.Td className="Read">1</S.Td>
-              <S.Td className="name">1</S.Td>
-            </S.Tr>
-            <S.Tr>
-              <S.Th className="num">1</S.Th>
-              <S.Td className="Read">1</S.Td>
-              <S.Td className="name">1</S.Td>
-            </S.Tr> */}
+            ))} */}
+            {currentItems.length === 0 ? ( // currentItems 배열이 비어있을 때 "없음" 메시지 표시
+              <S.error src={img} />
+            ) : (
+              currentItems.map((item, index) => (
+                <S.Tr key={index}>
+                  <S.Th className="num">{item.idx}</S.Th>
+                  <S.Td
+                    className="Read"
+                    onClick={() => handleTableRowClick(item.idx)}
+                  >
+                    {item.title}
+                  </S.Td>
+                  <S.Td className="name">{item.name}</S.Td>
+                </S.Tr>
+              ))
+            )}
           </S.body>
         </S.Table>
       </S.Box>
@@ -257,7 +277,8 @@ const Page = () => {
         {Array.from({ length: totalPages }, (_, index) => (
           <S.PageButton
             key={index}
-            onClick={() => paginate(index + 1)}
+            onClick={() => handlePageChange(index + 1)}
+            // onClick={() => paginate(index + 1)}
             className={index + 1 === currentPage ? 'active' : ''}
           >
             {index + 1}

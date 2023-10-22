@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { CarmapListApi } from '../../lib/apis/CarmapListApi';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import img from '../../assets/img/404.png';
 
 const S = {
   Box: styled.div`
@@ -79,17 +81,35 @@ const S = {
       color: red;
     }
   `,
+  error: styled.img`
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+  `,
 };
 
 const MapBox = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const page = parseInt(queryParams.get('page')) || 1;
+
   const [data, setData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(page);
   const pageSize = 10;
   const totalItems = data.length;
 
+  const handlePageChange = (newPage) => {
+    navigate(`/map?page=${newPage}`);
+    setCurrentPage(newPage);
+  };
+
   useEffect(() => {
     getList();
-  }, []);
+  }, [currentPage]);
 
   const getList = async () => {
     try {
@@ -127,7 +147,7 @@ const MapBox = () => {
                 <S.Td className="number">{item.tell}</S.Td>
               </S.Tr>
             ))} */}
-            {currentItems.map((item, index) => {
+            {/* {currentItems.map((item, index) => {
               const name = item.name; // item.name을 const 변수 name에 할당
               const repairName = name.replace(/ /, '\n'); // 모든 공백을 \n으로 대체
 
@@ -138,7 +158,23 @@ const MapBox = () => {
                   <S.Td className="number">{item.tell}</S.Td>
                 </S.Tr>
               );
-            })}
+            })} */}
+            {currentItems.length === 0 ? (
+              <S.error src={img} />
+            ) : (
+              currentItems.map((item, index) => {
+                const name = item.name; // item.name을 const 변수 name에 할당
+                const repairName = name.replace(/ /, '\n'); // 모든 공백을 \n으로 대체
+
+                return (
+                  <S.Tr className="list" key={index}>
+                    <S.Td className="name">{repairName}</S.Td>
+                    <S.Td className="Read">{item.address}</S.Td>
+                    <S.Td className="number">{item.tell}</S.Td>
+                  </S.Tr>
+                );
+              })
+            )}
           </S.body>
         </S.Table>
       </S.TableBox>
@@ -146,10 +182,19 @@ const MapBox = () => {
         {Array.from(
           { length: Math.ceil(totalItems / pageSize) },
           (_, index) => (
+            // <S.PageButton
+            //   className={currentPage === index + 1 ? 'active' : ''}
+            //   key={index}
+            //   // onClick={() => paginate(index + 1)}
+            //   onClick={handlePageChange(index + 1)}
+            // >
+            //   {index + 1}
+            // </S.PageButton>
             <S.PageButton
               className={currentPage === index + 1 ? 'active' : ''}
               key={index}
-              onClick={() => paginate(index + 1)}
+              // onClick={() => paginate(index + 1)}
+              onClick={() => handlePageChange(index + 1)}
             >
               {index + 1}
             </S.PageButton>
