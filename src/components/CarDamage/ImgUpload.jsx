@@ -15,7 +15,7 @@ const S = {
     font-size: 15px;
     font-weight: Bold;
   `,
-  SelectDamage: styled.div`
+  SelectDamage: styled.select`
     display: flex;
     width: 100px;
     height: 30px;
@@ -25,6 +25,7 @@ const S = {
     justify-content: center;
     align-items: center;
     border: 2px solid black;
+    text-align: center;
   `,
   Box: styled.div`
     width: 350px;
@@ -67,7 +68,8 @@ const S = {
 const ImgUpload = () => {
   const [selectedImage, setSelectedImage] = useState(Icon1);
   const fileInputRef = useRef(null); // useRef를 생성
-  const DamageSelect = useLocation();
+  const Damage = useLocation();
+  const [DamageSelect, setDamageSelect] = useState(Damage.state);
 
   // 이미지 선택 시 호출되는 핸들러
   const handleImageChange = (e) => {
@@ -85,7 +87,21 @@ const ImgUpload = () => {
     <>
       <S.NumBox>
         <S.Guide>1. 선택된 손상부위 입니다.</S.Guide>
-        <S.SelectDamage>{DamageSelect.state}</S.SelectDamage>
+        {/* <S.SelectDamage>{DamageSelect.state}</S.SelectDamage> */}
+        <S.SelectDamage
+          value={DamageSelect}
+          onChange={(e) => {
+            const selectedValue = e.target.value;
+            // 선택된 값을 DamageSelect 상태로 업데이트
+            setDamageSelect(selectedValue);
+          }}
+        >
+          <option value="앞 범퍼">앞 범퍼</option>
+          <option value="뒷 범퍼">뒷 범퍼</option>
+          <option value="휀더">휀더</option>
+          <option value="휠">휠</option>
+          <option value="도어">도어</option>
+        </S.SelectDamage>
       </S.NumBox>
       <S.Box>
         <S.Guide>2. 파손부위 사진을 업로드 해주세요</S.Guide>
