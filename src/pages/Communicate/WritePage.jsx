@@ -18,7 +18,7 @@ import Page from '../../components/communicate/Page';
 import Read from '../../components/communicate/Read';
 import Make from '../../components/communicate/Make';
 import { useNavigate } from 'react-router-dom';
-import { CommuWriteApi } from '../../lib/apis/CommuWriteApi';
+import { CommuWrite } from '../../lib/apis/CommuWriteApi';
 
 const H = {
   MainBox: styled.header`
@@ -115,7 +115,7 @@ const WritePage = () => {
 
   const handleWrite = async (inputs) => {
     try {
-      const response = await CommuWriteApi(inputs);
+      const response = await CommuWrite(inputs);
       if (response.success) {
         console.log('등록됐습니다');
         navigate('/commu');
