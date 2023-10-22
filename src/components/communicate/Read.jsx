@@ -4,7 +4,7 @@ import Button from '../common/Button';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { CommuReadApi } from '../../lib/apis/CommuReadApi';
+import { CommuRead, CommuUpdate } from '../../lib/apis/CommuReadApi';
 
 const S = {
   InputBox: styled.div`
@@ -85,21 +85,61 @@ const Read = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const idx = location.state.itemIdx;
+  const [itemData, setItemData] = useState({
+    title: '',
+    content: '',
+  });
+  const [password, setPassword] = useState('');
 
-  const [itemData, setItemData] = useState({ title: '', content: '' });
+  const [data, setData] = useState({
+    index: idx,
+    pw: '',
+  });
 
   useEffect(() => {
     // 이펙트 함수를 통해 데이터를 가져옵니다.
     GetCommuRead(idx);
   }, []);
 
+  console.log(data.index, data.pw);
   const GetCommuRead = async (idx) => {
     try {
-      const response = await CommuReadApi(idx);
+      const response = await CommuRead(idx);
       setItemData(response);
     } catch (error) {
       console.error('데이터 가져오기 실패:', error);
     }
+  };
+  const GetCommuUpdate = (data) => async () => {
+    console.log(data.index, data.pw);
+    try {
+      const response = await CommuUpdate(data);
+      // 서버에서의 응답 처리
+      if (response.success) {
+        // 비밀번호가 일치하는 경우 수정 페이지로 이동
+        console.log(
+          '현재 유저',
+          response.name === localStorage.getItem('username'),
+        );
+        console.log(response.name);
+        if (response.name === localStorage.getItem('username')) {
+          navigate('/commu/modify', { state: { idx } });
+        } else {
+          alert('해당 게시글 작성자만 수정이 가능합니다!');
+        }
+      } else {
+        alert('비밀번호가 일치하지 않습니다.');
+      }
+    } catch (error) {
+      console.error('데이터 가져오기 실패:', error);
+    }
+  };
+
+  const InputChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
@@ -120,12 +160,15 @@ const Read = () => {
       />
       <S.Box>
         <S.PwInput
+          name="pw"
           type="password"
           maxlength="20"
           placeholder="비밀번호를 입력하세요."
+          value={data.pw}
+          onChange={InputChange}
         />
         <S.ButtonBox>
-          <Button text={'수 정'} />
+          <Button text={'수 정'} onClick={GetCommuUpdate(data)} />
         </S.ButtonBox>
         <S.ButtonBox>
           <Button
