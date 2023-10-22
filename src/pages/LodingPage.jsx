@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import mainLogo from '../assets/img/후면로고.png';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom/dist';
+import { LoginStateContext } from '../lib/context/LoginContext';
+import { useContext } from 'react';
 
 const S = {
   content: styled.main`
@@ -29,15 +31,15 @@ const S = {
 
 const LodingPage = () => {
   const navigate = useNavigate();
+  const userLogin = useContext(LoginStateContext);
+
   useEffect(() => {
     setTimeout(async () => {
-      // if (isLogedIn && (await isValidToken())) {
-      // 	navigate('/home');
-      // } else {
-      // 	logout();
-      // 	navigate('/login');
-      // }
-      navigate('/main');
+      if (userLogin) {
+        navigate('/main');
+      } else {
+        navigate('/home');
+      }
     }, 1500);
   }, []);
   return (
