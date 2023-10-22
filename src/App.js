@@ -15,6 +15,8 @@ import MapPage from './pages/CarMap/MapPage.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
 import { useContext } from 'react';
 import { LoginStateContext } from './lib/context/LoginContext.jsx';
+import { useEffect } from 'react';
+import ModifyPage from './pages/Communicate/ModifyPage.jsx';
 
 const S = {
   Frame: styled.div`
@@ -43,6 +45,7 @@ const S = {
 
 function App() {
   const userLogin = useContext(LoginStateContext);
+
   return (
     <>
       <GlobalStyle />
@@ -50,14 +53,15 @@ function App() {
       <S.Frame>
         <BrowserRouter>
           <Routes>
-            {console.log('aa' + userLogin)}
             {userLogin ? (
               <>
+                <Route path="/" element={<LodingPage />} />
                 <Route path="/main" element={<MainPage />} />
                 <Route path="/intro" element={<IntroPage />} />
                 <Route path="/commu" element={<CommuPage />} />
                 <Route path="commu/read" element={<ReadPage />} />
                 <Route path="commu/write" element={<WritePage />} />
+                <Route path="commu/modify" element={<ModifyPage />} />
                 <Route path="/car" element={<CarPage />} />
                 <Route path="/map" element={<MapPage />} />
                 <Route path="/*" element={<ErrorPage />} />
@@ -65,7 +69,7 @@ function App() {
             ) : (
               <>
                 <Route path="/" element={<LodingPage />} />
-                <Route path="/main" element={<HomePage />} />
+                <Route path="/home" element={<HomePage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/*" element={<ErrorPage />} />
