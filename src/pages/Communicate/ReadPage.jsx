@@ -17,6 +17,7 @@ import searchImg from '../../assets/img/icon_search.svg';
 import Page from '../../components/communicate/Page';
 import Read from '../../components/communicate/Read';
 import { useNavigate } from 'react-router-dom';
+import Comment from '../../components/communicate/Comment';
 
 const H = {
   MainBox: styled.header`
@@ -128,6 +129,7 @@ const ReadPage = () => {
           <S.SubTitle>다양한 정보들을 공유해보세요</S.SubTitle>
           <S.FormLine />
           <Read />
+          <Comment />
           <Footer />
         </S.Main>
       </S.Frame>

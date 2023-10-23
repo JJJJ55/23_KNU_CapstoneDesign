@@ -178,7 +178,7 @@ const Read = () => {
           />
         </S.ButtonBox>
       </S.Box>
-      <S.PN></S.PN>
+      {/* <S.PN></S.PN> */}
     </>
   );
 };
