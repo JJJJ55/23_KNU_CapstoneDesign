@@ -22,7 +22,6 @@ export const CommuUpdate = async (inputs) => {
         password: inputs.pw,
       },
     );
-    console.log(inputs.index, inputs.pw);
     return response.data;
   } catch (error) {
     console.error(error);

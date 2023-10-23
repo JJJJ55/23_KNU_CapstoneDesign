@@ -116,7 +116,6 @@ const ModifyPage = () => {
   const handleModify = async (inputs) => {
     try {
       const response = await CommuModify(inputs);
-      console.log('수정', inputs.title, inputs.content, inputs.password);
       if (response.success) {
         console.log('등록됐습니다');
         navigate('/commu');

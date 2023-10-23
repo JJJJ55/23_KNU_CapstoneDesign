@@ -90,7 +90,6 @@ const Read = () => {
     content: '',
   });
   const [password, setPassword] = useState('');
-
   const [data, setData] = useState({
     index: idx,
     pw: '',
