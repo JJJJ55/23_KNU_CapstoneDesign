@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { CommuModifyRead } from '../../lib/apis/CommuReadApi';
+import { CommuModify } from '../../lib/apis/CommuWriteApi';
 const S = {
   InputBox: styled.div`
     display: block;
@@ -77,6 +78,7 @@ const Modify = ({ onSubmit }) => {
   const index = location.state.idx;
   const [btnOn, setBtnOn] = useState(false);
   const [data, setData] = useState({
+    itemIdx: '',
     title: '',
     content: '',
     password: '',
@@ -94,7 +96,6 @@ const Modify = ({ onSubmit }) => {
   const GetModifyRead = async (index) => {
     try {
       const response = await CommuModifyRead(index);
-      // 서버에서의 응답 처리
       setData(response);
     } catch (error) {
       console.error('데이터 가져오기 실패:', error);
@@ -105,6 +106,7 @@ const Modify = ({ onSubmit }) => {
     setData({
       ...data,
       [e.target.name]: e.target.value,
+      itemIdx: index,
     });
   };
 
