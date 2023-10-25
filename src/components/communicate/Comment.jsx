@@ -204,11 +204,82 @@ const Comment = () => {
   const PushComment = () => {
     console.log('댓글 등록', data.comment, data.user);
   };
+  // const divs = [
+  //   { title: '오진영', message: '댓글1' },
+  //   { title: '오승민', message: '댓글2' },
+  //   { title: '이삭', message: '댓글3' },
+  // ];
+  // const divss = [
+  //   { title: '오진영', message: '대댓글1', index: 0 },
+  //   { title: '오승민', message: '대댓글2', index: 0 },
+  //   { title: '이삭', message: '대댓글3', index: 2 },
+  // ];
+  // return (
+  //   <S.Content>
+  //     <S.Box>
+  //       <S.List>
+  //         {divs.map((content, index) => (
+  //           <S.Message key={index}>
+  //             <S.MessageBox onClick={() => toggleVisibility(index)}>
+  //               <S.Cuser>{content.title}</S.Cuser>
+  //               <S.Ctext>{content.message}</S.Ctext>
+  //             </S.MessageBox>
+  //             <S.CommentLine />
+  //             {index === visibleIndex ? (
+  //               <S.ReplyInputBox>
+  //                 <S.ReplyInput
+  //                   name="comment"
+  //                   value={data.comment}
+  //                   onChange={InputChange}
+  //                   placeholder="댓글을 입력하세요."
+  //                 />
+  //                 <S.ReplyButton onClick={PushComment}>입 력</S.ReplyButton>
+  //               </S.ReplyInputBox>
+  //             ) : null}
+  //             {divss.map((content, index) => (
+  //               <S.Reply>
+  //                 <S.ReplyBox key={index}>
+  //                   <S.Replyuser>{content.title}</S.Replyuser>
+  //                   <S.Replytext>{content.message}</S.Replytext>
+  //                 </S.ReplyBox>
+  //               </S.Reply>
+  //             ))}
+  //           </S.Message>
+  //         ))}
+
+  //         {/* <S.Reply>
+  //           <S.ReplyBox>
+  //             <S.Replyuser>오진영</S.Replyuser>
+  //             <S.Replytext>대댓글입니다.</S.Replytext>
+  //           </S.ReplyBox>
+  //         </S.Reply> */}
+  //       </S.List>
+  //     </S.Box>
+  //     <S.InputBox>
+  //       <S.CommentInput
+  //         name="comment"
+  //         value={data.comment}
+  //         onChange={InputChange}
+  //         placeholder="댓글을 입력하세요."
+  //       />
+  //       <S.CommentButton onClick={PushComment}>입 력</S.CommentButton>
+  //     </S.InputBox>
+  //   </S.Content>
+  // );
   const divs = [
     { title: '오진영', message: '댓글1' },
     { title: '오승민', message: '댓글2' },
     { title: '이삭', message: '댓글3' },
   ];
+
+  const divss = [
+    { title: '오진영', message: '대댓글1', commentIndex: 0 },
+    { title: '오승민', message: '대댓글2', commentIndex: 1 },
+    { title: '이삭', message: '대댓글3', commentIndex: 2 },
+    { title: '이삭', message: '대댓글4', commentIndex: 2 },
+    { title: '이삭', message: '대댓글5', commentIndex: 0 },
+  ];
+
   return (
     <S.Content>
       <S.Box>
@@ -231,15 +302,18 @@ const Comment = () => {
                   <S.ReplyButton onClick={PushComment}>입 력</S.ReplyButton>
                 </S.ReplyInputBox>
               ) : null}
+              {divss
+                .filter((reply) => reply.commentIndex === index)
+                .map((reply, replyIndex) => (
+                  <S.Reply key={replyIndex}>
+                    <S.ReplyBox>
+                      <S.Replyuser>{reply.title}</S.Replyuser>
+                      <S.Replytext>{reply.message}</S.Replytext>
+                    </S.ReplyBox>
+                  </S.Reply>
+                ))}
             </S.Message>
           ))}
-
-          <S.Reply>
-            <S.ReplyBox>
-              <S.Replyuser>오진영</S.Replyuser>
-              <S.Replytext>대댓글입니다.</S.Replytext>
-            </S.ReplyBox>
-          </S.Reply>
         </S.List>
       </S.Box>
       <S.InputBox>
