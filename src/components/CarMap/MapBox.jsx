@@ -5,11 +5,14 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/img/404.png';
+import { useRef } from 'react';
+
+const { kakao } = window;
 
 const S = {
   Box: styled.div`
     width: 350px;
-    height: 500px;
+    height: 350px;
     border: 1px solid red;
     margin: 0 auto;
   `,
@@ -31,7 +34,7 @@ const S = {
     border: 1px solid blue;
     height: 30px;
     &.list {
-      font-size: 5px;
+      font-size: 10px;
     }
   `,
   Th: styled.th`
@@ -102,6 +105,10 @@ const MapBox = () => {
   const pageSize = 10;
   const totalItems = data.length;
 
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  const [error, setError] = useState(null);
+
   const handlePageChange = (newPage) => {
     navigate(`/map?page=${newPage}`);
     setCurrentPage(newPage);
@@ -126,10 +133,38 @@ const MapBox = () => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    const container = mapRef.current;
+
+    const options = {
+      center: new window.kakao.maps.LatLng(latitude, longitude),
+      level: 3,
+    };
+    const map = new kakao.maps.Map(container, options);
+  }, [latitude, longitude]);
+
+  useEffect(() => {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+        },
+        function (error) {
+          setError(error.message);
+        },
+      );
+    } else {
+      setError('Geolocation is not available in your browser.');
+    }
+  }, []);
 
   return (
     <>
-      <S.Box></S.Box>
+      {console.log(latitude, longitude)}
+      <S.Box id="map" ref={mapRef}></S.Box>
       <S.TableBox>
         <S.Table>
           <S.Head>
