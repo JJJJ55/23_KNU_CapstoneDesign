@@ -4,7 +4,7 @@ export const CommuRead = async (itemIdx) => {
   try {
     // 서버에 GET 요청을 보내어 해당 아이템의 데이터를 가져옴
     const response = await axios.get(
-      `https://daishi7462.cafe24.com/php/community.php?idx=${itemIdx}`,
+      `https://daishi7462.cafe24.com/php/CommuRead.php?idx=${itemIdx}`,
     );
     return response.data;
   } catch (error) {
@@ -16,7 +16,7 @@ export const CommuUpdate = async (inputs) => {
   try {
     // Axios를 사용하여 PHP 스크립트에 데이터를 전송
     const response = await axios.post(
-      'https://daishi7462.cafe24.com/php/check_password.php',
+      'https://daishi7462.cafe24.com/php/CheckCommuPassword.php',
       {
         itemIdx: inputs.index,
         password: inputs.pw,
@@ -33,7 +33,7 @@ export const CommuModifyRead = async (itemIdx) => {
   try {
     // 서버에 GET 요청을 보내어 해당 아이템의 데이터를 가져옴
     const response = await axios.get(
-      `https://daishi7462.cafe24.com/php/community.php?idx=${itemIdx}`,
+      `https://daishi7462.cafe24.com/php/CommuRead.php?idx=${itemIdx}`,
     );
     return response.data;
   } catch (error) {

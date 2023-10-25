@@ -3,7 +3,7 @@ import axios from 'axios';
 export const CommuWrite = async (inputs) => {
   try {
     const response = await axios.post(
-      'https://daishi7462.cafe24.com/php/community.php',
+      'https://daishi7462.cafe24.com/php/CommuWrite.php',
       {
         title: inputs.title,
         content: inputs.content,
@@ -21,7 +21,7 @@ export const CommuWrite = async (inputs) => {
 export const CommuModify = async (inputs) => {
   try {
     const response = await axios.post(
-      'https://daishi7462.cafe24.com/php/modify_content.php',
+      'https://daishi7462.cafe24.com/php/CommuModify.php',
       {
         itemIdx: inputs.itemIdx,
         title: inputs.title,

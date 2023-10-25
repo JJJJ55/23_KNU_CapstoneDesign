@@ -3,7 +3,7 @@ import axios from 'axios';
 export const CommuListApi = async () => {
   try {
     const response = await axios.get(
-      'https://daishi7462.cafe24.com/php/community.php',
+      'https://daishi7462.cafe24.com/php/CommuList.php',
     );
     return response.data;
   } catch (error) {
