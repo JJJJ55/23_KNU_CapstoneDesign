@@ -112,7 +112,7 @@ const SideMenu = ({ sideOn }) => {
         </A.MenuList>
         <A.MenuList
           onClick={() => {
-            navigate('/car');
+            navigate('/car', { state: '앞 범퍼' });
           }}
         >
           <A.MenuSpan>차량수리비</A.MenuSpan> 안내

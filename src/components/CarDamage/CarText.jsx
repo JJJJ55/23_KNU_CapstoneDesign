@@ -32,24 +32,24 @@ const S = {
   `,
 };
 
-const CarText = () => {
+const CarText = ({ data }) => {
   return (
     <S.Box>
       <S.TextBox>
-        <S.Title>차종 : </S.Title>
-        <S.Text> 아반떼</S.Text>
+        <S.Title>파손 부위 : </S.Title>
+        <S.Text> {data.parts}</S.Text>
       </S.TextBox>
       <S.TextBox>
-        <S.Title>파손부위 : </S.Title>
-        <S.Text> 앞 범퍼</S.Text>
+        <S.Title>파손 종류 : </S.Title>
+        <S.Text> {data.damage}</S.Text>
       </S.TextBox>
       <S.TextBox>
-        <S.Title>수리방법 : </S.Title>
-        <S.Text> 도색</S.Text>
+        <S.Title>수리 방법 : </S.Title>
+        <S.Text> {data.repair}</S.Text>
       </S.TextBox>
       <S.TextBox>
-        <S.Title>수리비용 : </S.Title>
-        <S.Text> 900,000원</S.Text>
+        <S.Title>수리 비용 : </S.Title>
+        <S.Text> {data.cost}</S.Text>
       </S.TextBox>
       <S.FootBox>
         본 모델은 실 가격과 상이할 수 있으니 참고용으로 보시기 바랍니다.
