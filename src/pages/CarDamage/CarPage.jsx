@@ -129,7 +129,6 @@ const CarPage = () => {
           <S.SubTitle>사고차량을 진단해주세요</S.SubTitle>
           <S.FormLine />
           <ImgUpload />
-          <CarText />
           <Footer />
         </S.Main>
       </S.Frame>
