@@ -4,6 +4,10 @@ import Button from '../../components/common/Button';
 import { useState } from 'react';
 import TestFile from './testFile';
 import img from '../../assets/img/sp_img.png';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { CommentRead, ReplyRead } from '../../lib/apis/CommentReadApi';
+import { CommentUpdate, ReplyUpdate } from '../../lib/apis/CommentWrite';
 
 const S = {
   Content: styled.div`
@@ -27,9 +31,10 @@ const S = {
     width: 370px;
     height: auto;
   `,
-  MessageBox: styled.li`
+  MessageBox: styled.div`
     width: 370px;
-    height: 30px;
+    /* height: 30px; */
+    height: auto;
     display: flex;
     cursor: pointer;
   `,
@@ -41,7 +46,8 @@ const S = {
   `,
   ReplyBox: styled.li`
     width: 330px;
-    height: 30px;
+    /* height: 30px; */
+    height: auto;
     display: flex;
     border: 1px solid #ddd;
     cursor: default;
@@ -52,34 +58,38 @@ const S = {
     margin: 0 auto;
   `,
   Cuser: styled.div`
-    width: 60px;
+    width: 40px;
     height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 13px;
     font-weight: bold;
+    margin: auto auto;
   `,
   Ctext: styled.div`
-    width: 310px;
-    height: 30px;
+    width: 250px;
+    /* height: 30px; */
+    height: auto;
     display: flex;
     align-items: center;
     padding: 5px;
     font-size: 12px;
   `,
   Replyuser: styled.div`
-    width: 60px;
+    width: 40px;
     height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 13px;
     font-weight: bold;
+    margin: auto auto;
   `,
   Replytext: styled.div`
-    width: 310px;
-    height: 30px;
+    width: 250px;
+    /* height: 30px; */
+    height: auto;
     display: flex;
     align-items: center;
     padding: 5px;
@@ -87,6 +97,7 @@ const S = {
     &::before {
       content: ' ';
       position: relative;
+      padding-right: 8px;
       left: -3px;
       top: -2px;
       display: block;
@@ -95,6 +106,15 @@ const S = {
       background: url(${img}) no-repeat;
       background-position: -283px -200px;
     }
+  `,
+  closeButton: styled.button`
+    display: block;
+    width: 13px;
+    height: 13px;
+    background: url(${img}) no-repeat;
+    background-position: -268px -200px;
+    margin: auto auto;
+    cursor: pointer;
   `,
   InputBox: styled.div`
     width: 370px;
@@ -177,12 +197,52 @@ const S = {
 };
 
 const Comment = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const index = location.state.itemIdx;
   const [data, setData] = useState({
     comment: '',
     user: localStorage.getItem('username'),
+    idx: index,
   });
-  const [push, setPush] = useState([]);
+  const [reply, setreply] = useState({
+    idx: index,
+    comment_id: '',
+    user: localStorage.getItem('username'),
+    comment: '',
+  });
+  const [commentData, setCommentData] = useState([]);
+  const [replyData, setReplyData] = useState([]);
   const [visibleIndex, setVisibleIndex] = useState(null);
+
+  useEffect(() => {
+    // 이펙트 함수를 통해 데이터를 가져옵니다.
+    GetCommentRead(index);
+    GetReplyRead(index);
+  }, []);
+
+  const GetCommentRead = async (idx) => {
+    try {
+      const response = await CommentRead(idx);
+      console.log(response);
+
+      // 가져온 데이터를 배열에 추가
+      setCommentData(response);
+    } catch (error) {
+      console.error('데이터 가져오기 실패:', error);
+    }
+  };
+
+  const GetReplyRead = async (idx) => {
+    try {
+      const response = await ReplyRead(idx);
+      console.log(response);
+
+      setReplyData(response);
+    } catch (error) {
+      console.error('데이터 가져오기 실패:', error);
+    }
+  };
 
   const toggleVisibility = (index) => {
     if (index === visibleIndex) {
@@ -194,121 +254,104 @@ const Comment = () => {
     }
   };
 
-  const InputChange = (e) => {
+  const commentInputChange = (e) => {
     setData({
       ...data,
       [e.target.name]: e.target.value,
     });
   };
-
-  const PushComment = () => {
-    console.log('댓글 등록', data.comment, data.user);
+  const replyInputChange = (e) => {
+    setreply({
+      ...reply,
+      [e.target.name]: e.target.value,
+    });
   };
-  // const divs = [
-  //   { title: '오진영', message: '댓글1' },
-  //   { title: '오승민', message: '댓글2' },
-  //   { title: '이삭', message: '댓글3' },
-  // ];
-  // const divss = [
-  //   { title: '오진영', message: '대댓글1', index: 0 },
-  //   { title: '오승민', message: '대댓글2', index: 0 },
-  //   { title: '이삭', message: '대댓글3', index: 2 },
-  // ];
-  // return (
-  //   <S.Content>
-  //     <S.Box>
-  //       <S.List>
-  //         {divs.map((content, index) => (
-  //           <S.Message key={index}>
-  //             <S.MessageBox onClick={() => toggleVisibility(index)}>
-  //               <S.Cuser>{content.title}</S.Cuser>
-  //               <S.Ctext>{content.message}</S.Ctext>
-  //             </S.MessageBox>
-  //             <S.CommentLine />
-  //             {index === visibleIndex ? (
-  //               <S.ReplyInputBox>
-  //                 <S.ReplyInput
-  //                   name="comment"
-  //                   value={data.comment}
-  //                   onChange={InputChange}
-  //                   placeholder="댓글을 입력하세요."
-  //                 />
-  //                 <S.ReplyButton onClick={PushComment}>입 력</S.ReplyButton>
-  //               </S.ReplyInputBox>
-  //             ) : null}
-  //             {divss.map((content, index) => (
-  //               <S.Reply>
-  //                 <S.ReplyBox key={index}>
-  //                   <S.Replyuser>{content.title}</S.Replyuser>
-  //                   <S.Replytext>{content.message}</S.Replytext>
-  //                 </S.ReplyBox>
-  //               </S.Reply>
-  //             ))}
-  //           </S.Message>
-  //         ))}
+  const GetCommentUpdate = (data) => async () => {
+    console.log('댓글 등록', data.comment, data.user, data.idx);
+    try {
+      const response = await CommentUpdate(data);
+      // 서버에서의 응답 처리
+      if (response.success) {
+        data.comment = '';
+        GetCommentRead(data.idx);
+      } else {
+        alert('댓글 업로드에 실패하였습니다!');
+      }
+    } catch (error) {
+      console.error('댓글 업로드 실패:', error);
+    }
+  };
 
-  //         {/* <S.Reply>
-  //           <S.ReplyBox>
-  //             <S.Replyuser>오진영</S.Replyuser>
-  //             <S.Replytext>대댓글입니다.</S.Replytext>
-  //           </S.ReplyBox>
-  //         </S.Reply> */}
-  //       </S.List>
-  //     </S.Box>
-  //     <S.InputBox>
-  //       <S.CommentInput
-  //         name="comment"
-  //         value={data.comment}
-  //         onChange={InputChange}
-  //         placeholder="댓글을 입력하세요."
-  //       />
-  //       <S.CommentButton onClick={PushComment}>입 력</S.CommentButton>
-  //     </S.InputBox>
-  //   </S.Content>
-  // );
-  const divs = [
-    { title: '오진영', message: '댓글1' },
-    { title: '오승민', message: '댓글2' },
-    { title: '이삭', message: '댓글3' },
-  ];
+  const GetReplyUpdate = (reply, commentId) => async () => {
+    console.log('댓글 등록', reply.comment, reply.user, reply.idx);
+    try {
+      // 현재 보이는 댓글의 c_id 값을 comment_id로 설정
+      reply.comment_id = commentId;
 
-  const divss = [
-    { title: '오진영', message: '대댓글1', commentIndex: 0 },
-    { title: '오승민', message: '대댓글2', commentIndex: 1 },
-    { title: '이삭', message: '대댓글3', commentIndex: 2 },
-    { title: '이삭', message: '대댓글4', commentIndex: 2 },
-    { title: '이삭', message: '대댓글5', commentIndex: 0 },
-  ];
+      const response = await ReplyUpdate(reply);
+      // 서버에서의 응답 처리
+      if (response.success) {
+        reply.comment = '';
+        GetReplyRead(reply.idx);
+      } else {
+        alert('댓글 업로드에 실패하였습니다!');
+      }
+    } catch (error) {
+      console.error('댓글 업로드 실패:', error);
+    }
+  };
 
   return (
     <S.Content>
       <S.Box>
         <S.List>
-          {divs.map((content, index) => (
-            <S.Message key={index}>
-              <S.MessageBox onClick={() => toggleVisibility(index)}>
-                <S.Cuser>{content.title}</S.Cuser>
-                <S.Ctext>{content.message}</S.Ctext>
+          {commentData.map((comment, commentIndex) => (
+            <S.Message key={comment.c_id}>
+              <S.MessageBox>
+                <div
+                  style={{
+                    display: 'flex',
+                    width: '320px',
+                    height: 'auto',
+                    position: 'relative',
+                  }}
+                  onClick={() => toggleVisibility(comment.c_id)}
+                >
+                  <S.Cuser>{comment.name}</S.Cuser>
+                  <S.Ctext>{comment.content}</S.Ctext>
+                </div>
+                <S.closeButton
+                  onClick={() => {
+                    console.log('닫기');
+                  }}
+                />
               </S.MessageBox>
               <S.CommentLine />
-              {index === visibleIndex ? (
+              {comment.c_id === visibleIndex ? (
                 <S.ReplyInputBox>
                   <S.ReplyInput
                     name="comment"
-                    value={data.comment}
-                    onChange={InputChange}
+                    value={reply.comment}
+                    onChange={replyInputChange}
                     placeholder="댓글을 입력하세요."
                   />
-                  <S.ReplyButton onClick={PushComment}>입 력</S.ReplyButton>
+                  <S.ReplyButton onClick={GetReplyUpdate(reply, comment.c_id)}>
+                    입 력
+                  </S.ReplyButton>
                 </S.ReplyInputBox>
               ) : null}
-              {divss
-                .filter((reply) => reply.commentIndex === index)
+              {replyData
+                .filter((reply) => reply.comment_id === comment.c_id.toString())
                 .map((reply, replyIndex) => (
                   <S.Reply key={replyIndex}>
                     <S.ReplyBox>
-                      <S.Replyuser>{reply.title}</S.Replyuser>
-                      <S.Replytext>{reply.message}</S.Replytext>
+                      <S.Replyuser>{reply.name}</S.Replyuser>
+                      <S.Replytext>{reply.text}</S.Replytext>
+                      <S.closeButton
+                        onClick={() => {
+                          console.log('닫기');
+                        }}
+                      />
                     </S.ReplyBox>
                   </S.Reply>
                 ))}
@@ -320,10 +363,12 @@ const Comment = () => {
         <S.CommentInput
           name="comment"
           value={data.comment}
-          onChange={InputChange}
+          onChange={commentInputChange}
           placeholder="댓글을 입력하세요."
         />
-        <S.CommentButton onClick={PushComment}>입 력</S.CommentButton>
+        <S.CommentButton onClick={GetCommentUpdate(data)}>
+          입 력
+        </S.CommentButton>
       </S.InputBox>
     </S.Content>
   );
