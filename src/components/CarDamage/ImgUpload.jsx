@@ -4,6 +4,8 @@ import Icon1 from '../../assets/img/imgUpload.png';
 import Icon2 from '../../assets/img/imgUpload_icon.png';
 import { useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { ImgUploadApi } from '../../lib/apis/ImgUploadApi';
+import CarText from './CarText';
 const S = {
   NumBox: styled.div`
     width: 350px;
@@ -70,10 +72,17 @@ const ImgUpload = () => {
   const fileInputRef = useRef(null); // useRef를 생성
   const Damage = useLocation();
   const [DamageSelect, setDamageSelect] = useState(Damage.state);
-
+  const [imgFile, setImgFile] = useState('');
+  const [data, setData] = useState({
+    parts: '',
+    damage: '2',
+    repair: '3',
+    cost: '4',
+  });
   // 이미지 선택 시 호출되는 핸들러
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    setImgFile(file);
     if (file) {
       // 선택한 파일을 미리보기로 표시
       const reader = new FileReader();
@@ -81,8 +90,29 @@ const ImgUpload = () => {
         setSelectedImage(e.target.result);
       };
       reader.readAsDataURL(file);
+      setData((prevName) => ({
+        ...prevName,
+        parts: DamageSelect,
+      }));
     }
   };
+
+  const getDamage = async () => {
+    try {
+      console.log(imgFile);
+      console.log(DamageSelect);
+      const response = await ImgUploadApi(imgFile, DamageSelect);
+      if (response.success) {
+        console.log('사진 등록했습니다.');
+        setData(response);
+      } else {
+        console.log('사진 등록 실패');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <S.NumBox>
@@ -117,7 +147,8 @@ const ImgUpload = () => {
           <S.UploadIcon src={Icon2} />
         </S.ImgBox>
       </S.Box>
-      <S.Button>차량 진단하기</S.Button>
+      <S.Button onClick={getDamage}>차량 진단하기</S.Button>
+      <CarText data={data} />
     </>
   );
 };
