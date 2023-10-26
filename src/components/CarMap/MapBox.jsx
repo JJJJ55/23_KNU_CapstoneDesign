@@ -109,6 +109,12 @@ const MapBox = () => {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [error, setError] = useState(null);
+  const [mapLoaded, setMapLoaded] = useState(false); // Map 로딩 상태 추가
+
+  // 기존 지도 객체를 state로 관리
+  const [map, setMap] = useState(null);
+  // 기존 마커 객체를 state로 관리
+  const [markers, setMarkers] = useState([]);
 
   const handlePageChange = (newPage) => {
     navigate(`/map?page=${newPage}`);
@@ -136,42 +142,58 @@ const MapBox = () => {
   };
   const mapRef = useRef(null);
 
+  // 브라우저가 geolocation을 지원하고 로딩 상태가 아직이라면 위치를 가져오기
   useEffect(() => {
-    const container = mapRef.current;
-
-    const options = {
-      center: new window.kakao.maps.LatLng(latitude, longitude),
-      level: 3,
-    };
-    const map = new kakao.maps.Map(container, options);
-    RepairShop.forEach((el) => {
-      // 마커를 생성합니다
-      new kakao.maps.Marker({
-        //마커가 표시 될 지도
-        map: map,
-        //마커가 표시 될 위치
-        position: new kakao.maps.LatLng(el.lat, el.lng),
-        //마커에 hover시 나타날 title
-        title: el.title,
-      });
-    });
-  }, [latitude, longitude]);
-
-  useEffect(() => {
-    if ('geolocation' in navigator) {
+    if ('geolocation' in navigator && !mapLoaded) {
       navigator.geolocation.getCurrentPosition(
         function (position) {
           setLatitude(position.coords.latitude);
           setLongitude(position.coords.longitude);
+          setMapLoaded(true); // Map 로딩 완료 설정
         },
         function (error) {
           setError(error.message);
+          setMapLoaded(true); // Map 로딩 완료 설정
         },
       );
     } else {
       setError('Geolocation is not available in your browser.');
+      setMapLoaded(true); // Map 로딩 완료 설정
     }
-  }, []);
+  }, [mapLoaded]);
+
+  useEffect(() => {
+    const container = mapRef.current;
+
+    if (mapLoaded) {
+      const options = {
+        center: new window.kakao.maps.LatLng(latitude, longitude),
+        level: 3,
+      };
+      const newMap = new kakao.maps.Map(container, options);
+      setMap(newMap);
+
+      // 이전 마커들을 모두 지도에서 제거
+      markers.forEach((marker) => marker.setMap(null));
+
+      const newMarkers = RepairShop.map((el) => {
+        const markerImage = new window.kakao.maps.MarkerImage(
+          el.img, // 이미지 URL
+          new window.kakao.maps.Size(50, 50), // 이미지 크기
+          { offset: new window.kakao.maps.Point(15, 30) }, // 이미지 위치
+        );
+        return new window.kakao.maps.Marker({
+          map: newMap, // 새로운 지도 객체에 마커를 추가
+          position: new window.kakao.maps.LatLng(el.lat, el.lng),
+          title: el.title,
+          image: markerImage,
+        });
+      });
+
+      // 새로 생성한 마커들로 업데이트
+      setMarkers(newMarkers);
+    }
+  }, [latitude, longitude, mapLoaded]);
 
   const ChangeMap = (CenterName) => {
     // 이 부분에서 CenterName을 직접 추출
@@ -181,30 +203,9 @@ const MapBox = () => {
     console.log(selectedShop.lat, selectedShop.lng);
     if (selectedShop && selectedShop.lat && selectedShop.lng) {
       // 선택된 상점이 있고, lat 및 lng 값이 있을 때만 지도의 중심을 이동
-      // const map = new window.kakao.maps.Map(document.getElementById('map'));
-      // map.setCenter(
-      //   new window.kakao.maps.LatLng(selectedShop.lat, selectedShop.lng),
-      // );
-
-      const container = mapRef.current;
-
-      const options = {
-        center: new window.kakao.maps.LatLng(
-          selectedShop.lat,
-          selectedShop.lng,
-        ),
-        level: 3,
-      };
-      const map = new kakao.maps.Map(container, options);
-
-      // 지도 중심을 이동 시킵니다
-      // mapRef.current.setCenter(moveLatLon);
-      var moveLatLon = new kakao.maps.LatLng(
-        selectedShop.lat,
-        selectedShop.lng,
+      map.panTo(
+        new window.kakao.maps.LatLng(selectedShop.lat, selectedShop.lng),
       );
-      map.setCenter(moveLatLon);
-      // 여기에 마커 생성 및 설정하는 코드를 추가할 수 있습니다
     }
   };
 
