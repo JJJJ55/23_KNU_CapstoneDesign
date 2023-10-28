@@ -34,6 +34,7 @@ const S = {
   Tr: styled.tr`
     border: 1px solid blue;
     height: 30px;
+    cursor: pointer;
     &.list {
       font-size: 10px;
     }
@@ -56,7 +57,6 @@ const S = {
       line-height: 15px;
     }
     &.Read {
-      cursor: pointer;
       width: 170px;
     }
     &.number {
