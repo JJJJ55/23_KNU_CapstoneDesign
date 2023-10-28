@@ -6,13 +6,15 @@ export const IndexProvider = ({ children }) => {
   const [isLogedIn, setIsLogedIn] = useState(
     !!localStorage.getItem('username'),
   );
-  const login = async (name) => {
+  const login = async (name, id) => {
     localStorage.setItem('username', name);
+    localStorage.setItem('id', 'wlsdud6221@naver.com');
     setIsLogedIn(true);
   };
 
   const logout = () => {
     localStorage.removeItem('username');
+    localStorage.removeItem('id');
     setIsLogedIn(false);
   };
 
