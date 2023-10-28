@@ -22,18 +22,16 @@ const S = {
   ButtonBox: styled.div`
     width: auto;
     height: auto;
-    position: relative;
-    text-align: right;
-    margin-left: 5px;
+    position: absolute;
+    right: 0;
   `,
   Box: styled.div`
     position: relative;
     width: 370px;
-    height: auto;
+    height: 35px;
     border-radius: 10px;
     margin: 10px auto;
     display: flex;
-    align-items: center;
   `,
   TitleInput: styled.input`
     display: block;
@@ -111,7 +109,7 @@ const Modify = ({ onSubmit }) => {
   };
 
   const btnOnOff = () => {
-    if (!!data.title && !!data.content && data.password.length > 4) {
+    if (!!data.title && !!data.content) {
       setBtnOn(true);
     } else {
       setBtnOn(false);
@@ -144,14 +142,14 @@ const Modify = ({ onSubmit }) => {
         onChange={InputChange}
       />
       <S.Box>
-        <S.PwInput
+        {/* <S.PwInput
           name="password"
           type="password"
           maxlength="20"
           placeholder="비밀번호를 입력하세요."
           value={data.password}
           onChange={InputChange}
-        />
+        /> */}
         <S.ButtonBox>
           <Button text={'등 록 하 기'} onClick={btnSubmit} active={btnOn} />
         </S.ButtonBox>
