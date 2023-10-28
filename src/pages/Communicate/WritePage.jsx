@@ -108,6 +108,7 @@ const S = {
 const WritePage = () => {
   const [sideOn, setSideOn] = useState(false);
   const userName = localStorage.getItem('username');
+  const userEmail = localStorage.getItem('id');
 
   const handleSideClick = () => {
     setSideOn(!sideOn);
@@ -145,7 +146,7 @@ const WritePage = () => {
           <S.Title>유저 커뮤니티</S.Title>
           <S.SubTitle>다양한 정보들을 공유해보세요</S.SubTitle>
           <S.FormLine />
-          <Make Uname={userName} onSubmit={handleWrite} />
+          <Make Uname={userName} Uemail={userEmail} onSubmit={handleWrite} />
           <Footer />
         </S.Main>
       </S.Frame>

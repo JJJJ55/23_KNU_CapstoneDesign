@@ -7,8 +7,9 @@ export const CommuWrite = async (inputs) => {
       {
         title: inputs.title,
         content: inputs.content,
-        password: inputs.password,
+        // password: inputs.password,
         name: inputs.name,
+        email: inputs.email,
       },
     );
     return response.data;
@@ -26,7 +27,6 @@ export const CommuModify = async (inputs) => {
         itemIdx: inputs.itemIdx,
         title: inputs.title,
         content: inputs.content,
-        password: inputs.password,
       },
     );
     return response.data;

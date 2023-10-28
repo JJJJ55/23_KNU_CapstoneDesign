@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const CommentUpdate = async (inputs) => {
+  console.log('보낼이메일', inputs.email);
   try {
     // Axios를 사용하여 PHP 스크립트에 데이터를 전송
     const response = await axios.post(
@@ -9,6 +10,7 @@ export const CommentUpdate = async (inputs) => {
         post_idx: inputs.idx,
         name: inputs.user,
         content: inputs.comment,
+        email: inputs.email,
       },
     );
     return response.data;
@@ -19,6 +21,7 @@ export const CommentUpdate = async (inputs) => {
 };
 
 export const ReplyUpdate = async (inputs) => {
+  console.log('보낼이메일', inputs.email);
   try {
     // Axios를 사용하여 PHP 스크립트에 데이터를 전송
     const response = await axios.post(
@@ -28,6 +31,7 @@ export const ReplyUpdate = async (inputs) => {
         comment_id: inputs.comment_id,
         name: inputs.user,
         content: inputs.comment,
+        email: inputs.email,
       },
     );
     return response.data;
