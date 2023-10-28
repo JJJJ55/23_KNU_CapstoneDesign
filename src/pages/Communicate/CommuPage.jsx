@@ -16,6 +16,7 @@ import Button from '../../components/common/Button';
 import searchImg from '../../assets/img/icon_search.svg';
 import Page from '../../components/communicate/Page';
 import { useNavigate } from 'react-router-dom';
+import CtestPage from './CtestPage';
 
 const H = {
   MainBox: styled.header`

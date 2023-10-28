@@ -17,6 +17,7 @@ import { useContext } from 'react';
 import { LoginStateContext } from './lib/context/LoginContext.jsx';
 import { useEffect } from 'react';
 import ModifyPage from './pages/Communicate/ModifyPage.jsx';
+import CtestPage from './pages/Communicate/CtestPage.jsx';
 
 const S = {
   Frame: styled.div`
