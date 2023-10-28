@@ -60,8 +60,8 @@ const StyledSlider = styled(Slider)`
     padding: 20px;
   }
   .slick-slide {
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-right: 10px;
+    padding-left: 10px;
   }
   .slick-next:before {
     display: none !important;
@@ -78,14 +78,30 @@ const StyledSlider = styled(Slider)`
 `;
 const MainButton = () => {
   const navigate = useNavigate();
+  const [isDragging, setIsDragging] = useState(false);
 
   const settings = {
     dots: false,
     infinite: true,
     speed: 1000,
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 1,
     draggable: true,
+    centerMode: true,
+    centerPadding: '5px',
+    beforeChange: () => {
+      // 슬라이더가 변경되기 전에 드래그 중이라고 표시
+      setIsDragging(true);
+    },
+    afterChange: () => {
+      setIsDragging(false);
+    },
+  };
+
+  const handleButtonClick = (state) => {
+    if (!isDragging) {
+      navigate('/car', { state });
+    }
   };
 
   return (
@@ -94,24 +110,15 @@ const MainButton = () => {
         <StyledSlider {...settings}>
           <S.CarButton
             src={car1}
-            onClick={() => navigate('/car', { state: '앞 범퍼' })}
+            onClick={() => handleButtonClick('앞 범퍼')}
           />
           <S.CarButton
             src={car2}
-            onClick={() => navigate('/car', { state: '뒷 범퍼' })}
+            onClick={() => handleButtonClick('뒷 범퍼')}
           />
-          <S.CarButton
-            src={car3}
-            onClick={() => navigate('/car', { state: '휠' })}
-          />
-          <S.CarButton
-            src={car4}
-            onClick={() => navigate('/car', { state: '휀더' })}
-          />
-          <S.CarButton
-            src={car5}
-            onClick={() => navigate('/car', { state: '도어' })}
-          />
+          <S.CarButton src={car3} onClick={() => handleButtonClick('휠')} />
+          <S.CarButton src={car4} onClick={() => handleButtonClick('휀더')} />
+          <S.CarButton src={car5} onClick={() => handleButtonClick('도어')} />
         </StyledSlider>
       </S.Menu>
     </S.MenuBox>

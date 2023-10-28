@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { useState } from 'react';
 
 const S = {
   Footer: styled.footer`
@@ -118,16 +119,34 @@ const LinkData2 = [
   { href: '/map', text: '주변 정비소 안내' },
 ];
 
-const settings = {
-  dots: false,
-  infinite: true,
-  speed: 1000,
-  slidesToShow: 4,
-  slidesToScroll: 1,
-};
-
 const Footer = () => {
   const navigate = useNavigate();
+  const [isDragging, setIsDragging] = useState(false);
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    draggable: false,
+    // beforeChange: () => {
+    //   // 슬라이더가 변경되기 전에 드래그 중이라고 표시
+    //   setIsDragging(true);
+    // },
+    // afterChange: () => {
+    //   setIsDragging(false);
+    // },
+  };
+
+  const handleButtonClick = (state) => {
+    if (!isDragging) {
+      navigate('/car', { state });
+    }
+  };
+
   return (
     <S.Footer>
       <S.MenuBox>
