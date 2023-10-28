@@ -1,13 +1,13 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Button from '../../components/common/Button';
 import { useState } from 'react';
-import TestFile from './testFile';
 import img from '../../assets/img/sp_img.png';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { CommentRead, ReplyRead } from '../../lib/apis/CommentReadApi';
 import { CommentUpdate, ReplyUpdate } from '../../lib/apis/CommentWrite';
+import { CommentDeleteApi } from '../../lib/apis/CommentDeleteApi';
+import { ReplyDeleteApi } from '../../lib/apis/ReplyDeleteApi';
 
 const S = {
   Content: styled.div`
@@ -33,7 +33,6 @@ const S = {
   `,
   MessageBox: styled.div`
     width: 370px;
-    /* height: 30px; */
     height: auto;
     display: flex;
     cursor: pointer;
@@ -46,7 +45,6 @@ const S = {
   `,
   ReplyBox: styled.li`
     width: 330px;
-    /* height: 30px; */
     height: auto;
     display: flex;
     border: 1px solid #ddd;
@@ -69,7 +67,6 @@ const S = {
   `,
   Ctext: styled.div`
     width: 250px;
-    /* height: 30px; */
     height: auto;
     display: flex;
     align-items: center;
@@ -88,7 +85,6 @@ const S = {
   `,
   Replytext: styled.div`
     width: 250px;
-    /* height: 30px; */
     height: auto;
     display: flex;
     align-items: center;
@@ -200,16 +196,19 @@ const Comment = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const index = location.state.itemIdx;
-  const [data, setData] = useState({
-    comment: '',
-    user: localStorage.getItem('username'),
+  const itemIdx = index;
+  const [comment, setComment] = useState({
     idx: index,
+    user: localStorage.getItem('username'),
+    comment: '',
+    email: localStorage.getItem('id'),
   });
   const [reply, setreply] = useState({
     idx: index,
-    comment_id: '',
     user: localStorage.getItem('username'),
     comment: '',
+    comment_id: '',
+    email: localStorage.getItem('id'),
   });
   const [commentData, setCommentData] = useState([]);
   const [replyData, setReplyData] = useState([]);
@@ -255,8 +254,8 @@ const Comment = () => {
   };
 
   const commentInputChange = (e) => {
-    setData({
-      ...data,
+    setComment({
+      ...comment,
       [e.target.name]: e.target.value,
     });
   };
@@ -266,14 +265,14 @@ const Comment = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const GetCommentUpdate = (data) => async () => {
-    console.log('댓글 등록', data.comment, data.user, data.idx);
+  const GetCommentUpdate = (comment) => async () => {
+    console.log('댓글 등록', comment.comment, comment.user, comment.idx);
     try {
-      const response = await CommentUpdate(data);
+      const response = await CommentUpdate(comment);
       // 서버에서의 응답 처리
       if (response.success) {
-        data.comment = '';
-        GetCommentRead(data.idx);
+        comment.comment = '';
+        GetCommentRead(comment.idx);
       } else {
         alert('댓글 업로드에 실패하였습니다!');
       }
@@ -301,12 +300,48 @@ const Comment = () => {
     }
   };
 
+  const DeleteComment = (idx) => async () => {
+    const confirmation = window.confirm('정말로 삭제하시겠습니까?');
+    if (confirmation) {
+      try {
+        console.log('코멘트 번호', idx);
+        const response = await CommentDeleteApi(idx);
+        if (response.success) {
+          console.log(response.message);
+          navigate('/commu/read', { state: { itemIdx } });
+        } else {
+          console.log(response.message);
+        }
+      } catch (error) {
+        console.error('삭제에 실패했습니다:', error);
+      }
+    }
+  };
+
+  const DeleteReply = (idx) => async () => {
+    const confirmation = window.confirm('정말로 삭제하시겠습니까?');
+    if (confirmation) {
+      try {
+        console.log('리플 번호', idx);
+        const response = await ReplyDeleteApi(idx);
+        if (response.success) {
+          console.log(response.message);
+        } else {
+          console.log(response.message);
+        }
+      } catch (error) {
+        console.error('삭제에 실패했습니다:', error);
+      }
+    }
+  };
+
   return (
     <S.Content>
       <S.Box>
         <S.List>
-          {commentData.map((comment, commentIndex) => (
-            <S.Message key={comment.c_id}>
+          {commentData.map((data, commentIndex) => (
+            <S.Message key={data.c_id}>
+              {console.log('댓글', { commentData })}
               <S.MessageBox>
                 <div
                   style={{
@@ -315,19 +350,17 @@ const Comment = () => {
                     height: 'auto',
                     position: 'relative',
                   }}
-                  onClick={() => toggleVisibility(comment.c_id)}
+                  onClick={() => toggleVisibility(data.c_id)}
                 >
-                  <S.Cuser>{comment.name}</S.Cuser>
-                  <S.Ctext>{comment.content}</S.Ctext>
+                  <S.Cuser>{data.name}</S.Cuser>
+                  <S.Ctext>{data.content}</S.Ctext>
                 </div>
-                <S.closeButton
-                  onClick={() => {
-                    console.log('닫기');
-                  }}
-                />
+                {data.email === localStorage.getItem('id') ? (
+                  <S.closeButton onClick={DeleteComment(data.c_id)} />
+                ) : null}
               </S.MessageBox>
               <S.CommentLine />
-              {comment.c_id === visibleIndex ? (
+              {data.c_id === visibleIndex ? (
                 <S.ReplyInputBox>
                   <S.ReplyInput
                     name="comment"
@@ -335,23 +368,22 @@ const Comment = () => {
                     onChange={replyInputChange}
                     placeholder="댓글을 입력하세요."
                   />
-                  <S.ReplyButton onClick={GetReplyUpdate(reply, comment.c_id)}>
+                  <S.ReplyButton onClick={GetReplyUpdate(reply, data.c_id)}>
                     입 력
                   </S.ReplyButton>
                 </S.ReplyInputBox>
               ) : null}
               {replyData
-                .filter((reply) => reply.comment_id === comment.c_id.toString())
+                .filter((reply) => reply.comment_id === data.c_id.toString())
                 .map((reply, replyIndex) => (
                   <S.Reply key={replyIndex}>
+                    {console.log('대댓글', { reply })}
                     <S.ReplyBox>
                       <S.Replyuser>{reply.name}</S.Replyuser>
                       <S.Replytext>{reply.text}</S.Replytext>
-                      <S.closeButton
-                        onClick={() => {
-                          console.log('닫기');
-                        }}
-                      />
+                      {reply.email === localStorage.getItem('id') ? (
+                        <S.closeButton onClick={DeleteReply(reply.r_id)} />
+                      ) : null}
                     </S.ReplyBox>
                   </S.Reply>
                 ))}
@@ -362,11 +394,11 @@ const Comment = () => {
       <S.InputBox>
         <S.CommentInput
           name="comment"
-          value={data.comment}
+          value={comment.comment}
           onChange={commentInputChange}
           placeholder="댓글을 입력하세요."
         />
-        <S.CommentButton onClick={GetCommentUpdate(data)}>
+        <S.CommentButton onClick={GetCommentUpdate(comment)}>
           입 력
         </S.CommentButton>
       </S.InputBox>
