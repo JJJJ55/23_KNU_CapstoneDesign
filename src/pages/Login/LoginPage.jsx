@@ -21,7 +21,7 @@ const LoginPage = () => {
       const response = await LoginApi(inputs);
       if (response.success) {
         console.log('로그인/가입 성공');
-        login(response.userName);
+        login(response.userName, response.id);
         navigate('/main');
       } else {
         console.log('로그인/가입 실패');
