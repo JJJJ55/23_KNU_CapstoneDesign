@@ -17,6 +17,10 @@ import { useContext } from 'react';
 import { LoginStateContext } from './lib/context/LoginContext.jsx';
 import ModifyPage from './pages/Communicate/ModifyPage.jsx';
 
+// 애플리케이션 진입점에서 경고 레벨 조절
+console.error = (message) => {};
+console.warn = (message) => {};
+
 const S = {
   Frame: styled.div`
     max-width: 390px;
