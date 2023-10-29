@@ -74,17 +74,16 @@ const S = {
     font-size: 12px;
   `,
   Replyuser: styled.div`
-    width: 40px;
+    width: 60px;
     height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 13px;
     font-weight: bold;
-    margin: auto auto;
   `,
   Replytext: styled.div`
-    width: 250px;
+    width: 240px;
     height: auto;
     display: flex;
     align-items: center;
@@ -308,7 +307,8 @@ const Comment = () => {
         const response = await CommentDeleteApi(idx);
         if (response.success) {
           console.log(response.message);
-          navigate('/commu/read', { state: { itemIdx } });
+          // navigate('/commu/read', { state: { itemIdx } });
+          GetCommentRead(itemIdx);
         } else {
           console.log(response.message);
         }
@@ -326,6 +326,7 @@ const Comment = () => {
         const response = await ReplyDeleteApi(idx);
         if (response.success) {
           console.log(response.message);
+          GetReplyRead(itemIdx);
         } else {
           console.log(response.message);
         }
@@ -355,12 +356,29 @@ const Comment = () => {
                   <S.Cuser>{data.name}</S.Cuser>
                   <S.Ctext>{data.content}</S.Ctext>
                 </div>
-                {data.email === localStorage.getItem('id') ? (
+                {data.email === localStorage.getItem('id') &&
+                data.content !== '삭제된 댓글입니다' ? (
                   <S.closeButton onClick={DeleteComment(data.c_id)} />
                 ) : null}
               </S.MessageBox>
               <S.CommentLine />
-              {data.c_id === visibleIndex ? (
+              {replyData
+                .filter((reply) => reply.comment_id === data.c_id.toString())
+                .map((reply, replyIndex) => (
+                  <S.Reply key={replyIndex}>
+                    {console.log('대댓글', { reply })}
+                    <S.ReplyBox>
+                      <S.Replyuser>{reply.name}</S.Replyuser>
+                      <S.Replytext>{reply.text}</S.Replytext>
+                      {reply.email === localStorage.getItem('id') &&
+                      reply.text !== '삭제된 댓글입니다' ? (
+                        <S.closeButton onClick={DeleteReply(reply.r_id)} />
+                      ) : null}
+                    </S.ReplyBox>
+                  </S.Reply>
+                ))}
+              {data.c_id === visibleIndex &&
+              data.content !== '삭제된 댓글입니다' ? (
                 <S.ReplyInputBox>
                   <S.ReplyInput
                     name="comment"
@@ -373,20 +391,6 @@ const Comment = () => {
                   </S.ReplyButton>
                 </S.ReplyInputBox>
               ) : null}
-              {replyData
-                .filter((reply) => reply.comment_id === data.c_id.toString())
-                .map((reply, replyIndex) => (
-                  <S.Reply key={replyIndex}>
-                    {console.log('대댓글', { reply })}
-                    <S.ReplyBox>
-                      <S.Replyuser>{reply.name}</S.Replyuser>
-                      <S.Replytext>{reply.text}</S.Replytext>
-                      {reply.email === localStorage.getItem('id') ? (
-                        <S.closeButton onClick={DeleteReply(reply.r_id)} />
-                      ) : null}
-                    </S.ReplyBox>
-                  </S.Reply>
-                ))}
             </S.Message>
           ))}
         </S.List>
