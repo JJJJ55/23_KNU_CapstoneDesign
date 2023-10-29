@@ -170,24 +170,6 @@ const Page = () => {
     GetCommuList(); // 컴포넌트가 마운트될 때 데이터를 가져옵니다.
   }, []);
 
-  // useEffect(() => {
-  //   const totalPages = Math.ceil(filteredData.length / pageSize);
-  //   if (currentPage > totalPages) {
-  //     // 페이지 번호가 범위를 벗어난 경우 /main으로 이동
-  //     navigate('/main');
-  //     return;
-  //   }
-  //   GetCommuList();
-  // }, [currentPage, searchText]);
-
-  // useEffect(() => {
-  //   if (currentPage > totalPages) {
-  //     navigate('/main');
-  //     return;
-  //   }
-  //   GetCommuList();
-  // }, [currentPage, searchText]);
-
   useEffect(() => {
     setCurrentPage(page);
     GetCommuList();
