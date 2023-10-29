@@ -266,6 +266,10 @@ const Comment = () => {
   };
   const GetCommentUpdate = (comment) => async () => {
     console.log('댓글 등록', comment.comment, comment.user, comment.idx);
+    if (!comment.comment) {
+      alert('내용을 입력해주세요.');
+      return;
+    }
     try {
       const response = await CommentUpdate(comment);
       // 서버에서의 응답 처리
@@ -282,6 +286,10 @@ const Comment = () => {
 
   const GetReplyUpdate = (reply, commentId) => async () => {
     console.log('댓글 등록', reply.comment, reply.user, reply.idx);
+    if (!reply.comment) {
+      alert('내용을 입력해주세요.');
+      return;
+    }
     try {
       // 현재 보이는 댓글의 c_id 값을 comment_id로 설정
       reply.comment_id = commentId;
