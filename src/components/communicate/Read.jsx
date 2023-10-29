@@ -4,7 +4,7 @@ import Button from '../common/Button';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { CommuRead, CommuUpdate } from '../../lib/apis/CommuReadApi';
+import { CommuRead } from '../../lib/apis/CommuReadApi';
 import { CommuDeleteApi } from '../../lib/apis/CommuDeleteApi';
 
 const S = {
@@ -91,7 +91,7 @@ const Read = () => {
     content: '',
     email: '',
   });
-  // const [password, setPassword] = useState('');
+
   const [data, setData] = useState({
     index: idx,
     pw: '',
@@ -112,30 +112,6 @@ const Read = () => {
     }
   };
 
-  // const GetCommuUpdate = (data) => async () => {
-  //   console.log(data.index, data.pw);
-  //   try {
-  //     const response = await CommuUpdate(data);
-  //     // 서버에서의 응답 처리
-  //     if (response.success) {
-  //       // 비밀번호가 일치하는 경우 수정 페이지로 이동
-  //       console.log(
-  //         '현재 유저',
-  //         response.name === localStorage.getItem('username'),
-  //       );
-  //       console.log(response.name);
-  //       if (response.name === localStorage.getItem('username')) {
-  //         navigate('/commu/modify', { state: { idx } });
-  //       } else {
-  //         alert('해당 게시글 작성자만 수정이 가능합니다!');
-  //       }
-  //     } else {
-  //       alert('비밀번호가 일치하지 않습니다.');
-  //     }
-  //   } catch (error) {
-  //     console.error('데이터 가져오기 실패:', error);
-  //   }
-  // };
   const GetCommuMoodify = () => {
     if (itemData.email === localStorage.getItem('id')) {
       navigate('/commu/modify', { state: { idx } });
@@ -162,13 +138,6 @@ const Read = () => {
     }
   };
 
-  // const handleDeleteClick = async (idx) => {
-  //   const confirmation = window.confirm('정말로 삭제하시겠습니까?');
-  //   if (confirmation) {
-  //     await DeleteCommu(idx); // '예'를 눌렀을 때만 실행
-  //   }
-  // };
-
   return (
     <>
       <S.TitleInput
@@ -186,15 +155,6 @@ const Read = () => {
         readOnly
       />
       <S.Box>
-        {/* <S.PwInput
-          name="pw"
-          type="password"
-          maxlength="20"
-          placeholder="비밀번호를 입력하세요."
-          value={data.pw}
-          onChange={InputChange}
-        /> */}
-
         {itemData.email === localStorage.getItem('id') ? (
           <S.ButtonBox>
             <Button text={'수 정'} onClick={GetCommuMoodify} />
@@ -219,7 +179,6 @@ const Read = () => {
           />
         </S.ButtonBox>
       </S.Box>
-      {/* <S.PN></S.PN> */}
     </>
   );
 };

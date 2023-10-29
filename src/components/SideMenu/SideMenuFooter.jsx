@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import main_Logo2 from '../../assets/img/메인로고.png';
 
-import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 

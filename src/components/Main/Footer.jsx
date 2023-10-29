@@ -78,7 +78,7 @@ const S = {
     color: #9b9eae;
     font-size: 10px;
     margin-top: 16px;
-    margin-left: 20px;
+    text-align: center;
   `,
 };
 
@@ -168,7 +168,7 @@ const Footer = () => {
         <S.InfoBox>
           <S.InfoLogo src={main_Logo2}></S.InfoLogo>
         </S.InfoBox>
-        <S.InfoBox>
+        <S.InfoBox style={{ textAlign: 'center' }}>
           {LinkData2.map((link, index) => (
             <S.InfoList
               onClick={() => navigate(link.href)}

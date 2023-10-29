@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import img from '../assets/img/404.png';
-import Button from '../components/common/Button';
 import { useNavigate } from 'react-router-dom';
 
 const S = {

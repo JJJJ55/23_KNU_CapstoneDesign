@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import styled from 'styled-components';
 import sideImg from '../../assets/img/logo-removebg-preview.png';
 import Button from '../common/Button';
 import SideMenuFooter from './SideMenuFooter';

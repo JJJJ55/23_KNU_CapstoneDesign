@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import RegisterPage from '../../pages/register/RegisterPage';
-import ButtonLong from '../common/ButtonLong';
 import ButtonMain from '../common/ButtonMain';
 import { useNavigate } from 'react-router-dom';
 

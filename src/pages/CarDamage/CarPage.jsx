@@ -2,22 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import SideMenuBar from '../../components/SideMenu/SideMenuBar';
 import Logo from '../../assets/img/후면로고.png';
-import Intro1 from '../../assets/img/Intro1.png';
-import Intro2 from '../../assets/img/Intro2.png';
-import Intro3 from '../../assets/img/Intro3.png';
 import { useState } from 'react';
 import SideMenu from '../../components/SideMenu/SideMenu';
 import '../../assets/font/Font.css';
-import IntroImg from '../../assets/img/test.png';
-import sideImg from '../../assets/img/logo-removebg-preview.png';
 import Footer from '../../components/Main/Footer';
-import useScrollImg from '../../hook/useScrollImg';
-import Button from '../../components/common/Button';
-import searchImg from '../../assets/img/icon_search.svg';
-import Page from '../../components/communicate/Page';
 import ImgUpload from '../../components/CarDamage/ImgUpload';
-import CarText from '../../components/CarDamage/CarText';
-import ImgEx from '../../components/CarDamage/ImgEx';
 import { useNavigate } from 'react-router-dom';
 
 const H = {

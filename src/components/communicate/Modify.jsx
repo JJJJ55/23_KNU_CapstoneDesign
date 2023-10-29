@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../common/Button';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { CommuModifyRead } from '../../lib/apis/CommuReadApi';
-import { CommuModify } from '../../lib/apis/CommuWriteApi';
+
 const S = {
   InputBox: styled.div`
     display: block;
@@ -71,7 +71,6 @@ const S = {
 };
 
 const Modify = ({ onSubmit }) => {
-  const navigate = useNavigate();
   const location = useLocation();
   const index = location.state.idx;
   const [btnOn, setBtnOn] = useState(false);
@@ -142,14 +141,6 @@ const Modify = ({ onSubmit }) => {
         onChange={InputChange}
       />
       <S.Box>
-        {/* <S.PwInput
-          name="password"
-          type="password"
-          maxlength="20"
-          placeholder="비밀번호를 입력하세요."
-          value={data.password}
-          onChange={InputChange}
-        /> */}
         <S.ButtonBox>
           <Button text={'등 록 하 기'} onClick={btnSubmit} active={btnOn} />
         </S.ButtonBox>

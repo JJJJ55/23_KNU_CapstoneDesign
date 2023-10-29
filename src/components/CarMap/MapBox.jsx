@@ -223,25 +223,6 @@ const MapBox = () => {
             </S.Tr>
           </S.Head>
           <S.body>
-            {/* {currentItems.map((item, index) => (
-              <S.Tr className="list" key={index}>
-                <S.Td className="name">{item.name}</S.Td>
-                <S.Td className="Read">{item.address}</S.Td>
-                <S.Td className="number">{item.tell}</S.Td>
-              </S.Tr>
-            ))} */}
-            {/* {currentItems.map((item, index) => {
-              const name = item.name; // item.name을 const 변수 name에 할당
-              const repairName = name.replace(/ /, '\n'); // 모든 공백을 \n으로 대체
-
-              return (
-                <S.Tr className="list" key={index}>
-                  <S.Td className="name">{repairName}</S.Td>
-                  <S.Td className="Read">{item.address}</S.Td>
-                  <S.Td className="number">{item.tell}</S.Td>
-                </S.Tr>
-              );
-            })} */}
             {currentItems.length === 0 ? (
               <S.error src={img} />
             ) : (
@@ -269,14 +250,6 @@ const MapBox = () => {
         {Array.from(
           { length: Math.ceil(totalItems / pageSize) },
           (_, index) => (
-            // <S.PageButton
-            //   className={currentPage === index + 1 ? 'active' : ''}
-            //   key={index}
-            //   // onClick={() => paginate(index + 1)}
-            //   onClick={handlePageChange(index + 1)}
-            // >
-            //   {index + 1}
-            // </S.PageButton>
             <S.PageButton
               className={currentPage === index + 1 ? 'active' : ''}
               key={index}

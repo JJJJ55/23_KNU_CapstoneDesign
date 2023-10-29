@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import useCount from '../../hook/useCount';
-import useRandomCount from '../../hook/useRandomCount';
 
 const S = {
   CountBox: styled.section`

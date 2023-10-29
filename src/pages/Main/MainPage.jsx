@@ -1,19 +1,14 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
-// import Header from '../../components/Main/Header';
+import styled from 'styled-components';
 import Logo from '../../assets/img/메인로고.png';
 import Footer from '../../components/Main/Footer';
 import Section1 from '../../components/Main/Section1';
 import Section2 from '../../components/Main/Section2';
-import sideImg from '../../assets/img/logo-removebg-preview.png';
-import Button from '../../components/common/Button';
-import SideMenuFooter from '../../components/SideMenu/SideMenuFooter';
 import Section3 from '../../components/Main/Section3';
 import SideMenu from '../../components/SideMenu/SideMenu';
 import { useState } from 'react';
 import SideMenuBar from '../../components/SideMenu/SideMenuBar';
 import Section4 from '../../components/Main/Section4';
-import IntroPage from '../Intro/IntroPage';
 import { useNavigate } from 'react-router-dom';
 
 const H = {

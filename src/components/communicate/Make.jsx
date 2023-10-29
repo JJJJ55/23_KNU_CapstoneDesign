@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../common/Button';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
 const S = {
@@ -122,14 +121,6 @@ const Make = ({ Uname, Uemail, onSubmit }) => {
         onChange={InputChange}
       />
       <S.Box>
-        {/* <S.PwInput
-          name="password"
-          type="password"
-          maxlength="20"
-          placeholder="비밀번호를 입력하세요."
-          value={data.password}
-          onChange={InputChange}
-        /> */}
         <S.ButtonBox>
           <Button text={'등 록 하 기'} onClick={btnSubmit} active={btnOn} />
         </S.ButtonBox>

@@ -3,9 +3,7 @@ import styled from 'styled-components';
 import Logo from '../../assets/img/메인로고.png';
 import SideMenuBar from '../SideMenu/SideMenuBar';
 import { useState } from 'react';
-import SideMenu from '../SideMenu/SideMenu';
 import { useNavigate } from 'react-router-dom';
-// import '../../pages/Main/Main.css';
 
 const H = {
   MainBox: styled.header`

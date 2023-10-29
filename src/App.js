@@ -15,9 +15,7 @@ import MapPage from './pages/CarMap/MapPage.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
 import { useContext } from 'react';
 import { LoginStateContext } from './lib/context/LoginContext.jsx';
-import { useEffect } from 'react';
 import ModifyPage from './pages/Communicate/ModifyPage.jsx';
-import CtestPage from './pages/Communicate/CtestPage.jsx';
 
 const S = {
   Frame: styled.div`
