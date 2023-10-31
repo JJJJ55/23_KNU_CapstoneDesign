@@ -4,17 +4,17 @@ import { useMemo } from 'react';
 
 export const IndexProvider = ({ children }) => {
   const [isLogedIn, setIsLogedIn] = useState(
-    !!localStorage.getItem('username'),
+    !!sessionStorage.getItem('username'),
   );
   const login = async (name, id) => {
-    localStorage.setItem('username', name);
-    localStorage.setItem('id', 'wlsdud6221@naver.com');
+    sessionStorage.setItem('username', name);
+    sessionStorage.setItem('id', id);
     setIsLogedIn(true);
   };
 
   const logout = () => {
-    localStorage.removeItem('username');
-    localStorage.removeItem('id');
+    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('id');
     setIsLogedIn(false);
   };
 

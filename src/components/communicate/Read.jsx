@@ -85,7 +85,7 @@ const S = {
 const Read = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const idx = location.state.itemIdx;
+  const idx = location.state?.itemIdx;
   const [itemData, setItemData] = useState({
     title: '',
     content: '',
@@ -113,7 +113,7 @@ const Read = () => {
   };
 
   const GetCommuMoodify = () => {
-    if (itemData.email === localStorage.getItem('id')) {
+    if (itemData.email === sessionStorage.getItem('id')) {
       navigate('/commu/modify', { state: { idx } });
     } else {
       alert('잘못되니 접근입니다.');
@@ -155,7 +155,7 @@ const Read = () => {
         readOnly
       />
       <S.Box>
-        {itemData.email === localStorage.getItem('id') ? (
+        {itemData.email === sessionStorage.getItem('id') ? (
           <S.ButtonBox>
             <Button text={'수 정'} onClick={GetCommuMoodify} />
           </S.ButtonBox>
@@ -163,7 +163,7 @@ const Read = () => {
           <S.ButtonBox />
         )}
 
-        {itemData.email === localStorage.getItem('id') ? (
+        {itemData.email === sessionStorage.getItem('id') ? (
           <S.ButtonBox>
             <Button text={'삭 제'} onClick={DeleteCommu(idx)} />
           </S.ButtonBox>

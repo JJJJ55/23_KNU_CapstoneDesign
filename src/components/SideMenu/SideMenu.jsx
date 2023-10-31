@@ -75,7 +75,7 @@ const A = {
 };
 
 const SideMenu = ({ sideOn }) => {
-  const user = localStorage.getItem('username');
+  const user = sessionStorage.getItem('username');
   const { logout } = useContext(LoginDispatchContext);
   const navigate = useNavigate();
 

@@ -198,16 +198,16 @@ const Comment = () => {
   const itemIdx = index;
   const [comment, setComment] = useState({
     idx: index,
-    user: localStorage.getItem('username'),
+    user: sessionStorage.getItem('username'),
     comment: '',
-    email: localStorage.getItem('id'),
+    email: sessionStorage.getItem('id'),
   });
   const [reply, setreply] = useState({
     idx: index,
-    user: localStorage.getItem('username'),
+    user: sessionStorage.getItem('username'),
     comment: '',
     comment_id: '',
-    email: localStorage.getItem('id'),
+    email: sessionStorage.getItem('id'),
   });
   const [commentData, setCommentData] = useState([]);
   const [replyData, setReplyData] = useState([]);
@@ -364,7 +364,7 @@ const Comment = () => {
                   <S.Cuser>{data.name}</S.Cuser>
                   <S.Ctext>{data.content}</S.Ctext>
                 </div>
-                {data.email === localStorage.getItem('id') &&
+                {data.email === sessionStorage.getItem('id') &&
                 data.content !== '삭제된 댓글입니다' ? (
                   <S.closeButton onClick={DeleteComment(data.c_id)} />
                 ) : null}
@@ -378,7 +378,7 @@ const Comment = () => {
                     <S.ReplyBox>
                       <S.Replyuser>{reply.name}</S.Replyuser>
                       <S.Replytext>{reply.text}</S.Replytext>
-                      {reply.email === localStorage.getItem('id') &&
+                      {reply.email === sessionStorage.getItem('id') &&
                       reply.text !== '삭제된 댓글입니다' ? (
                         <S.closeButton onClick={DeleteReply(reply.r_id)} />
                       ) : null}

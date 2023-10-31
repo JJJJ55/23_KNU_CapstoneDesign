@@ -97,8 +97,8 @@ const S = {
 
 const WritePage = () => {
   const [sideOn, setSideOn] = useState(false);
-  const userName = localStorage.getItem('username');
-  const userEmail = localStorage.getItem('id');
+  const userName = sessionStorage.getItem('username');
+  const userEmail = sessionStorage.getItem('id');
 
   const handleSideClick = () => {
     setSideOn(!sideOn);
