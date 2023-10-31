@@ -7,8 +7,9 @@ import SideMenu from '../../components/SideMenu/SideMenu';
 import '../../assets/font/Font.css';
 import Footer from '../../components/Main/Footer';
 import Read from '../../components/communicate/Read';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Comment from '../../components/communicate/Comment';
+import ErrorPage from '../ErrorPage';
 
 const H = {
   MainBox: styled.header`
@@ -103,6 +104,11 @@ const ReadPage = () => {
   };
 
   const navigate = useNavigate();
+  const location = useLocation();
+  // 브라우저 주소창에 "/commu/read"만 입력한 경우
+  if (!location.state || !location.state.itemIdx) {
+    return <ErrorPage />;
+  }
   return (
     <>
       <S.Frame>
