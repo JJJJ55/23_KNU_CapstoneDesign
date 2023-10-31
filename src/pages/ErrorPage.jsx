@@ -30,11 +30,20 @@ const S = {
 
 const ErrorPage = () => {
   const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (!sessionStorage.getItem('id')) {
+      navigate('/home');
+    } else {
+      navigate('/main');
+    }
+  };
+
   return (
     <S.content>
       <S.error src={img} />
       <S.errorText>페이지를 찾을 수 없습니다.</S.errorText>
-      <S.GoHome onClick={() => navigate('/main')}>홈으로 돌아가기</S.GoHome>
+      <S.GoHome onClick={handleClick}>홈으로 돌아가기</S.GoHome>
     </S.content>
   );
 };
