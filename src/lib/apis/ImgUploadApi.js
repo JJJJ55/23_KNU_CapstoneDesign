@@ -8,12 +8,8 @@ export const ImgUploadApi = async (file, parts) => {
   console.log('보낼 데이터', file);
   console.log('보낼 데이터', parts);
   try {
-    const response = await axios.post(
-      'https://daishi7462.cafe24.com/php/predit',
-      {
-        formData,
-      },
-    );
+    const response = await axios.post('/predict', formData);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error(error);
