@@ -61,6 +61,7 @@ const S = {
     border-radius: 10px;
     background-color: #e2e2e2;
     margin: 0 auto;
+    margin-bottom: 20px;
     &:hover {
       background-color: #bcbaba;
     }
@@ -75,9 +76,9 @@ const ImgUpload = () => {
   const [imgFile, setImgFile] = useState('');
   const [data, setData] = useState({
     parts: '',
-    damage: '2',
-    repair: '3',
-    cost: '4',
+    damage: '',
+    repair: '',
+    cost: '',
   });
   // 이미지 선택 시 호출되는 핸들러
   const handleImageChange = (e) => {
@@ -90,10 +91,10 @@ const ImgUpload = () => {
         setSelectedImage(e.target.result);
       };
       reader.readAsDataURL(file);
-      setData((prevName) => ({
-        ...prevName,
-        parts: DamageSelect,
-      }));
+      // setData((prevName) => ({
+      //   ...prevName,
+      //   parts: DamageSelect,
+      // }));
     }
   };
 
@@ -102,11 +103,13 @@ const ImgUpload = () => {
       console.log(imgFile);
       console.log(DamageSelect);
       const response = await ImgUploadApi(imgFile, DamageSelect);
+      setData(response);
       if (response.success) {
         console.log('사진 등록했습니다.');
-        setData(response);
+        console.log('받은 데이터 ', response);
       } else {
         console.log('사진 등록 실패');
+        console.log('받은 데이터 ', response);
       }
     } catch (error) {
       console.error(error);
@@ -148,7 +151,7 @@ const ImgUpload = () => {
         </S.ImgBox>
       </S.Box>
       <S.Button onClick={getDamage}>차량 진단하기</S.Button>
-      <CarText data={data} />
+      {data.parts && <CarText data={data} />}
     </>
   );
 };

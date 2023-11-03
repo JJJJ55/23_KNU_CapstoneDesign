@@ -1,17 +1,20 @@
 import React from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 
 const S = {
   Box: styled.div`
     width: 350px;
-    height: 230px;
+    height: 210px;
     margin: 0 auto;
     text-align: center;
-    padding-top: 30px;
+    padding-top: 20px;
   `,
   TextBox: styled.div`
+    width: 240px;
     display: flex;
     align-items: center;
+    margin: 0 auto;
     margin-bottom: 10px;
   `,
   FootBox: styled.div`
@@ -27,12 +30,13 @@ const S = {
     color: #05194d;
   `,
   Text: styled.div`
-    width: 250px;
+    width: 120px;
     font-size: 20px;
   `,
 };
 
 const CarText = ({ data }) => {
+  useEffect(() => {}, [data]);
   return (
     <S.Box>
       <S.TextBox>
