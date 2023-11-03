@@ -16,6 +16,7 @@ import ErrorPage from './pages/ErrorPage.jsx';
 import { useContext } from 'react';
 import { LoginStateContext } from './lib/context/LoginContext.jsx';
 import ModifyPage from './pages/Communicate/ModifyPage.jsx';
+import bg from './assets/img/RepairBg.jpg';
 
 // 애플리케이션 진입점에서 경고 레벨 조절
 console.error = (message) => {};
@@ -29,7 +30,8 @@ const S = {
     position: relative;
     margin: 0 auto;
     background-color: #b8e0fe;
-    box-shadow: 0px 0px 30px #000;
+    /* box-shadow: 0px 0px 30px #000; */
+    box-shadow: -5px -5px 30px 5px black;
     flex-direction: column;
     /* justify-content: center; */
   `,
@@ -39,6 +41,10 @@ const S = {
     width: 100vw;
     height: 100vh;
     background: #f7f7f7;
+    background-image: url(${bg});
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
     position: absolute;
     font-size: 80px;
     line-height: 70px;
