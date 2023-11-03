@@ -45,5 +45,6 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3"
-  }
+  },
+  "proxy": "http://43.202.47.103:5000"
 }
