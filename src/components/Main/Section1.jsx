@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import mainImg from '../../assets/img/background.gif';
+import mainImg from '../../assets/img/newBg.gif';
 
 const S = {
   container: styled.div`
