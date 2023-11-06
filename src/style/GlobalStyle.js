@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
 }
 
-@font-face {
+/* @font-face {
   font-family: '공체Bold';
   src: url('../font/esamanru\ Bold.ttf') format('truetype');
   font-weight: normal;
@@ -35,12 +35,18 @@ const GlobalStyle = createGlobalStyle`
   src: url('../font/esamanru\ Medium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+} */
+@font-face {
+    font-family: 'GongGothicMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
   ${reset}
 
   *, *::before, *::after {
     box-sizing: border-box;
-    font-family: '공체Light' !important;
+    font-family: 'GongGothicMedium' !important;
   }
 
   .ir {
