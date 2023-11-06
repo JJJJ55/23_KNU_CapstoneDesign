@@ -24,7 +24,6 @@ const Section2 = () => {
   const duration = 2000; // 3초 동안 증가
 
   const count = useCount(targetValue, duration);
-  //   const count = useRandomCount(targetValue);
   return (
     <S.CountBox>
       <S.Number>{count.toLocaleString()}</S.Number> 개의 데이터로 <br />

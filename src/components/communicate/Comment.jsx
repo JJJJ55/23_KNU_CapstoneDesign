@@ -315,7 +315,6 @@ const Comment = () => {
         const response = await CommentDeleteApi(idx);
         if (response.success) {
           console.log(response.message);
-          // navigate('/commu/read', { state: { itemIdx } });
           GetCommentRead(itemIdx);
         } else {
           console.log(response.message);

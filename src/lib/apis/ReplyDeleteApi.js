@@ -3,7 +3,6 @@ import axios from 'axios';
 export const ReplyDeleteApi = async (index) => {
   console.log('지우는 대댓글 인덱스', index);
   try {
-    // Axios를 사용하여 PHP 스크립트에 데이터를 전송
     const response = await axios.post(
       'https://daishi7462.cafe24.com/php/ReplyDelete.php',
       {

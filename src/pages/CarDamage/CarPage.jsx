@@ -55,7 +55,6 @@ const S = {
     margin: 0 auto;
     background-color: #fff;
     overflow: auto;
-    /* justify-content: center; */
     &::-webkit-scrollbar {
       display: none;
     }

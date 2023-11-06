@@ -8,6 +8,6 @@ export const CarmapListApi = async () => {
     return response.data;
   } catch (error) {
     console.error(error);
-    throw error; // 에러를 호출한 곳으로 전파
+    throw error;
   }
 };

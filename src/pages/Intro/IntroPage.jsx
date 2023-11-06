@@ -99,7 +99,6 @@ const S = {
     height: 400px;
     background-image: url(${IntroImg});
     background-attachment: fixed;
-    /* background-size: cover; */
     background-repeat: no-repeat;
     background-position: bottom;
   `,
@@ -208,7 +207,6 @@ const IntroPage = () => {
             </H.Menu>
           </H.MenuBox>
         </H.MainBox>
-        {/*여기부터 본문요소 */}
         <S.Main>
           <S.Title>리:페어</S.Title>
           <S.SubTitle>차 수리도 이제는 똑똑하게</S.SubTitle>
@@ -254,7 +252,6 @@ const IntroPage = () => {
               630,000개 데이터로 학습한 AI모델을 경험해보세요
             </S.SubText2>
           </S.IntroBox>
-          {/* 여기까지 본문요소 */}
           <Footer />
         </S.Main>
       </S.Frame>

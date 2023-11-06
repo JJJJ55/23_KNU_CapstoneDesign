@@ -41,7 +41,6 @@ const S = {
   `,
   Th: styled.th`
     width: 70px;
-    /* border: 1px solid blue; */
     background-color: white;
     color: #143c56;
     font-weight: 700;
@@ -64,9 +63,7 @@ const S = {
       width: 70px;
     }
   `,
-  body: styled.tbody`
-    /* border: 1px solid blue; */
-  `,
+  body: styled.tbody``,
   TableBox: styled.div`
     position: relative;
     margin-top: 20px;

@@ -132,19 +132,6 @@ const Footer = () => {
     autoplay: true,
     autoplaySpeed: 2000,
     draggable: false,
-    // beforeChange: () => {
-    //   // 슬라이더가 변경되기 전에 드래그 중이라고 표시
-    //   setIsDragging(true);
-    // },
-    // afterChange: () => {
-    //   setIsDragging(false);
-    // },
-  };
-
-  const handleButtonClick = (state) => {
-    if (!isDragging) {
-      navigate('/car', { state });
-    }
   };
 
   return (

@@ -30,14 +30,11 @@ const S = {
     position: relative;
     margin: 0 auto;
     background-color: #b8e0fe;
-    /* box-shadow: 0px 0px 30px #000; */
     box-shadow: -5px -5px 30px 5px black;
     flex-direction: column;
-    /* justify-content: center; */
   `,
 
   Background: styled.div`
-    //화면 밖 배경
     width: 100vw;
     height: 100vh;
     background: #f7f7f7;

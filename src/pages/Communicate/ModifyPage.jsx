@@ -57,7 +57,6 @@ const S = {
     margin: 0 auto;
     background-color: #fff;
     overflow: auto;
-    /* justify-content: center; */
     &::-webkit-scrollbar {
       display: none;
     }
@@ -135,7 +134,6 @@ const ModifyPage = () => {
             </H.Menu>
           </H.MenuBox>
         </H.MainBox>
-        {/*여기부터 본문요소 */}
         <S.Main>
           <S.Title>유저 커뮤니티</S.Title>
           <S.SubTitle>다양한 정보들을 공유해보세요</S.SubTitle>

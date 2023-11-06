@@ -89,10 +89,6 @@ const ImgUpload = () => {
         setSelectedImage(e.target.result);
       };
       reader.readAsDataURL(file);
-      // setData((prevName) => ({
-      //   ...prevName,
-      //   parts: DamageSelect,
-      // }));
     }
   };
 
@@ -118,7 +114,6 @@ const ImgUpload = () => {
     <>
       <S.NumBox>
         <S.Guide>1. 선택된 손상부위 입니다.</S.Guide>
-        {/* <S.SelectDamage>{DamageSelect.state}</S.SelectDamage> */}
         <S.SelectDamage
           value={DamageSelect}
           onChange={(e) => {

@@ -3,7 +3,6 @@ import axios from 'axios';
 export const CommentUpdate = async (inputs) => {
   console.log('보낼이메일', inputs.email);
   try {
-    // Axios를 사용하여 PHP 스크립트에 데이터를 전송
     const response = await axios.post(
       'https://daishi7462.cafe24.com/php/CommentWrite.php',
       {
@@ -23,7 +22,6 @@ export const CommentUpdate = async (inputs) => {
 export const ReplyUpdate = async (inputs) => {
   console.log('보낼이메일', inputs.email);
   try {
-    // Axios를 사용하여 PHP 스크립트에 데이터를 전송
     const response = await axios.post(
       'https://daishi7462.cafe24.com/php/ReplyWrite.php',
       {

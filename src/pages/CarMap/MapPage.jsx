@@ -55,7 +55,6 @@ const S = {
     margin: 0 auto;
     background-color: #fff;
     overflow: auto;
-    /* justify-content: center; */
     &::-webkit-scrollbar {
       display: none;
     }
@@ -113,7 +112,6 @@ const MapPage = () => {
             </H.Menu>
           </H.MenuBox>
         </H.MainBox>
-        {/*여기부터 본문요소 */}
         <S.Main>
           <S.Title>주변 정비소 안내</S.Title>
           <S.SubTitle>주변 정비소를 찾아보세요</S.SubTitle>

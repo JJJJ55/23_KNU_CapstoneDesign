@@ -24,22 +24,16 @@ const S = {
   Table: styled.table`
     width: 370px;
     margin: 0 auto;
-    /* border-bottom: 1px solid #5c5c5c;
-    border-top: 2px solid #2e2e2e; */
     font-size: 12px;
     margin-bottom: 10px;
   `,
-  Head: styled.thead`
-    /* border: 1px solid blue; */
-  `,
+  Head: styled.thead``,
   Tr: styled.tr`
     height: 30px;
     &:first-child {
-      // 마지막 <button> 태그에만 적용이 된다
       border-top: 2px solid #2e2e2e;
     }
     &:last-child {
-      // 마지막 <button> 태그에만 적용이 된다
       border-bottom: 1px solid #5c5c5c;
     }
   `,
@@ -67,9 +61,7 @@ const S = {
     }
   `,
   body: styled.tbody``,
-  foot: styled.tfoot`
-    /* border: 1px solid blue; */
-  `,
+  foot: styled.tfoot``,
   PN: styled.div`
     width: 300px;
     height: 50px;
@@ -215,18 +207,6 @@ const Page = () => {
       <S.Box>
         <S.Table>
           <S.body>
-            {/* {currentItems.map((item, index) => (
-              <S.Tr key={index}>
-                <S.Th className="num">{item.idx}</S.Th>
-                <S.Td
-                  className="Read"
-                  onClick={() => handleTableRowClick(item.idx)}
-                >
-                  {item.title}
-                </S.Td>
-                <S.Td className="name">{item.name}</S.Td>
-              </S.Tr>
-            ))} */}
             {currentItems.length === 0 ? ( // currentItems 배열이 비어있을 때 "없음" 메시지 표시
               <S.error src={img} />
             ) : (
@@ -254,13 +234,11 @@ const Page = () => {
           }}
         />
       </S.ButtonBox>
-      {/* <S.PN></S.PN> */}
       <S.Pagination>
         {Array.from({ length: totalPages }, (_, index) => (
           <S.PageButton
             key={index}
             onClick={() => handlePageChange(index + 1)}
-            // onClick={() => paginate(index + 1)}
             className={index + 1 === currentPage ? 'active' : ''}
           >
             {index + 1}

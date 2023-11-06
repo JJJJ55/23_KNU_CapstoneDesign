@@ -64,7 +64,6 @@ const S = {
     background-color: #fff;
     box-shadow: 0px 0px 30px #000;
     flex-direction: column;
-    /* justify-content: center; */
     overflow: auto;
     &::-webkit-scrollbar {
       display: none;
