@@ -15,6 +15,7 @@ const S = {
   `,
   Guide: styled.p`
     font-size: 15px;
+    font-weight: bold;
   `,
   SelectDamage: styled.select`
     display: flex;
@@ -56,6 +57,7 @@ const S = {
     width: 200px;
     height: 40px;
     font-size: 20px;
+    font-weight: bold;
     border-radius: 10px;
     background-color: #e2e2e2;
     margin: 0 auto;

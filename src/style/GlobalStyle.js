@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 // 전역 스타일링
 import reset from 'styled-reset';
+import light from '../assets/font/esamanruLight.ttf';
+import bold from '../assets/font/esamanruBold.ttf';
+import medium from '../assets/font/esamanruMedium.ttf';
 // 리셋
 // import spinner from '../../assets/image/spinner.gif';
 
@@ -18,35 +21,29 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
 }
 
-/* @font-face {
+@font-face {
   font-family: '공체Bold';
-  src: url('../font/esamanru\ Bold.ttf') format('truetype');
+  src: url(${bold}) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: '공체Light';
-  src: url('../font/esamanru\ Light.ttf') format('truetype');
+  src: url(${light}) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: '공체Medium';
-  src: url('../font/esamanru\ Medium.ttf') format('truetype');
+  src: url(${medium}) format('truetype');
   font-weight: normal;
   font-style: normal;
-} */
-@font-face {
-    font-family: 'GongGothicMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
 }
   ${reset}
 
   *, *::before, *::after {
     box-sizing: border-box;
-    font-family: 'GongGothicMedium' !important;
+    font-family: '공체Light' !important;
   }
 
   .ir {
