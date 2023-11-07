@@ -35,7 +35,9 @@
     "start": "set HTTPS=true&&set SSL_CRT_FILE=.cert.pem&&set SSL_KEY_FILE=key.pem&&react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -56,7 +58,9 @@
     ]
   },
   "devDependencies": {
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "gh-pages": "^6.0.0"
   },
-  "proxy": "http://43.202.47.103:5000"
+  "proxy": "http://43.202.47.103:5000",
+  "homepage": "https://jjjj55.github.io/23_KNU_CapstoneDesign/"
 }
