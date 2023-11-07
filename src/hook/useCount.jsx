@@ -4,25 +4,25 @@ const useCount = (targetValue, duration) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    let startTime;
-    let animationFrameId;
+    let time;
+    let frameId;
 
-    function animate(currentTime) {
-      if (!startTime) startTime = currentTime;
-      const elapsedTime = currentTime - startTime;
-      const progress = Math.min(elapsedTime / duration, 1); // 0부터 1까지 진행
+    function animate(current) {
+      if (!time) time = current;
+      const elapsed = current - time;
+      const progress = Math.min(elapsed / duration, 1); // 0부터 1까지 진행
 
       setCount(Math.floor(progress * targetValue));
 
       if (progress < 1) {
-        animationFrameId = requestAnimationFrame(animate);
+        frameId = requestAnimationFrame(animate);
       }
     }
 
-    animationFrameId = requestAnimationFrame(animate);
+    frameId = requestAnimationFrame(animate);
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      cancelAnimationFrame(frameId);
     };
   }, [targetValue, duration]);
 
