@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/23_KNU_CapstoneDesign/static/css/main.59c35d86.css",
-    "main.js": "/23_KNU_CapstoneDesign/static/js/main.10a3990e.js",
-    "static/js/787.2d5cd8ae.chunk.js": "/23_KNU_CapstoneDesign/static/js/787.2d5cd8ae.chunk.js",
+    "main.css": "/23_KNU_CapstoneDesign/static/css/main.9936a59b.css",
+    "main.js": "/23_KNU_CapstoneDesign/static/js/main.9a2d772a.js",
+    "static/js/787.d4aba7ab.chunk.js": "/23_KNU_CapstoneDesign/static/js/787.d4aba7ab.chunk.js",
     "static/media/ChosunKg.TTF": "/23_KNU_CapstoneDesign/static/media/ChosunKg.5922e50828ed29451f92.TTF",
     "static/media/ChosunBg.TTF": "/23_KNU_CapstoneDesign/static/media/ChosunBg.90b717de088ba2102c9e.TTF",
     "static/media/RepairBg.jpg": "/23_KNU_CapstoneDesign/static/media/RepairBg.62a9dcd592eec35f5c97.jpg",
@@ -27,20 +27,21 @@
     "static/media/404.png": "/23_KNU_CapstoneDesign/static/media/404.80f7c181171f127e32ed.png",
     "static/media/imgUpload_icon.png": "/23_KNU_CapstoneDesign/static/media/imgUpload_icon.4d3594a98e2d46f6a524.png",
     "static/media/imgUpload.png": "/23_KNU_CapstoneDesign/static/media/imgUpload.8448f341a179439ada00.png",
+    "service-worker.js": "/23_KNU_CapstoneDesign/service-worker.js",
     "static/media/메인로고.png": "/23_KNU_CapstoneDesign/static/media/메인로고.4312e20419ed2bd1158a.png",
     "static/media/후면로고.png": "/23_KNU_CapstoneDesign/static/media/후면로고.35b37b35e4de90b7d5f3.png",
     "static/media/slick.svg": "/23_KNU_CapstoneDesign/static/media/slick.2630a3e3eab21c607e21.svg",
-    "index.html": "/23_KNU_CapstoneDesign/index.html",
     "static/media/slick.eot": "/23_KNU_CapstoneDesign/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/23_KNU_CapstoneDesign/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/23_KNU_CapstoneDesign/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/23_KNU_CapstoneDesign/index.html",
     "static/media/icon_search.svg": "/23_KNU_CapstoneDesign/static/media/icon_search.afa86f4dcac200a39a2445c397962fe9.svg",
-    "main.59c35d86.css.map": "/23_KNU_CapstoneDesign/static/css/main.59c35d86.css.map",
-    "main.10a3990e.js.map": "/23_KNU_CapstoneDesign/static/js/main.10a3990e.js.map",
-    "787.2d5cd8ae.chunk.js.map": "/23_KNU_CapstoneDesign/static/js/787.2d5cd8ae.chunk.js.map"
+    "main.9936a59b.css.map": "/23_KNU_CapstoneDesign/static/css/main.9936a59b.css.map",
+    "main.9a2d772a.js.map": "/23_KNU_CapstoneDesign/static/js/main.9a2d772a.js.map",
+    "787.d4aba7ab.chunk.js.map": "/23_KNU_CapstoneDesign/static/js/787.d4aba7ab.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.59c35d86.css",
-    "static/js/main.10a3990e.js"
+    "static/css/main.9936a59b.css",
+    "static/js/main.9a2d772a.js"
   ]
 }
