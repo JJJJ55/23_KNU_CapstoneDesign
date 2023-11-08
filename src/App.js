@@ -1,22 +1,22 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import styled from 'styled-components';
-import HomePage from './pages/HomePage.jsx';
-import GlobalStyle from './style/GlobalStyle.js';
-import RegisterPage from './pages/register/RegisterPage.jsx';
-import LoginPage from './pages/Login/LoginPage.jsx';
-import LodingPage from './pages/LodingPage.jsx';
-import MainPage from './pages/Main/MainPage.jsx';
-import IntroPage from './pages/Intro/IntroPage.jsx';
-import CommuPage from './pages/Communicate/CommuPage.jsx';
-import ReadPage from './pages/Communicate/ReadPage.jsx';
-import WritePage from './pages/Communicate/WritePage.jsx';
-import CarPage from './pages/CarDamage/CarPage.jsx';
-import MapPage from './pages/CarMap/MapPage.jsx';
-import ErrorPage from './pages/ErrorPage.jsx';
-import { useContext } from 'react';
-import { LoginStateContext } from './lib/context/LoginContext.jsx';
-import ModifyPage from './pages/Communicate/ModifyPage.jsx';
-import bg from './assets/img/RepairBg.jpg';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import styled from "styled-components";
+import HomePage from "./pages/HomePage.jsx";
+import GlobalStyle from "./style/GlobalStyle.js";
+import RegisterPage from "./pages/register/RegisterPage.jsx";
+import LoginPage from "./pages/Login/LoginPage.jsx";
+import LodingPage from "./pages/LodingPage.jsx";
+import MainPage from "./pages/Main/MainPage.jsx";
+import IntroPage from "./pages/Intro/IntroPage.jsx";
+import CommuPage from "./pages/Communicate/CommuPage.jsx";
+import ReadPage from "./pages/Communicate/ReadPage.jsx";
+import WritePage from "./pages/Communicate/WritePage.jsx";
+import CarPage from "./pages/CarDamage/CarPage.jsx";
+import MapPage from "./pages/CarMap/MapPage.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
+import { useContext } from "react";
+import { LoginStateContext } from "./lib/context/LoginContext.jsx";
+import ModifyPage from "./pages/Communicate/ModifyPage.jsx";
+import bg from "./assets/img/RepairBg.jpg";
 
 // 애플리케이션 진입점에서 경고 레벨 조절
 console.error = (message) => {};
@@ -45,7 +45,7 @@ const S = {
     position: absolute;
     font-size: 80px;
     line-height: 70px;
-    font-family: 'Racing Sans One';
+    font-family: "Racing Sans One";
   `,
 };
 
