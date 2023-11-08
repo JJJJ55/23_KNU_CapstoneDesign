@@ -57,11 +57,11 @@ const S = {
     width: 200px;
     height: 40px;
     font-size: 20px;
-    font-weight: bold;
     border-radius: 10px;
     background-color: #e2e2e2;
     margin: 0 auto;
     margin-bottom: 20px;
+    font-weight: bold;
     &:hover {
       background-color: #bcbaba;
     }

@@ -5,7 +5,7 @@ const useCount = (targetValue, duration) => {
 
   useEffect(() => {
     let time;
-    let frameId;
+    let FrameId;
 
     function animate(current) {
       if (!time) time = current;
@@ -15,14 +15,14 @@ const useCount = (targetValue, duration) => {
       setCount(Math.floor(progress * targetValue));
 
       if (progress < 1) {
-        frameId = requestAnimationFrame(animate);
+        FrameId = requestAnimationFrame(animate);
       }
     }
 
-    frameId = requestAnimationFrame(animate);
+    FrameId = requestAnimationFrame(animate);
 
     return () => {
-      cancelAnimationFrame(frameId);
+      cancelAnimationFrame(FrameId);
     };
   }, [targetValue, duration]);
 

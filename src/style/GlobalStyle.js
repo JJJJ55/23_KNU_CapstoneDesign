@@ -39,6 +39,7 @@ const GlobalStyle = createGlobalStyle`
   font-weight: normal;
   font-style: normal;
 }
+
   ${reset}
 
   *, *::before, *::after {

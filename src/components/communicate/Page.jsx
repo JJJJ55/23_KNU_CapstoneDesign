@@ -42,8 +42,8 @@ const S = {
     border-top: 1px solid #e2e2e5;
     background-color: white;
     color: #143c56;
-    font-weight: bold;
     vertical-align: middle !important;
+    font-weight: bold;
   `,
   Td: styled.td`
     border-top: 1px solid #e2e2e5;

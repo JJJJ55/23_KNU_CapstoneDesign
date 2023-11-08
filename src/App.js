@@ -57,7 +57,7 @@ function App() {
       <GlobalStyle />
       <S.Background />
       <S.Frame>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter>
           <Routes>
             {userLogin ? (
               <>
