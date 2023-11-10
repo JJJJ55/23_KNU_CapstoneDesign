@@ -1,22 +1,22 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import styled from "styled-components";
-import HomePage from "./pages/HomePage.jsx";
-import GlobalStyle from "./style/GlobalStyle.js";
-import RegisterPage from "./pages/register/RegisterPage.jsx";
-import LoginPage from "./pages/Login/LoginPage.jsx";
-import LodingPage from "./pages/LodingPage.jsx";
-import MainPage from "./pages/Main/MainPage.jsx";
-import IntroPage from "./pages/Intro/IntroPage.jsx";
-import CommuPage from "./pages/Communicate/CommuPage.jsx";
-import ReadPage from "./pages/Communicate/ReadPage.jsx";
-import WritePage from "./pages/Communicate/WritePage.jsx";
-import CarPage from "./pages/CarDamage/CarPage.jsx";
-import MapPage from "./pages/CarMap/MapPage.jsx";
-import ErrorPage from "./pages/ErrorPage.jsx";
-import { useContext } from "react";
-import { LoginStateContext } from "./lib/context/LoginContext.jsx";
-import ModifyPage from "./pages/Communicate/ModifyPage.jsx";
-import bg from "./assets/img/RepairBg.jpg";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import styled from 'styled-components';
+import HomePage from './pages/HomePage.jsx';
+import GlobalStyle from './style/GlobalStyle.js';
+import RegisterPage from './pages/register/RegisterPage.jsx';
+import LoginPage from './pages/Login/LoginPage.jsx';
+import LodingPage from './pages/LodingPage.jsx';
+import MainPage from './pages/Main/MainPage.jsx';
+import IntroPage from './pages/Intro/IntroPage.jsx';
+import CommuPage from './pages/Communicate/CommuPage.jsx';
+import ReadPage from './pages/Communicate/ReadPage.jsx';
+import WritePage from './pages/Communicate/WritePage.jsx';
+import CarPage from './pages/CarDamage/CarPage.jsx';
+import MapPage from './pages/CarMap/MapPage.jsx';
+import ErrorPage from './pages/ErrorPage.jsx';
+import { useContext, useEffect } from 'react';
+import { LoginStateContext } from './lib/context/LoginContext.jsx';
+import ModifyPage from './pages/Communicate/ModifyPage.jsx';
+import bg from './assets/img/RepairBg.jpg';
 
 // 애플리케이션 진입점에서 경고 레벨 조절
 console.error = (message) => {};
@@ -25,7 +25,8 @@ console.warn = (message) => {};
 const S = {
   Frame: styled.div`
     max-width: 390px;
-    height: 100vh;
+    /* height: 100vh; */
+    height: calc(var(--vh, 1vh) * 100);
     display: flex;
     position: relative;
     margin: 0 auto;
@@ -45,12 +46,20 @@ const S = {
     position: absolute;
     font-size: 80px;
     line-height: 70px;
-    font-family: "Racing Sans One";
+    font-family: 'Racing Sans One';
   `,
 };
 
 function App() {
   const userLogin = useContext(LoginStateContext);
+
+  function setScreenSize() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+  useEffect(() => {
+    setScreenSize();
+  });
 
   return (
     <>

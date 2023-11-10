@@ -47,6 +47,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: '공체Light' !important;
   }
 
+  :root {
+       --vh: 100%;
+   }
+
   .ir {
     position: absolute;
     width: 1px;
