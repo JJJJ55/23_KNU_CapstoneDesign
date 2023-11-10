@@ -60,7 +60,11 @@ const GlobalStyle = createGlobalStyle`
     clip: rect(0, 0, 0, 0);
   }
 
+  .wrapper {
+	  height: 100%;
+  }
   body {
+    height: 100%;
     font-weight: 300; /* 100 = 얇게, 300 = 보통, 400 = 두껍게 */
     overflow-y: hidden;
   }
