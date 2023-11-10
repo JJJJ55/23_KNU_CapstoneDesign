@@ -50,7 +50,8 @@ const H = {
 const S = {
   Frame: styled.div`
     width: 390px;
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    height: 100svh;
     position: relative;
     margin: 0 auto;
     background-color: #fff;

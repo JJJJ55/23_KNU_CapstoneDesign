@@ -25,7 +25,7 @@ console.warn = (message) => {};
 const S = {
   Frame: styled.div`
     max-width: 390px;
-    height: 100vh;
+    height: 100svh;
     display: flex;
     position: relative;
     margin: 0 auto;
