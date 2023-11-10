@@ -25,8 +25,7 @@ console.warn = (message) => {};
 const S = {
   Frame: styled.div`
     max-width: 390px;
-    /* height: 100vh; */
-    height: calc(var(--vh, 1vh) * 100);
+    height: 100vh;
     display: flex;
     position: relative;
     margin: 0 auto;
@@ -52,14 +51,6 @@ const S = {
 
 function App() {
   const userLogin = useContext(LoginStateContext);
-
-  function setScreenSize() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }
-  useEffect(() => {
-    setScreenSize();
-  });
 
   return (
     <>
