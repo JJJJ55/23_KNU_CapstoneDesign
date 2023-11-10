@@ -51,7 +51,8 @@ const H = {
 const S = {
   Frame: styled.div`
     width: 390px;
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    height: calc(var(--vh, 1vh) * 100);
     position: relative;
     margin: 0 auto;
     background-color: #fff;
