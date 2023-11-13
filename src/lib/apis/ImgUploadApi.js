@@ -19,7 +19,8 @@
 //     throw error;
 //   }
 // };
-import axios from 'axios';
+
+// import axios from 'axios';
 import { instance } from './instance';
 
 export const ImgUploadApi = async (file, parts) => {
