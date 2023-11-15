@@ -31,7 +31,10 @@ export const ImgUploadApi = async (file, parts) => {
   console.log('보낼 데이터', file);
   console.log('보낼 데이터', parts);
   try {
-    const response = await instance.post('/predict', formData);
+    const response = await instance.post(
+      'https://cors-anywhere.herokuapp.com/https://www.repairproject.net/predict',
+      formData,
+    );
     console.log(response.data);
     return response.data;
   } catch (error) {
