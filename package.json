@@ -57,7 +57,7 @@
     ]
   },
   "homepage": "http://jjjj55.github.io/23_KNU_CapstoneDesign/",
-  "proxy": "https://www.repairproject.net/",
+  "proxy": "https://www.repairproject.net:443",
   "devDependencies": {
     "gh-pages": "^6.0.0"
   }
