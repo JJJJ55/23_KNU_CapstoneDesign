@@ -4,7 +4,7 @@ import useCount from '../../hook/useCount';
 
 const S = {
   CountBox: styled.section`
-    width: 390px;
+    width: 100%;
     position: relative;
     text-align: center;
     margin: 25px 0;

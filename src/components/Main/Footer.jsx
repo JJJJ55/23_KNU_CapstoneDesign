@@ -15,7 +15,7 @@ const S = {
     bottom: 0px;
   `,
   MenuBox: styled.div`
-    width: 390px;
+    width: 100%;
     background-color: #143c56;
   `,
 
@@ -38,7 +38,7 @@ const S = {
   `,
 
   Info: styled.footer`
-    max-width: 390px;
+    max-width: 100%;
     height: 100%;
     margin: 0 auto;
   `,

@@ -4,7 +4,7 @@ import MainButton from '../MainButton/MainButton';
 
 const S = {
   container: styled.div`
-    width: 390px;
+    width: 100%;
     height: 150px;
     z-index: 10 !important;
     margin-bottom: 25px;

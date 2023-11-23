@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const S = {
   container: styled.div`
     position: relative;
-    width: 390px;
+    width: 100%;
     height: 200px;
     z-index: 10 !important;
   `,

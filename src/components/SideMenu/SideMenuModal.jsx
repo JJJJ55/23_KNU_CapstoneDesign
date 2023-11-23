@@ -11,9 +11,9 @@ const A = {
   sidemenu: styled.div`
     z-index: 1000 !important;
     width: 100%;
-    height: 90%;
+    height: 100%;
     position: absolute;
-    bottom: ${(props) => (props.sideOn ? '0' : '-120%')};
+    bottom: 0;
     align-self: flex-end;
     background-color: #fff;
     border-radius: 30px 30px 0 0;
@@ -28,9 +28,8 @@ const A = {
   `,
   NameBox: styled.div`
     position: relative;
-    margin-top: 5px;
     padding: 10px;
-    bottom: 50px;
+    bottom: 80px;
   `,
   Sideimg: styled.div`
     width: 390px;
@@ -74,7 +73,7 @@ const A = {
   `,
 };
 
-const SideMenu = ({ sideOn }) => {
+const SideMenuModal = ({ sideOn }) => {
   const user = sessionStorage.getItem('username');
   const { logout } = useContext(LoginDispatchContext);
   const navigate = useNavigate();
@@ -130,4 +129,4 @@ const SideMenu = ({ sideOn }) => {
   );
 };
 
-export default SideMenu;
+export default SideMenuModal;

@@ -51,10 +51,15 @@ const S = {
   `,
 };
 
-const SideMenuBar = ({ onclick, color }) => {
+const SideMenuBar = ({ onclick, color, check }) => {
   return (
     <>
-      <S.MenuIcon type="checkbox" id="menuicon" onClick={onclick} />
+      <S.MenuIcon
+        type="checkbox"
+        id="menuicon"
+        onClick={onclick}
+        checked={check}
+      />
       <S.MenuLabel for="menuicon">
         <S.Line id="line" color={color}></S.Line>
         <S.Line id="line" color={color}></S.Line>

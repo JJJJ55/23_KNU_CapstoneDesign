@@ -9,11 +9,12 @@ const S = {
   Footer: styled.footer`
     position: absolute;
     height: 150px;
+    width: 100%;
     bottom: 0px;
   `,
 
   Info: styled.div`
-    width: 390px;
+    width: 100%;
     height: 100%;
     margin: 0 auto;
     background-color: #143c56;

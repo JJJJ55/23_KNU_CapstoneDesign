@@ -17,6 +17,7 @@ import { useContext, useEffect } from 'react';
 import { LoginStateContext } from './lib/context/LoginContext.jsx';
 import ModifyPage from './pages/Communicate/ModifyPage.jsx';
 import bg from './assets/img/RepairBg.jpg';
+import YourComponent from './components/Modal/YourComponent.jsx';
 
 // 애플리케이션 진입점에서 경고 레벨 조절
 console.error = (message) => {};
@@ -30,7 +31,7 @@ const S = {
     position: relative;
     margin: 0 auto;
     background-color: #b8e0fe;
-    box-shadow: -5px -5px 30px 5px black;
+    /* box-shadow: -5px -5px 30px 5px black; */
     flex-direction: column;
   `,
 
@@ -71,6 +72,7 @@ function App() {
                 <Route path="/car" element={<CarPage />} />
                 <Route path="/map" element={<MapPage />} />
                 <Route path="/*" element={<ErrorPage />} />
+                <Route path="/test" element={<YourComponent />} />
               </>
             ) : (
               <>

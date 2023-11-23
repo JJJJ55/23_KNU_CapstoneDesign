@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const H = {
   MainBox: styled.header`
     position: fixed;
-    width: 390px;
+    width: 100%;
     height: 50px;
     background-color: rgba(0, 0, 0, 0.5);
   `,
@@ -16,14 +16,14 @@ const H = {
   MenuBox: styled.div`
     display: table-cell;
     vertical-align: middle;
-    width: 390px;
+    width: 100%;
     height: 50px;
   `,
 
   Menu: styled.div`
     display: flex;
     justify-content: space-between;
-    width: 390px;
+    width: 100%;
     height: 35px;
   `,
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Logo from '../../assets/img/메인로고.png';
 import Footer from '../../components/Main/Footer';
@@ -10,6 +10,9 @@ import { useState } from 'react';
 import SideMenuBar from '../../components/SideMenu/SideMenuBar';
 import Section4 from '../../components/Main/Section4';
 import { useNavigate } from 'react-router-dom';
+import SideMenuModal from '../../components/SideMenu/SideMenuModal';
+import YourComponent from '../../components/Modal/YourComponent';
+import SideModal from '../../components/Modal/SideModal';
 
 const H = {
   MainBox: styled.header`
@@ -74,10 +77,19 @@ const S = {
 const MainPage = () => {
   const [sideOn, setSideOn] = useState(false);
 
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleModalToggle = () => {
+    setModalOpen(!isModalOpen);
+    setSideOn(!sideOn);
+  };
+
   const handleSideClick = () => {
+    console.log(sideOn);
     setSideOn(!sideOn);
   };
   const navigate = useNavigate();
+  console.log(isModalOpen);
   return (
     <>
       <S.Frame>
@@ -85,17 +97,24 @@ const MainPage = () => {
           <H.MenuBox>
             <H.Menu>
               <H.Logo src={Logo} onClick={() => navigate('/main')} />
-              <SideMenuBar onclick={handleSideClick} color={'#fff'} />
+              <SideMenuBar
+                onclick={handleModalToggle}
+                color={'#fff'}
+                check={sideOn}
+              />
             </H.Menu>
           </H.MenuBox>
         </H.MainBox>
         <Section1 />
+        <button onClick={handleSideClick}>sd</button>
         <Section2 />
         <Section3 />
         <Section4 />
         <Footer />
       </S.Frame>
-      <SideMenu sideOn={sideOn} />
+
+      <SideModal isOpen={sideOn} onRequestClose={handleModalToggle} />
+      {/* <SideMenu sideOn={sideOn} /> */}
     </>
   );
 };

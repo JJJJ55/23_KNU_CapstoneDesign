@@ -4,11 +4,11 @@ import mainImg from '../../assets/img/newBg.gif';
 
 const S = {
   container: styled.div`
-    width: 390px;
+    width: 100%;
     z-index: 10 !important;
   `,
   Background: styled.div`
-    width: 390px;
+    width: 100%;
     height: 230px;
     background-image: url(${mainImg});
     background-size: cover;
