@@ -75,7 +75,12 @@ const SideMenuFooter = () => {
           <S.InfoLogo src={main_Logo2}></S.InfoLogo>
         </S.InfoBox>
         <S.InfoBox>
-          {LinkData2.map((link, index) => (
+          <S.InfoText>
+            2023년 공주대학교 캡스톤디자인 프로젝트
+            <br />
+            컴퓨터공학부 소프트웨어전공 오진영, 오승민, 이삭
+          </S.InfoText>
+          {/* {LinkData2.map((link, index) => (
             <S.InfoList
               href={link.href}
               target="_blank"
@@ -83,7 +88,7 @@ const SideMenuFooter = () => {
             >
               {link.text}
             </S.InfoList>
-          ))}
+          ))} */}
         </S.InfoBox>
         <S.InfoText>
           © 2023 Re:pair from KNU Capstone Design All right reserved.
