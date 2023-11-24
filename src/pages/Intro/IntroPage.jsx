@@ -13,6 +13,7 @@ import sideImg from '../../assets/img/logo-removebg-preview.png';
 import Footer from '../../components/Main/Footer';
 import useScrollImg from '../../hook/useScrollImg';
 import { useNavigate } from 'react-router-dom';
+import SideModal from '../../components/Modal/SideModal';
 
 const H = {
   MainBox: styled.header`
@@ -191,6 +192,12 @@ const IntroPage = () => {
     3: useScrollImg('up', 1, 0.8),
   };
   const [sideOn, setSideOn] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleModalToggle = () => {
+    setModalOpen(!isModalOpen);
+    setSideOn(!sideOn);
+  };
 
   const handleSideClick = () => {
     setSideOn(!sideOn);
@@ -203,7 +210,11 @@ const IntroPage = () => {
           <H.MenuBox>
             <H.Menu>
               <H.Logo src={Logo} onClick={() => navigate('/main')} />
-              <SideMenuBar onclick={handleSideClick} color={'#000'} />
+              <SideMenuBar
+                onclick={handleModalToggle}
+                color={'#000'}
+                check={sideOn}
+              />
             </H.Menu>
           </H.MenuBox>
         </H.MainBox>
@@ -256,7 +267,7 @@ const IntroPage = () => {
         </S.Main>
       </S.Frame>
 
-      <SideMenu sideOn={sideOn} />
+      <SideModal isOpen={sideOn} onRequestClose={handleModalToggle} />
     </>
   );
 };

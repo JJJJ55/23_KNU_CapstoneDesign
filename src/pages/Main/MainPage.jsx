@@ -77,12 +77,14 @@ const S = {
 const MainPage = () => {
   const [sideOn, setSideOn] = useState(false);
 
+  //여기부터
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleModalToggle = () => {
     setModalOpen(!isModalOpen);
     setSideOn(!sideOn);
   };
+  //여기까지 추가
 
   const handleSideClick = () => {
     console.log(sideOn);
@@ -106,7 +108,6 @@ const MainPage = () => {
           </H.MenuBox>
         </H.MainBox>
         <Section1 />
-        <button onClick={handleSideClick}>sd</button>
         <Section2 />
         <Section3 />
         <Section4 />

@@ -8,6 +8,7 @@ import '../../assets/font/Font.css';
 import Footer from '../../components/Main/Footer';
 import ImgUpload from '../../components/CarDamage/ImgUpload';
 import { useNavigate } from 'react-router-dom';
+import SideModal from '../../components/Modal/SideModal';
 
 const H = {
   MainBox: styled.header`
@@ -95,6 +96,12 @@ const S = {
 
 const CarPage = () => {
   const [sideOn, setSideOn] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleModalToggle = () => {
+    setModalOpen(!isModalOpen);
+    setSideOn(!sideOn);
+  };
 
   const handleSideClick = () => {
     setSideOn(!sideOn);
@@ -107,7 +114,11 @@ const CarPage = () => {
           <H.MenuBox>
             <H.Menu>
               <H.Logo src={Logo} onClick={() => navigate('/main')} />
-              <SideMenuBar onclick={handleSideClick} color={'#000'} />
+              <SideMenuBar
+                onclick={handleModalToggle}
+                color={'#000'}
+                check={sideOn}
+              />
             </H.Menu>
           </H.MenuBox>
         </H.MainBox>
@@ -121,7 +132,7 @@ const CarPage = () => {
         </S.Main>
       </S.Frame>
 
-      <SideMenu sideOn={sideOn} />
+      <SideModal isOpen={sideOn} onRequestClose={handleModalToggle} />
     </>
   );
 };

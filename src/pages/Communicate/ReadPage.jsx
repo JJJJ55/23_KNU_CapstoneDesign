@@ -10,6 +10,7 @@ import Read from '../../components/communicate/Read';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Comment from '../../components/communicate/Comment';
 import ErrorPage from '../ErrorPage';
+import SideModal from '../../components/Modal/SideModal';
 
 const H = {
   MainBox: styled.header`
@@ -98,6 +99,15 @@ const S = {
 const ReadPage = () => {
   const [sideOn, setSideOn] = useState(false);
 
+  //여기부터
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleModalToggle = () => {
+    setModalOpen(!isModalOpen);
+    setSideOn(!sideOn);
+  };
+  //여기까지 추가
+
   const handleSideClick = () => {
     setSideOn(!sideOn);
   };
@@ -108,6 +118,7 @@ const ReadPage = () => {
   if (!location.state || !location.state.itemIdx) {
     return <ErrorPage />;
   }
+
   return (
     <>
       <S.Frame>
@@ -115,7 +126,11 @@ const ReadPage = () => {
           <H.MenuBox>
             <H.Menu>
               <H.Logo src={Logo} onClick={() => navigate('/main')} />
-              <SideMenuBar onclick={handleSideClick} color={'#000'} />
+              <SideMenuBar
+                onclick={handleModalToggle}
+                color={'#000'}
+                check={sideOn}
+              />
             </H.Menu>
           </H.MenuBox>
         </H.MainBox>
@@ -128,8 +143,8 @@ const ReadPage = () => {
           <Footer />
         </S.Main>
       </S.Frame>
-
-      <SideMenu sideOn={sideOn} />
+      <SideModal isOpen={sideOn} onRequestClose={handleModalToggle} />
+      {/* <SideMenu sideOn={sideOn} /> */}
     </>
   );
 };

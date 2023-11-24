@@ -9,6 +9,7 @@ import Footer from '../../components/Main/Footer';
 import Make from '../../components/communicate/Make';
 import { useNavigate } from 'react-router-dom';
 import { CommuWrite } from '../../lib/apis/CommuWriteApi';
+import SideModal from '../../components/Modal/SideModal';
 
 const H = {
   MainBox: styled.header`
@@ -99,6 +100,15 @@ const WritePage = () => {
   const userName = sessionStorage.getItem('username');
   const userEmail = sessionStorage.getItem('id');
 
+  //여기부터
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleModalToggle = () => {
+    setModalOpen(!isModalOpen);
+    setSideOn(!sideOn);
+  };
+  //여기까지 추가
+
   const handleSideClick = () => {
     setSideOn(!sideOn);
   };
@@ -126,7 +136,11 @@ const WritePage = () => {
           <H.MenuBox>
             <H.Menu>
               <H.Logo src={Logo} onClick={() => navigate('/main')} />
-              <SideMenuBar onclick={handleSideClick} color={'#000'} />
+              <SideMenuBar
+                onclick={handleModalToggle}
+                color={'#000'}
+                check={sideOn}
+              />
             </H.Menu>
           </H.MenuBox>
         </H.MainBox>
@@ -139,7 +153,7 @@ const WritePage = () => {
         </S.Main>
       </S.Frame>
 
-      <SideMenu sideOn={sideOn} />
+      <SideModal isOpen={sideOn} onRequestClose={handleModalToggle} />
     </>
   );
 };
