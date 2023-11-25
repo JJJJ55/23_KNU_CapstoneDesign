@@ -24,7 +24,7 @@ const Section4 = () => {
     <S.container>
       <S.cummuticate>
         <ButtonMain
-          text={'프로젝트 소개'}
+          text={'서비스 소개'}
           onClick={() => {
             navigate('/intro');
           }}

@@ -100,7 +100,7 @@ const SideMenuModal = ({ sideOn }) => {
             navigate('/intro');
           }}
         >
-          <A.MenuSpan>프로젝트</A.MenuSpan> 소개
+          <A.MenuSpan>서비스</A.MenuSpan> 소개
         </A.MenuList>
         <A.MenuList
           onClick={() => {

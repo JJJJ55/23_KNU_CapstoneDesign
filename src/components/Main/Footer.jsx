@@ -9,6 +9,7 @@ import { useState } from 'react';
 
 const S = {
   Footer: styled.footer`
+    width: 100%;
     z-index: 10;
     position: relative;
     height: 120px;
@@ -20,7 +21,7 @@ const S = {
   `,
 
   Menu: styled.div`
-    max-width: 360px;
+    width: 360px;
     margin: 0 auto;
     position: relative;
     padding-left: 10px;
@@ -110,7 +111,7 @@ const LinkData = [
 ];
 
 const LinkData2 = [
-  { href: '/intro', text: '프로젝트 소개' },
+  { href: '/intro', text: '서비스 소개' },
   { href: '/commu', text: '유저 커뮤니티' },
   {
     href: '/car',
