@@ -37,7 +37,7 @@ const S = {
 
   Background: styled.div`
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     background: #f7f7f7;
     background-image: url(${bg});
     background-position: center center;
