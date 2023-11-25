@@ -28,7 +28,7 @@ const S = {
     height: 20px;
     position: relative;
     cursor: pointer;
-    margin: auto 10px;
+    margin: auto 20px;
   `,
   Line: styled.span`
     display: block;
