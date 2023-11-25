@@ -260,7 +260,7 @@ const IntroPage = () => {
               </S.ScrollText>
             </S.ScrollBox>
             <S.SubText2 {...animatedItem[3]}>
-              630,000개 데이터로 학습한 AI모델을 경험해보세요
+              400,000개 데이터로 학습한 AI모델을 경험해보세요
             </S.SubText2>
           </S.IntroBox>
           <Footer />

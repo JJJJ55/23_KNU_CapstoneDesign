@@ -20,7 +20,7 @@ const S = {
 };
 
 const Section2 = () => {
-  const targetValue = 630000;
+  const targetValue = 400000;
   const duration = 2000; // 3초 동안 증가
 
   const count = useCount(targetValue, duration);
