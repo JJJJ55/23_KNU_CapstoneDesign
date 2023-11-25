@@ -53,10 +53,10 @@ const H = {
 
 const S = {
   content: styled.main`
-    width: 390px;
     height: 100%;
     justify-content: flex-start;
     background-color: white;
+    box-shadow: 0px 0px 30px #000;
   `,
   Frame: styled.div`
     width: 390px;
@@ -94,7 +94,7 @@ const MainPage = () => {
   console.log(isModalOpen);
   return (
     <>
-      <S.Frame>
+      <S.content>
         <H.MainBox>
           <H.MenuBox>
             <H.Menu>
@@ -112,7 +112,7 @@ const MainPage = () => {
         <Section3 />
         <Section4 />
         <Footer />
-      </S.Frame>
+      </S.content>
 
       <SideModal isOpen={sideOn} onRequestClose={handleModalToggle} />
       {/* <SideMenu sideOn={sideOn} /> */}

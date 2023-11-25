@@ -31,7 +31,7 @@ const S = {
     position: relative;
     margin: 0 auto;
     background-color: #b8e0fe;
-    /* box-shadow: -5px -5px 30px 5px black; */
+    box-shadow: -5px -5px 30px 5px black;
     flex-direction: column;
   `,
 
