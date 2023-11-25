@@ -39,10 +39,10 @@ const S = {
     height: 150px;
     position: absolute;
     bottom: 0;
-    align-self: flex-end;
+    /* align-self: flex-end; */
     background-color: #ffffff;
     border-radius: 80px 80px 0 0;
-    /* animation: ${fadeIn} 1s cubic-bezier(0, 0.3, 0.66, 1.02); */
+    animation: ${fadeIn} 1s cubic-bezier(0, 0.3, 0.66, 1.02);
     color: #767676;
     text-align: center;
   `,
