@@ -15,12 +15,12 @@ import { useCallback } from 'react';
 const S = {
   ButtonBox: styled.div`
     background-color: red;
-    width: 340;
-    height: 300;
+    width: 340px;
+    height: 300px;
     margin: 0 auto;
   `,
   CarButton: styled.img`
-    width: 120px;
+    width: 110px;
     height: 110px;
     border-radius: 30px;
     box-shadow: 1px 1px 3px 3px #143c56;
@@ -30,15 +30,16 @@ const S = {
     }
   `,
   MenuBox: styled.div`
-    width: 390px;
+    width: 100%;
+    position: relative;
   `,
 
   Menu: styled.div`
-    max-width: 360px;
+    max-width: 390px;
     margin: 0 auto;
     position: relative;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 20px;
   `,
 
   MenuList: styled.a`
