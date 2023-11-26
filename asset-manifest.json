@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/23_KNU_CapstoneDesign/static/css/main.39306290.css",
-    "main.js": "/23_KNU_CapstoneDesign/static/js/main.49b33d21.js",
+    "main.css": "/23_KNU_CapstoneDesign/static/css/main.ac29f86e.css",
+    "main.js": "/23_KNU_CapstoneDesign/static/js/main.0b977479.js",
     "static/js/787.d4aba7ab.chunk.js": "/23_KNU_CapstoneDesign/static/js/787.d4aba7ab.chunk.js",
     "static/media/ChosunKg.TTF": "/23_KNU_CapstoneDesign/static/media/ChosunKg.5922e50828ed29451f92.TTF",
     "static/media/ChosunBg.TTF": "/23_KNU_CapstoneDesign/static/media/ChosunBg.90b717de088ba2102c9e.TTF",
@@ -37,12 +37,12 @@
     "static/media/slick.woff": "/23_KNU_CapstoneDesign/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/23_KNU_CapstoneDesign/index.html",
     "static/media/icon_search.svg": "/23_KNU_CapstoneDesign/static/media/icon_search.afa86f4dcac200a39a2445c397962fe9.svg",
-    "main.39306290.css.map": "/23_KNU_CapstoneDesign/static/css/main.39306290.css.map",
-    "main.49b33d21.js.map": "/23_KNU_CapstoneDesign/static/js/main.49b33d21.js.map",
+    "main.ac29f86e.css.map": "/23_KNU_CapstoneDesign/static/css/main.ac29f86e.css.map",
+    "main.0b977479.js.map": "/23_KNU_CapstoneDesign/static/js/main.0b977479.js.map",
     "787.d4aba7ab.chunk.js.map": "/23_KNU_CapstoneDesign/static/js/787.d4aba7ab.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.39306290.css",
-    "static/js/main.49b33d21.js"
+    "static/css/main.ac29f86e.css",
+    "static/js/main.0b977479.js"
   ]
 }
