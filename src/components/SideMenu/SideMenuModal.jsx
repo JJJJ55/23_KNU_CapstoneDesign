@@ -44,7 +44,7 @@ const A = {
   Sidebox: styled.div`
     position: absolute;
     top: 0px;
-    width: 390px;
+    width: 100%;
     height: 300px;
     margin-top: 50px;
     font-size: 15px;
