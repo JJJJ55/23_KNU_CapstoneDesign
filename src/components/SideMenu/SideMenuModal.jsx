@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import sideImg from '../../assets/img/logo-removebg-preview.png';
 import Button from '../common/Button';
 import SideMenuFooter from './SideMenuFooter';
@@ -71,6 +71,25 @@ const A = {
     border-bottom: 1px solid black;
     cursor: pointer;
   `,
+  StyledButton: styled.button`
+    margin: 0 5px;
+    width: 85px;
+    height: 32px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #e2e2e2;
+    cursor: pointer;
+    ${(props) =>
+      props.active === false &&
+      css`
+        background-color: #f7f7f7;
+        color: #000;
+        :hover {
+        }
+        pointer-events: none;
+      `}
+  `,
 };
 
 const SideMenuModal = ({ sideOn }) => {
@@ -91,6 +110,8 @@ const SideMenuModal = ({ sideOn }) => {
         <br />
         <br />
         <Button text={'로그아웃'} onClick={handleLogout} />
+        <A.StyledButton>비밀번호 변경</A.StyledButton>
+        <Button text={'회원탈퇴'} />
       </A.NameBox>
       <A.Sidebox>
         차 진단도, 수리비도 똑똑하게
