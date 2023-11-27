@@ -35,7 +35,7 @@ const S = {
   `,
   loginContent: styled.div`
     z-index: 1;
-    width: 390px;
+    width: 100%;
     height: 150px;
     position: absolute;
     bottom: 0;
