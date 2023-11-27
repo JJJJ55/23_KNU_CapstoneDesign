@@ -18,6 +18,7 @@ import { LoginStateContext } from './lib/context/LoginContext.jsx';
 import ModifyPage from './pages/Communicate/ModifyPage.jsx';
 import bg from './assets/img/RepairBg.jpg';
 import YourComponent from './components/Modal/YourComponent.jsx';
+import ChangePasswordPage from './pages/Login/ChagePasswordPage.jsx';
 
 // 애플리케이션 진입점에서 경고 레벨 조절
 console.error = (message) => {};
@@ -71,6 +72,7 @@ function App() {
                 <Route path="commu/modify" element={<ModifyPage />} />
                 <Route path="/car" element={<CarPage />} />
                 <Route path="/map" element={<MapPage />} />
+                <Route path="/change" element={<ChangePasswordPage />} />
                 <Route path="/*" element={<ErrorPage />} />
                 <Route path="/test" element={<YourComponent />} />
               </>
