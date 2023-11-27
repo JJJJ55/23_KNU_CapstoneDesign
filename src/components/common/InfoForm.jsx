@@ -36,6 +36,7 @@ const InfoForm = ({ type, onSubmit }) => {
   const title = {
     login: '로 그 인',
     register: '회 원 가 입',
+    PwChange: '비 밀 번 호 변 경',
   };
   const headline = title[type];
 
@@ -44,6 +45,9 @@ const InfoForm = ({ type, onSubmit }) => {
     name: '',
     id: '',
     pw: '',
+    current_pw: '',
+    new_pw: '',
+    new_pw2: '',
   });
 
   useEffect(() => {
@@ -64,8 +68,18 @@ const InfoForm = ({ type, onSubmit }) => {
       } else {
         setBtnOn(false);
       }
-    } else {
+    } else if (type === 'login') {
       if (!!data.id && data.pw.length > 5) {
+        setBtnOn(true);
+      } else {
+        setBtnOn(false);
+      }
+    } else {
+      if (
+        !!data.current_pw &&
+        data.new_pw.length > 5 &&
+        data.new_pw === data.new_pw2
+      ) {
         setBtnOn(true);
       } else {
         setBtnOn(false);
@@ -101,29 +115,76 @@ const InfoForm = ({ type, onSubmit }) => {
           />
         </S.Name>
       )}
-      <S.Info>
-        <S.Label htmlFor="id">이메일</S.Label>
-        <S.Input
-          name="id"
-          value={data.id}
-          placeholder="이메일을 입력하세요"
-          type="text"
-          onChange={InputChange}
-        />
-      </S.Info>
-      <S.Info>
-        <S.Label htmlFor="pw">비밀번호</S.Label>
-        <S.Input
-          name="pw"
-          type="password"
-          value={data.pw}
-          placeholder="8~15자리 비밀번호를 입력하세요"
-          maxLength={15}
-          onChange={InputChange}
-        />
-      </S.Info>
+      {['register', 'login'].includes(type) && (
+        <S.Info>
+          <S.Label htmlFor="id">이메일</S.Label>
+          <S.Input
+            name="id"
+            value={data.id}
+            placeholder="이메일을 입력하세요"
+            type="text"
+            onChange={InputChange}
+          />
+        </S.Info>
+      )}
+      {['register', 'login'].includes(type) && (
+        <S.Info>
+          <S.Label htmlFor="pw">비밀번호</S.Label>
+          <S.Input
+            name="pw"
+            type="password"
+            value={data.pw}
+            placeholder="8~15자리 비밀번호를 입력하세요"
+            maxLength={15}
+            onChange={InputChange}
+          />
+        </S.Info>
+      )}
+      {type === 'PwChange' && (
+        <S.Info>
+          <S.Label htmlFor="current_pw">현재 비밀번호</S.Label>
+          <S.Input
+            name="current_pw"
+            value={data.current_pw}
+            placeholder="현재 비밀번호를 입력하세요."
+            type="password"
+            onChange={InputChange}
+          />
+        </S.Info>
+      )}
+      {type === 'PwChange' && (
+        <S.Info>
+          <S.Label htmlFor="new_pw">새 비밀번호</S.Label>
+          <S.Input
+            name="new_pw"
+            value={data.new_pw}
+            placeholder="새 비밀번호를 입력하세요."
+            type="password"
+            onChange={InputChange}
+          />
+        </S.Info>
+      )}
+      {type === 'PwChange' && (
+        <S.Info>
+          <S.Label htmlFor="new_pw2">새 비밀번호(확인)</S.Label>
+          <S.Input
+            name="new_pw2"
+            value={data.new_pw2}
+            placeholder="새 비밀번호를 다시 입력하세요."
+            type="password"
+            onChange={InputChange}
+          />
+        </S.Info>
+      )}
+
       <ButtonLong
-        text={type === 'register' ? '가입하기' : '로그인'}
+        text={
+          type === 'register'
+            ? '가입하기'
+            : type === 'login'
+            ? '로그인'
+            : '변경하기'
+        }
         onClick={btnSubmit}
         active={btnOn}
       />

@@ -6,6 +6,7 @@ import SideMenuFooter from './SideMenuFooter';
 import { useNavigate } from 'react-router-dom';
 import { LoginDispatchContext } from '../../lib/context/LoginContext';
 import { useContext } from 'react';
+import { DeleteUser } from '../../lib/apis/DelateUser';
 
 const A = {
   sidemenu: styled.div`
@@ -97,9 +98,33 @@ const SideMenuModal = ({ sideOn }) => {
   const { logout } = useContext(LoginDispatchContext);
   const navigate = useNavigate();
 
+  const UserDelete = async (id) => {
+    try {
+      console.log('삭제');
+      const response = await DeleteUser(id);
+      if (response.success) {
+        alert('이용해주셔서 감사합니다.');
+        logout();
+        navigate('/');
+      } else {
+        alert('실패했습니다.');
+      }
+    } catch (error) {
+      console.log('에러');
+      console.error(error);
+    }
+  };
+
   const handleLogout = () => {
     logout();
     navigate('/');
+  };
+  const handleChange = () => {
+    navigate('/change');
+  };
+  const handleDelete = () => {
+    UserDelete(sessionStorage.getItem('id'));
+    // logout();
   };
 
   return (
@@ -110,8 +135,8 @@ const SideMenuModal = ({ sideOn }) => {
         <br />
         <br />
         <Button text={'로그아웃'} onClick={handleLogout} />
-        <A.StyledButton>비밀번호 변경</A.StyledButton>
-        <Button text={'회원탈퇴'} />
+        <A.StyledButton onClick={handleChange}>비밀번호 변경</A.StyledButton>
+        <Button text={'회원탈퇴'} onClick={handleDelete} />
       </A.NameBox>
       <A.Sidebox>
         차 진단도, 수리비도 똑똑하게
