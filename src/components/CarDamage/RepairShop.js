@@ -810,8 +810,8 @@ export const RepairShop = [
   },
   {
     title: '기아오토큐 예천점',
-    lat: 36.775667,
-    lng: 126.43762,
+    lat: 36.775769851205276,
+    lng: 126.43791934535948,
     img: Kmaker,
   },
   {
