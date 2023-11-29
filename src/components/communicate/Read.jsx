@@ -10,7 +10,7 @@ import { CommuDeleteApi } from '../../lib/apis/CommuDeleteApi';
 const S = {
   InputBox: styled.div`
     display: block;
-    width: 370px;
+    /* width: 370px; */
     height: 40px;
     border: solid 1px #dadada;
     border-radius: 10px;
@@ -36,7 +36,7 @@ const S = {
   `,
   Box: styled.div`
     position: relative;
-    width: 370px;
+    /* width: 370px; */
     height: auto;
     border-radius: 10px;
     margin: 10px auto;
@@ -47,7 +47,7 @@ const S = {
   `,
   TitleInput: styled.input`
     display: block;
-    width: 370px;
+    width: 100%;
     height: 40px;
     border: solid 1px #dadada;
     border-radius: 10px;
@@ -59,7 +59,7 @@ const S = {
   `,
   Text: styled.input`
     display: block;
-    width: 370px;
+    width: 100%;
     height: 300px;
     border: solid 1px #dadada;
     border-radius: 10px;
@@ -102,7 +102,6 @@ const Read = () => {
     GetCommuRead(idx);
   }, []);
 
-  console.log(data.index, data.pw);
   const GetCommuRead = async (idx) => {
     try {
       const response = await CommuRead(idx);
@@ -124,13 +123,9 @@ const Read = () => {
     const confirmation = window.confirm('정말로 삭제하시겠습니까?');
     if (confirmation) {
       try {
-        console.log('zz', idx);
         const response = await CommuDeleteApi(idx);
         if (response.success) {
-          console.log(response.message);
           navigate('/commu');
-        } else {
-          console.log(response.message);
         }
       } catch (error) {
         console.error('삭제에 실패했습니다:', error);

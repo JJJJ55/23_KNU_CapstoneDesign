@@ -11,28 +11,28 @@ import { ReplyDeleteApi } from '../../lib/apis/ReplyDeleteApi';
 
 const S = {
   Content: styled.div`
-    width: 370px;
+    /* width: 370px; */
     height: auto;
     margin: 0 auto;
     display: block;
   `,
   Box: styled.div`
-    width: 370px;
+    /* width: 370px; */
     height: auto;
     border: 1px solid #dadada;
     border-radius: 10px;
   `,
   List: styled.ul`
-    width: 370px;
+    /* width: 370px; */
     height: auto;
     list-style: none;
   `,
   Message: styled.div`
-    width: 370px;
+    /* width: 370px; */
     height: auto;
   `,
   MessageBox: styled.div`
-    width: 370px;
+    /* width: 370px; */
     height: auto;
     display: flex;
     cursor: pointer;
@@ -40,7 +40,7 @@ const S = {
   Reply: styled.div`
     width: 330px;
     height: auto;
-    margin-left: 20px;
+    margin-left: 18px;
     background-color: #fafafa;
   `,
   ReplyBox: styled.li`
@@ -112,7 +112,7 @@ const S = {
     cursor: pointer;
   `,
   InputBox: styled.div`
-    width: 370px;
+    /* width: 370px; */
     height: 45px;
     display: flex;
     position: relative;
@@ -192,7 +192,6 @@ const S = {
 };
 
 const Comment = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const index = location.state.itemIdx;
   const itemIdx = index;
@@ -265,7 +264,6 @@ const Comment = () => {
     });
   };
   const GetCommentUpdate = (comment) => async () => {
-    console.log('댓글 등록', comment.comment, comment.user, comment.idx);
     if (!comment.comment) {
       alert('내용을 입력해주세요.');
       return;
@@ -285,7 +283,6 @@ const Comment = () => {
   };
 
   const GetReplyUpdate = (reply, commentId) => async () => {
-    console.log('댓글 등록', reply.comment, reply.user, reply.idx);
     if (!reply.comment) {
       alert('내용을 입력해주세요.');
       return;
@@ -311,13 +308,9 @@ const Comment = () => {
     const confirmation = window.confirm('정말로 삭제하시겠습니까?');
     if (confirmation) {
       try {
-        console.log('코멘트 번호', idx);
         const response = await CommentDeleteApi(idx);
         if (response.success) {
-          console.log(response.message);
           GetCommentRead(itemIdx);
-        } else {
-          console.log(response.message);
         }
       } catch (error) {
         console.error('삭제에 실패했습니다:', error);
@@ -329,13 +322,9 @@ const Comment = () => {
     const confirmation = window.confirm('정말로 삭제하시겠습니까?');
     if (confirmation) {
       try {
-        console.log('리플 번호', idx);
         const response = await ReplyDeleteApi(idx);
         if (response.success) {
-          console.log(response.message);
           GetReplyRead(itemIdx);
-        } else {
-          console.log(response.message);
         }
       } catch (error) {
         console.error('삭제에 실패했습니다:', error);
@@ -349,7 +338,6 @@ const Comment = () => {
         <S.List>
           {commentData.map((data, commentIndex) => (
             <S.Message key={data.c_id}>
-              {console.log('댓글', { commentData })}
               <S.MessageBox>
                 <div
                   style={{
@@ -373,7 +361,6 @@ const Comment = () => {
                 .filter((reply) => reply.comment_id === data.c_id.toString())
                 .map((reply, replyIndex) => (
                   <S.Reply key={replyIndex}>
-                    {console.log('대댓글', { reply })}
                     <S.ReplyBox>
                       <S.Replyuser>{reply.name}</S.Replyuser>
                       <S.Replytext>{reply.text}</S.Replytext>

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import SideMenuBar from '../../components/SideMenu/SideMenuBar';
 import Logo from '../../assets/img/후면로고.png';
 import { useState } from 'react';
-import SideMenu from '../../components/SideMenu/SideMenu';
 import '../../assets/font/Font.css';
 import Footer from '../../components/Main/Footer';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -51,6 +50,12 @@ const H = {
 };
 
 const S = {
+  content: styled.main`
+    height: 100%;
+    justify-content: flex-start;
+    background-color: white;
+    box-shadow: 0px 0px 30px #000;
+  `,
   Frame: styled.div`
     width: 390px;
     height: 100svh;
@@ -63,7 +68,7 @@ const S = {
     }
   `,
   Main: styled.div`
-    width: 390px;
+    /* width: 390px; */
     height: 100%;
     position: relative;
     top: 50px;
@@ -89,7 +94,7 @@ const S = {
     font-family: '공체Medium' !important;
   `,
   FormLine: styled.line`
-    width: 370px;
+    width: 99%;
     display: block;
     margin: 10px auto;
     border: 3px solid black;
@@ -105,18 +110,12 @@ const ModifyPage = () => {
     setSideOn(!sideOn);
   };
 
-  const handleSideClick = () => {
-    setSideOn(!sideOn);
-  };
-
   const handleModify = async (inputs) => {
     try {
       const response = await CommuModify(inputs);
       if (response.success) {
-        console.log('등록됐습니다');
         navigate('/commu');
       } else {
-        console.log('등록실패');
         alert('글을 수정하는 중 오류가 발생했습니다.');
       }
     } catch (error) {
@@ -132,7 +131,7 @@ const ModifyPage = () => {
   }
   return (
     <>
-      <S.Frame>
+      <S.content>
         <H.MainBox>
           <H.MenuBox>
             <H.Menu>
@@ -152,7 +151,7 @@ const ModifyPage = () => {
           <Modify onSubmit={handleModify} />
           <Footer />
         </S.Main>
-      </S.Frame>
+      </S.content>
 
       <SideModal isOpen={sideOn} onRequestClose={handleModalToggle} />
     </>

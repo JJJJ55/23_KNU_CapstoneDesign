@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 const S = {
   SearchBox: styled.div`
     display: block;
-    width: 200px;
+    /* width: 200px; */
     height: 40px;
     border: solid 1px #dadada;
     border-radius: 10px;
@@ -18,11 +18,11 @@ const S = {
     box-sizing: border-box;
     background: #fff;
     position: relative;
-    margin-left: 180px;
+    margin-left: 175px;
     margin-bottom: 10px;
   `,
   Table: styled.table`
-    width: 370px;
+    width: 100%;
     margin: 0 auto;
     font-size: 12px;
     margin-bottom: 10px;
@@ -139,7 +139,6 @@ const Page = () => {
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
   const totalPages = Math.ceil(filteredData.length / pageSize);
-  console.log(location.search);
 
   const GetCommuList = async () => {
     try {
@@ -158,7 +157,6 @@ const Page = () => {
   };
 
   useEffect(() => {
-    console.log(totalPages);
     GetCommuList(); // 컴포넌트가 마운트될 때 데이터를 가져옵니다.
   }, []);
 
@@ -182,7 +180,6 @@ const Page = () => {
     setCurrentPage(1);
     navigate(`/commu?page=1`);
   };
-  console.log(searchText); //searchText가 공백이면 전역변수로 설정해뒀던 페이지를 다시 설정함
 
   const handleTableRowClick = (itemIdx) => {
     navigate('/commu/read', { state: { itemIdx } });

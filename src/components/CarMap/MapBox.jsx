@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/img/404.png';
 import { useRef } from 'react';
-import { RepairShop } from '../CarDamage/RepairShop';
+import { RepairShop } from '../CarMap/RepairShop.js';
 
 const { kakao } = window;
 
@@ -18,7 +18,7 @@ const S = {
     margin: 0 auto;
   `,
   Table: styled.table`
-    width: 385px;
+    width: 100%;
     margin: 0 auto;
     border-bottom: 1px solid #5c5c5c;
     border-top: 2px solid #2e2e2e;
@@ -127,7 +127,7 @@ const MapBox = () => {
       const response = await CarmapListApi();
       setData(response);
     } catch (error) {
-      console.error('데이터 가져오기 실패:', error);
+      console.error(error);
     }
   };
   const indexOfLastItem = currentPage * pageSize;
@@ -197,7 +197,6 @@ const MapBox = () => {
     const title = CenterName; // CenterName은 이벤트 객체가 아니라 클릭된 row의 title일 것으로 가정
 
     const selectedShop = RepairShop.find((shop) => shop.title === title);
-    console.log(selectedShop.lat, selectedShop.lng);
     if (selectedShop && selectedShop.lat && selectedShop.lng) {
       // 선택된 상점이 있고, lat 및 lng 값이 있을 때만 지도의 중심을 이동
       map.panTo(
@@ -208,7 +207,6 @@ const MapBox = () => {
 
   return (
     <>
-      {console.log(latitude, longitude)}
       <S.Box id="map" ref={mapRef}></S.Box>
       <S.TableBox>
         <S.Table>

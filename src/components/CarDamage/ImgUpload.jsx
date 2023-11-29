@@ -96,17 +96,8 @@ const ImgUpload = () => {
 
   const getDamage = async () => {
     try {
-      console.log(imgFile);
-      console.log(DamageSelect);
       const response = await ImgUploadApi(imgFile, DamageSelect);
       setData(response);
-      if (response.success) {
-        console.log('사진 등록했습니다.');
-        console.log('받은 데이터 ', response);
-      } else {
-        console.log('사진 등록 실패');
-        console.log('받은 데이터 ', response);
-      }
     } catch (error) {
       console.error(error);
     }

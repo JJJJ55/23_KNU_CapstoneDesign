@@ -6,7 +6,6 @@ import Intro1 from '../../assets/img/Intro1.png';
 import Intro2 from '../../assets/img/Intro2.png';
 import Intro3 from '../../assets/img/Intro3.png';
 import { useState } from 'react';
-import SideMenu from '../../components/SideMenu/SideMenu';
 import '../../assets/font/Font.css';
 import IntroImg from '../../assets/img/test.png';
 import sideImg from '../../assets/img/logo-removebg-preview.png';
@@ -54,6 +53,12 @@ const H = {
 };
 
 const S = {
+  content: styled.main`
+    height: 100%;
+    justify-content: flex-start;
+    background-color: white;
+    box-shadow: 0px 0px 30px #000;
+  `,
   Frame: styled.div`
     width: 390px;
     height: 100svh;
@@ -67,7 +72,6 @@ const S = {
     }
   `,
   Main: styled.div`
-    width: 390px;
     height: 1000px;
     position: relative;
     top: 50px;
@@ -96,7 +100,7 @@ const S = {
   `,
   IntroImg: styled.div`
     position: relative;
-    width: 390px;
+    /* width: 100%; */
     height: 400px;
     background-image: url(${IntroImg});
     background-attachment: fixed;
@@ -119,8 +123,9 @@ const S = {
     font-family: '공체Medium' !important;
     line-height: 30px;
     font-size: 20px;
-    float: left;
+    float: right;
     padding: 10px 0;
+    position: absolute;
   `,
   imgbox: styled.div`
     width: 100px;
@@ -136,13 +141,13 @@ const S = {
   IntroBox: styled.div`
     margin-top: 30px;
     position: relative;
-    width: 390px;
+    max-width: 390px;
     height: 1000px;
     top: 0;
     bottom: 0;
   `,
   ScrollBox: styled.div`
-    width: 390px;
+    /* width: 390px; */
     height: 300px;
     display: flex;
     align-items: center;
@@ -160,8 +165,8 @@ const S = {
   `,
 
   ScrollImg: styled.img`
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     margin: 13px;
     background-color: #ececf1;
     border-radius: 30px;
@@ -199,13 +204,10 @@ const IntroPage = () => {
     setSideOn(!sideOn);
   };
 
-  const handleSideClick = () => {
-    setSideOn(!sideOn);
-  };
   const navigate = useNavigate();
   return (
     <>
-      <S.Frame>
+      <S.content>
         <H.MainBox>
           <H.MenuBox>
             <H.Menu>
@@ -265,8 +267,7 @@ const IntroPage = () => {
           </S.IntroBox>
           <Footer />
         </S.Main>
-      </S.Frame>
-
+      </S.content>
       <SideModal isOpen={sideOn} onRequestClose={handleModalToggle} />
     </>
   );

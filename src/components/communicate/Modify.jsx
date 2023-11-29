@@ -9,7 +9,7 @@ import { CommuModifyRead } from '../../lib/apis/CommuReadApi';
 const S = {
   InputBox: styled.div`
     display: block;
-    width: 370px;
+    /* width: 370px; */
     height: 40px;
     border: solid 1px #dadada;
     border-radius: 10px;
@@ -27,7 +27,7 @@ const S = {
   `,
   Box: styled.div`
     position: relative;
-    width: 370px;
+    /* width: 370px; */
     height: 35px;
     border-radius: 10px;
     margin: 10px auto;
@@ -35,7 +35,7 @@ const S = {
   `,
   TitleInput: styled.input`
     display: block;
-    width: 370px;
+    width: 100%;
     height: 40px;
     border: solid 1px #dadada;
     border-radius: 10px;
@@ -47,7 +47,7 @@ const S = {
   `,
   Text: styled.input`
     display: block;
-    width: 370px;
+    width: 100%;
     height: 300px;
     border: solid 1px #dadada;
     border-radius: 10px;
