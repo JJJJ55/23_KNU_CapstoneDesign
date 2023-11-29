@@ -100,7 +100,6 @@ const SideMenuModal = ({ sideOn }) => {
 
   const UserDelete = async (id) => {
     try {
-      console.log('삭제');
       const response = await DeleteUser(id);
       if (response.success) {
         alert('이용해주셔서 감사합니다.');
@@ -123,8 +122,15 @@ const SideMenuModal = ({ sideOn }) => {
     navigate('/change');
   };
   const handleDelete = () => {
-    UserDelete(sessionStorage.getItem('id'));
-    // logout();
+    if (
+      window.confirm(
+        '정말 회원탈퇴를 하시겠습니까?\n사용자의 커뮤니티 게시글은 탈퇴 이후에도 삭제되지 않습니다.',
+      )
+    ) {
+      UserDelete(sessionStorage.getItem('id'));
+    } else {
+      return;
+    }
   };
 
   return (
