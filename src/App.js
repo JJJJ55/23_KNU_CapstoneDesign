@@ -198,6 +198,7 @@ function App() {
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/find" element={<FindPasswordPage />} />
                     <Route path="/*" element={<ErrorPage />} />
+                    <Route path="/install" element={<AppInstallPage />} />
                   </>
                 )}
               </>

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import img from '../assets/img/404.png';
+import img from '../assets/img/Install.png';
 import { useNavigate } from 'react-router-dom';
 
 const S = {
@@ -9,9 +9,9 @@ const S = {
     background-color: #fff;
     justify-content: center;
   `,
-  error: styled.img`
-    width: 200px;
-    height: 200px;
+  installImg: styled.img`
+    width: 350px;
+    height: 350px;
   `,
   errorText: styled.p`
     font-size: 20px;
@@ -29,21 +29,9 @@ const S = {
 };
 
 const AppInstallPage = () => {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    if (!sessionStorage.getItem('id')) {
-      navigate('/home');
-    } else {
-      navigate('/main');
-    }
-  };
-
   return (
     <S.content>
-      <S.error src={img} />
-      <S.errorText>앱을 설치해주세요.</S.errorText>
-      {/* <S.GoHome onClick={handleClick}>홈으로 돌아가기</S.GoHome> */}
+      <S.installImg src={img} />
     </S.content>
   );
 };
