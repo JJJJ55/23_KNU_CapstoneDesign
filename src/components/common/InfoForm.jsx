@@ -96,13 +96,6 @@ const InfoForm = ({ type, onSubmit }) => {
   const btnSubmit = async (e) => {
     e.preventDefault();
     if (btnOn) {
-      // {
-      //   if (type === 'register') {
-      //     console.log('회원가입경로');
-      //   } else {
-      //     LoginApi(data, type);
-      //   }
-      // }
       onSubmit(data);
     }
   };

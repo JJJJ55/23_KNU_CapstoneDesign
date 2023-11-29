@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import main_Logo2 from '../../assets/img/메인로고.png';
-
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -57,16 +56,6 @@ const S = {
   `,
 };
 
-const LinkData2 = [
-  { href: '/', text: '프로젝트 소개' },
-  { href: '/', text: '유저 커뮤니티' },
-  {
-    href: '/',
-    text: '차량수리비 안내',
-  },
-  { href: '/', text: '주변 정비소 안내' },
-];
-
 const SideMenuFooter = () => {
   return (
     <S.Footer>
@@ -80,15 +69,6 @@ const SideMenuFooter = () => {
             <br />
             컴퓨터공학부 소프트웨어전공 오진영, 오승민, 이삭
           </S.InfoText>
-          {/* {LinkData2.map((link, index) => (
-            <S.InfoList
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {link.text}
-            </S.InfoList>
-          ))} */}
         </S.InfoBox>
         <S.InfoText>
           © 2023 Re:pair from KNU Capstone Design All right reserved.

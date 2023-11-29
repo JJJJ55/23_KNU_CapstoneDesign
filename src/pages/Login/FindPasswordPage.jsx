@@ -2,9 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import InfoForm from '../../components/common/InfoForm';
 import { useNavigate } from 'react-router-dom';
-import { LoginApi } from '../../lib/apis/LoginApi';
-import { useContext } from 'react';
-import { LoginDispatchContext } from '../../lib/context/LoginContext';
 import { FindPassword } from '../../lib/apis/FindPassword';
 const S = {
   content: styled.main`
@@ -32,7 +29,7 @@ const FindPasswordPage = () => {
         alert('메일에 임시 비밀번호를 발급해드렸습니다.');
         navigate('/home');
       } else {
-        alert(response.message);
+        alert('발급도중 오류가 발생했습니다.');
       }
     } catch (error) {
       console.error(error);

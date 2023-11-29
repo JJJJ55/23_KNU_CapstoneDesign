@@ -17,12 +17,10 @@ const RegisterPage = () => {
     try {
       const response = await RegisterApi(inputs);
       if (response.success) {
-        console.log('회원가입 성공');
         alert('환영합니다! 다시 로그인하여 주시기 바랍니다!');
         navigate('/home');
       } else {
-        console.log('회원가입 실패');
-        alert('회원가입에 실패하였습니다! : ' + response.message);
+        alert('회원가입도중 오류가 발생했습니다. : ' + response.message);
       }
     } catch (error) {
       console.error(error);

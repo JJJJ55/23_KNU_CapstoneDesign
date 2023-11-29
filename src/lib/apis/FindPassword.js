@@ -2,7 +2,6 @@ import axios from 'axios';
 
 export const FindPassword = async (inputs) => {
   try {
-    console.log(inputs.id);
     const response = await axios.post(
       'https://daishi7462.cafe24.com/php/FindPassword.php',
       {

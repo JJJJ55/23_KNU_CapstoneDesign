@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Logo from '../../assets/img/메인로고.png';
 import Footer from '../../components/Main/Footer';
 import Section1 from '../../components/Main/Section1';
 import Section2 from '../../components/Main/Section2';
 import Section3 from '../../components/Main/Section3';
-import SideMenu from '../../components/SideMenu/SideMenu';
 import { useState } from 'react';
 import SideMenuBar from '../../components/SideMenu/SideMenuBar';
 import Section4 from '../../components/Main/Section4';
 import { useNavigate } from 'react-router-dom';
-import SideMenuModal from '../../components/SideMenu/SideMenuModal';
-import YourComponent from '../../components/Modal/YourComponent';
 import SideModal from '../../components/Modal/SideModal';
 
 const H = {
@@ -76,22 +72,13 @@ const S = {
 
 const MainPage = () => {
   const [sideOn, setSideOn] = useState(false);
-
-  //여기부터
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleModalToggle = () => {
     setModalOpen(!isModalOpen);
     setSideOn(!sideOn);
   };
-  //여기까지 추가
-
-  const handleSideClick = () => {
-    console.log(sideOn);
-    setSideOn(!sideOn);
-  };
   const navigate = useNavigate();
-  console.log(isModalOpen);
   return (
     <>
       <S.content>
@@ -113,9 +100,7 @@ const MainPage = () => {
         <Section4 />
         <Footer />
       </S.content>
-
       <SideModal isOpen={sideOn} onRequestClose={handleModalToggle} />
-      {/* <SideMenu sideOn={sideOn} /> */}
     </>
   );
 };

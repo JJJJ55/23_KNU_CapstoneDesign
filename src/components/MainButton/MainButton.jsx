@@ -10,7 +10,6 @@ import car4 from '../../assets/img/휀더.png';
 import car5 from '../../assets/img/도어.png';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { useCallback } from 'react';
 
 const S = {
   ButtonBox: styled.div`

@@ -15,7 +15,7 @@ const fadeIn = keyframes`
 
 const S = {
   content: styled.main`
-    height: 100vh;
+    height: 100svh;
     background-color: #05194d;
     justify-content: center;
   `,

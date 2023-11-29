@@ -106,10 +106,9 @@ const SideMenuModal = ({ sideOn }) => {
         logout();
         navigate('/');
       } else {
-        alert('실패했습니다.');
+        alert('탈퇴 도중 문제가 발생했습니다.');
       }
     } catch (error) {
-      console.log('에러');
       console.error(error);
     }
   };

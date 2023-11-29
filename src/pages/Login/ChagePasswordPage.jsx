@@ -25,11 +25,8 @@ const ChangePasswordPage = () => {
         alert('변경되었습니다! 다시 로그인해주세요.');
         logout();
         navigate('/');
-      } else {
-        alert(response.message);
       }
     } catch (error) {
-      console.log('에러');
       console.error(error);
     }
   };

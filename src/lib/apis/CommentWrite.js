@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export const CommentUpdate = async (inputs) => {
-  console.log('보낼이메일', inputs.email);
   try {
     const response = await axios.post(
       'https://daishi7462.cafe24.com/php/CommentWrite.php',
@@ -15,12 +14,10 @@ export const CommentUpdate = async (inputs) => {
     return response.data;
   } catch (error) {
     console.error(error);
-    alert('댓글을 올리는 중 발생했습니다.');
   }
 };
 
 export const ReplyUpdate = async (inputs) => {
-  console.log('보낼이메일', inputs.email);
   try {
     const response = await axios.post(
       'https://daishi7462.cafe24.com/php/ReplyWrite.php',
@@ -35,6 +32,5 @@ export const ReplyUpdate = async (inputs) => {
     return response.data;
   } catch (error) {
     console.error(error);
-    alert('댓글을 올리는 중 발생했습니다.');
   }
 };
