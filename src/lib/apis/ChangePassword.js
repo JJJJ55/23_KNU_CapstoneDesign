@@ -8,7 +8,8 @@ export const ChangePassword = async (email, inputs) => {
       'https://daishi7462.cafe24.com/php/ModifyPassword.php',
       {
         id: email,
-        password: inputs.new_pw,
+        password: inputs.current_pw,
+        newPassword: inputs.new_pw,
       },
     );
 

@@ -37,6 +37,7 @@ const InfoForm = ({ type, onSubmit }) => {
     login: '로 그 인',
     register: '회 원 가 입',
     PwChange: '비 밀 번 호 변 경',
+    find: '비 밀 번 호 찾 기',
   };
   const headline = title[type];
 
@@ -74,6 +75,12 @@ const InfoForm = ({ type, onSubmit }) => {
       } else {
         setBtnOn(false);
       }
+    } else if (type === 'find') {
+      if (!!data.name && !!data.id) {
+        setBtnOn(true);
+      } else {
+        setBtnOn(false);
+      }
     } else {
       if (
         !!data.current_pw &&
@@ -103,7 +110,7 @@ const InfoForm = ({ type, onSubmit }) => {
   return (
     <>
       <S.Header>{headline}</S.Header>
-      {type === 'register' && (
+      {['register', 'find'].includes(type) && (
         <S.Name>
           <S.Label htmlFor="name">성함</S.Label>
           <S.Input
@@ -115,7 +122,7 @@ const InfoForm = ({ type, onSubmit }) => {
           />
         </S.Name>
       )}
-      {['register', 'login'].includes(type) && (
+      {['register', 'login', 'find'].includes(type) && (
         <S.Info>
           <S.Label htmlFor="id">이메일</S.Label>
           <S.Input
@@ -183,7 +190,11 @@ const InfoForm = ({ type, onSubmit }) => {
             ? '가입하기'
             : type === 'login'
             ? '로그인'
-            : '변경하기'
+            : type === 'find'
+            ? '임시 비밀번호 발송'
+            : type === 'PwChange'
+            ? '비밀번호 변경'
+            : ''
         }
         onClick={btnSubmit}
         active={btnOn}

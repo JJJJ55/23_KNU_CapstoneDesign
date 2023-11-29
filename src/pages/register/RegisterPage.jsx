@@ -18,7 +18,7 @@ const RegisterPage = () => {
       const response = await RegisterApi(inputs);
       if (response.success) {
         console.log('회원가입 성공');
-        alert('환영합니다!');
+        alert('환영합니다! 다시 로그인하여 주시기 바랍니다!');
         navigate('/home');
       } else {
         console.log('회원가입 실패');

@@ -11,6 +11,15 @@ const S = {
     margin-top: 50px;
     height: 100svh;
   `,
+  FindPw: styled.button`
+    width: 80px;
+    height: 35px;
+    margin-top: 5px;
+    position: relative;
+    margin-left: 242px;
+    font-weight: bold;
+    cursor: pointer;
+  `,
 };
 
 const LoginPage = () => {
@@ -34,9 +43,14 @@ const LoginPage = () => {
     }
   };
 
+  const handleFind = () => {
+    navigate('/find');
+  };
+
   return (
     <S.content>
       <InfoForm type="login" onSubmit={handleLogin} />
+      <S.FindPw onClick={handleFind}>비밀번호 찾기</S.FindPw>
     </S.content>
   );
 };
