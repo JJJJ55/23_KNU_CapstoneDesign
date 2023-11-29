@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/23_KNU_CapstoneDesign/static/css/main.ac29f86e.css",
-    "main.js": "/23_KNU_CapstoneDesign/static/js/main.0c972e07.js",
+    "main.js": "/23_KNU_CapstoneDesign/static/js/main.18c16b8e.js",
     "static/js/787.d4aba7ab.chunk.js": "/23_KNU_CapstoneDesign/static/js/787.d4aba7ab.chunk.js",
     "static/media/ChosunKg.TTF": "/23_KNU_CapstoneDesign/static/media/ChosunKg.5922e50828ed29451f92.TTF",
     "static/media/ChosunBg.TTF": "/23_KNU_CapstoneDesign/static/media/ChosunBg.90b717de088ba2102c9e.TTF",
@@ -21,6 +21,7 @@
     "static/media/Kmaker.png": "/23_KNU_CapstoneDesign/static/media/Kmaker.ac18f6ecae675b7021c5.png",
     "static/media/도어.png": "/23_KNU_CapstoneDesign/static/media/도어.346fc37bc534382b1b20.png",
     "static/media/휠.png": "/23_KNU_CapstoneDesign/static/media/휠.22dcee86d23e7acca239.png",
+    "static/media/Install.png": "/23_KNU_CapstoneDesign/static/media/Install.06d8fe5772a61ded65b2.png",
     "static/media/뒷범퍼.png": "/23_KNU_CapstoneDesign/static/media/뒷범퍼.3b845f6c53bd541aba75.png",
     "static/media/Intro1.png": "/23_KNU_CapstoneDesign/static/media/Intro1.b22241b5146351043f40.png",
     "static/media/logo-removebg-preview.png": "/23_KNU_CapstoneDesign/static/media/logo-removebg-preview.98e8e740a943a2490c08.png",
@@ -38,11 +39,11 @@
     "index.html": "/23_KNU_CapstoneDesign/index.html",
     "static/media/icon_search.svg": "/23_KNU_CapstoneDesign/static/media/icon_search.afa86f4dcac200a39a2445c397962fe9.svg",
     "main.ac29f86e.css.map": "/23_KNU_CapstoneDesign/static/css/main.ac29f86e.css.map",
-    "main.0c972e07.js.map": "/23_KNU_CapstoneDesign/static/js/main.0c972e07.js.map",
+    "main.18c16b8e.js.map": "/23_KNU_CapstoneDesign/static/js/main.18c16b8e.js.map",
     "787.d4aba7ab.chunk.js.map": "/23_KNU_CapstoneDesign/static/js/787.d4aba7ab.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ac29f86e.css",
-    "static/js/main.0c972e07.js"
+    "static/js/main.18c16b8e.js"
   ]
 }
