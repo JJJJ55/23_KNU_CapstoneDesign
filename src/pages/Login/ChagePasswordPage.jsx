@@ -26,7 +26,7 @@ const ChangePasswordPage = () => {
         logout();
         navigate('/');
       } else {
-        alert('실패했습니다.');
+        alert(response.message);
       }
     } catch (error) {
       console.log('에러');
