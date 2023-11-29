@@ -124,6 +124,7 @@ import bg from './assets/img/RepairBg.jpg';
 import YourComponent from './components/Modal/YourComponent.jsx';
 import ChangePasswordPage from './pages/Login/ChagePasswordPage.jsx';
 import AppInstallPage from './pages/AppInstallPage.jsx';
+import FindPasswordPage from './pages/Login/FindPasswordPage.jsx';
 
 // 애플리케이션 진입점에서 경고 레벨 조절
 console.error = (message) => {};
@@ -172,7 +173,7 @@ function App() {
       <S.Frame>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Routes>
-            {isStandalone ? (
+            {true ? (
               <>
                 {userLogin ? (
                   <>
@@ -195,6 +196,7 @@ function App() {
                     <Route path="/home" element={<HomePage />} />
                     <Route path="/register" element={<RegisterPage />} />
                     <Route path="/login" element={<LoginPage />} />
+                    <Route path="/find" element={<FindPasswordPage />} />
                     <Route path="/*" element={<ErrorPage />} />
                   </>
                 )}
