@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/23_KNU_CapstoneDesign/static/css/main.ac29f86e.css",
-    "main.js": "/23_KNU_CapstoneDesign/static/js/main.18c16b8e.js",
+    "main.js": "/23_KNU_CapstoneDesign/static/js/main.586ff033.js",
     "static/js/787.d4aba7ab.chunk.js": "/23_KNU_CapstoneDesign/static/js/787.d4aba7ab.chunk.js",
     "static/media/ChosunKg.TTF": "/23_KNU_CapstoneDesign/static/media/ChosunKg.5922e50828ed29451f92.TTF",
     "static/media/ChosunBg.TTF": "/23_KNU_CapstoneDesign/static/media/ChosunBg.90b717de088ba2102c9e.TTF",
@@ -32,6 +32,7 @@
     "static/media/메인로고.png": "/23_KNU_CapstoneDesign/static/media/메인로고.4312e20419ed2bd1158a.png",
     "static/media/후면로고.png": "/23_KNU_CapstoneDesign/static/media/후면로고.35b37b35e4de90b7d5f3.png",
     "static/media/CloseModal.png": "/23_KNU_CapstoneDesign/static/media/CloseModal.da708d927f7c569d9887.png",
+    "static/media/Git.png": "/23_KNU_CapstoneDesign/static/media/Git.e8efa7f43ecd05b0a5e4.png",
     "static/media/slick.svg": "/23_KNU_CapstoneDesign/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/23_KNU_CapstoneDesign/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/23_KNU_CapstoneDesign/static/media/slick.c94f7671dcc99dce43e2.ttf",
@@ -39,11 +40,11 @@
     "index.html": "/23_KNU_CapstoneDesign/index.html",
     "static/media/icon_search.svg": "/23_KNU_CapstoneDesign/static/media/icon_search.afa86f4dcac200a39a2445c397962fe9.svg",
     "main.ac29f86e.css.map": "/23_KNU_CapstoneDesign/static/css/main.ac29f86e.css.map",
-    "main.18c16b8e.js.map": "/23_KNU_CapstoneDesign/static/js/main.18c16b8e.js.map",
+    "main.586ff033.js.map": "/23_KNU_CapstoneDesign/static/js/main.586ff033.js.map",
     "787.d4aba7ab.chunk.js.map": "/23_KNU_CapstoneDesign/static/js/787.d4aba7ab.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ac29f86e.css",
-    "static/js/main.18c16b8e.js"
+    "static/js/main.586ff033.js"
   ]
 }
