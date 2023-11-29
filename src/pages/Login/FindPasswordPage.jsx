@@ -29,14 +29,10 @@ const FindPasswordPage = () => {
     try {
       const response = await FindPassword(inputs);
       if (response.success) {
-        // alert('메일에 임시 비밀번호를 발급해드렸습니다.');
-        // navigate('/home');
-        alert(response.tempPassword);
-        console.log(response.message);
+        alert('메일에 임시 비밀번호를 발급해드렸습니다.');
+        navigate('/home');
       } else {
-        alert(response.tempPassword);
-        alert('발급실패');
-        console.log(response.message);
+        alert(response.message);
       }
     } catch (error) {
       console.error(error);
