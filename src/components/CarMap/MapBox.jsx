@@ -144,12 +144,19 @@ const MapBox = () => {
     if ('geolocation' in navigator && !mapLoaded) {
       navigator.geolocation.getCurrentPosition(
         function (position) {
-          setLatitude(position.coords.latitude);
-          setLongitude(position.coords.longitude);
+          if (position.coords.latitude === null) {
+            setLatitude(36.85231308404634);
+            setLongitude(127.15023789435925);
+          } else {
+            setLatitude(position.coords.latitude);
+            setLongitude(position.coords.longitude);
+          }
           setMapLoaded(true); // Map 로딩 완료 설정
         },
         function (error) {
           setError(error.message);
+          setLatitude(36.85231308404634);
+          setLongitude(127.15023789435925);
           setMapLoaded(true); // Map 로딩 완료 설정
         },
       );
