@@ -57,13 +57,13 @@ const S = {
     position: relative;
     margin: 5px auto;
   `,
-  Text: styled.input`
+  Text: styled.textarea`
     display: block;
     width: 100%;
     height: 300px;
     border: solid 1px #dadada;
     border-radius: 10px;
-    padding: 5px;
+    padding: 15px 5px 15px 5px;
     box-sizing: border-box;
     background: #fff;
     position: relative;
