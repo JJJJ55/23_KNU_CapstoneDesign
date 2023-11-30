@@ -9,6 +9,7 @@ const S = {
   content: styled.main`
     justify-content: flex-start;
     margin-top: 50px;
+    cursor: default;
   `,
 };
 const ChangePasswordPage = () => {
@@ -25,6 +26,8 @@ const ChangePasswordPage = () => {
         alert('변경되었습니다! 다시 로그인해주세요.');
         logout();
         navigate('/');
+      } else {
+        alert(response.message);
       }
     } catch (error) {
       console.error(error);

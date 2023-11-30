@@ -8,6 +8,7 @@ const S = {
     justify-content: flex-start;
     margin-top: 50px;
     height: 100svh;
+    cursor: default;
   `,
   FindPw: styled.button`
     width: 80px;
@@ -29,7 +30,7 @@ const FindPasswordPage = () => {
         alert('메일에 임시 비밀번호를 발급해드렸습니다.');
         navigate('/home');
       } else {
-        alert('발급도중 오류가 발생했습니다.');
+        alert(response.message);
       }
     } catch (error) {
       console.error(error);
