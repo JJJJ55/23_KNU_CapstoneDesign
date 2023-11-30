@@ -11,6 +11,7 @@ const S = {
     line-height: 25px;
     font-size: 13px;
     z-index: 10 !important;
+    cursor: default;
   `,
 
   Number: styled.span`

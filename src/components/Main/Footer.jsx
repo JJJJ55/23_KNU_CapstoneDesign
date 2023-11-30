@@ -80,6 +80,7 @@ const S = {
     font-size: 10px;
     margin-top: 16px;
     text-align: center;
+    cursor: default;
   `,
 };
 

@@ -26,11 +26,13 @@ const A = {
   Name: styled.span`
     font-size: 20px;
     font-weight: bold;
+    cursor: default;
   `,
   NameBox: styled.div`
     position: relative;
     padding: 10px;
     bottom: 80px;
+    cursor: default;
   `,
   Sideimg: styled.div`
     width: 390px;
@@ -49,6 +51,7 @@ const A = {
     height: 300px;
     margin-top: 50px;
     font-size: 15px;
+    cursor: default;
   `,
   SideTitle: styled.h2`
     font-weight: bold;

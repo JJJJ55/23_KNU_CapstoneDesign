@@ -8,6 +8,7 @@ const S = {
   content: styled.main`
     justify-content: flex-start;
     margin-top: 50px;
+    cursor: default;
   `,
 };
 const RegisterPage = () => {

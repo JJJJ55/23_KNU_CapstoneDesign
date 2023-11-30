@@ -10,6 +10,7 @@ const S = {
     justify-content: flex-start;
     margin-top: 50px;
     height: 100svh;
+    cursor: default;
   `,
   FindPw: styled.button`
     width: 80px;

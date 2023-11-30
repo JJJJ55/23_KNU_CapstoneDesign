@@ -24,6 +24,7 @@ const S = {
     width: auto;
     height: auto;
     margin: 10px 20px;
+    cursor: default;
   `,
 
   InfoLogo: styled.img`
@@ -53,6 +54,7 @@ const S = {
     font-size: 10px;
     margin-top: 16px;
     text-align: center;
+    cursor: default;
   `,
 };
 

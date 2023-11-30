@@ -55,6 +55,7 @@ const S = {
     justify-content: flex-start;
     background-color: white;
     box-shadow: 0px 0px 30px #000;
+    cursor: default;
   `,
   Frame: styled.div`
     width: 390px;
