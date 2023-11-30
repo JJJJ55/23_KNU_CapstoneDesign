@@ -221,9 +221,6 @@ const Comment = () => {
   const GetCommentRead = async (idx) => {
     try {
       const response = await CommentRead(idx);
-      console.log(response);
-
-      // 가져온 데이터를 배열에 추가
       setCommentData(response);
     } catch (error) {
       console.error('데이터 가져오기 실패:', error);
@@ -233,8 +230,6 @@ const Comment = () => {
   const GetReplyRead = async (idx) => {
     try {
       const response = await ReplyRead(idx);
-      console.log(response);
-
       setReplyData(response);
     } catch (error) {
       console.error('데이터 가져오기 실패:', error);
