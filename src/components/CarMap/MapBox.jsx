@@ -36,7 +36,7 @@ const S = {
     height: 30px;
     cursor: pointer;
     &.list {
-      font-size: 10px;
+      font-size: 9px;
     }
   `,
   Th: styled.th`
@@ -249,19 +249,46 @@ const MapBox = () => {
         </S.Table>
       </S.TableBox>
       <S.Pagination>
+        <S.PageButton
+          onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          이전
+        </S.PageButton>
         {Array.from(
           { length: Math.ceil(totalItems / pageSize) },
-          (_, index) => (
-            <S.PageButton
-              className={currentPage === index + 1 ? 'active' : ''}
-              key={index}
-              // onClick={() => paginate(index + 1)}
-              onClick={() => handlePageChange(index + 1)}
-            >
-              {index + 1}
-            </S.PageButton>
-          ),
+          (_, index) => {
+            const base = Math.floor((currentPage - 1) / 10) * 10;
+            const startPage = base + 1;
+            const endPage = Math.min(
+              base + 10,
+              Math.ceil(totalItems / pageSize),
+            );
+
+            return (
+              index + 1 >= startPage &&
+              index + 1 <= endPage && (
+                <S.PageButton
+                  className={currentPage === index + 1 ? 'active' : ''}
+                  key={index}
+                  onClick={() => handlePageChange(index + 1)}
+                >
+                  {index + 1}
+                </S.PageButton>
+              )
+            );
+          },
         )}
+        <S.PageButton
+          onClick={() =>
+            handlePageChange(
+              Math.min(currentPage + 1, Math.ceil(totalItems / pageSize)),
+            )
+          }
+          disabled={currentPage === Math.ceil(totalItems / pageSize)}
+        >
+          다음
+        </S.PageButton>
       </S.Pagination>
     </>
   );

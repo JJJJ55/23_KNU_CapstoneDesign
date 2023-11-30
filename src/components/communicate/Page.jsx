@@ -232,15 +232,43 @@ const Page = () => {
         />
       </S.ButtonBox>
       <S.Pagination>
-        {Array.from({ length: totalPages }, (_, index) => (
-          <S.PageButton
-            key={index}
-            onClick={() => handlePageChange(index + 1)}
-            className={index + 1 === currentPage ? 'active' : ''}
-          >
-            {index + 1}
-          </S.PageButton>
-        ))}
+        {/* 이전 페이지 버튼 */}
+        <S.PageButton
+          onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          이전
+        </S.PageButton>
+
+        {/* 페이지 번호 버튼 */}
+        {Array.from({ length: totalPages }, (_, index) => {
+          const base = Math.floor((currentPage - 1) / 10) * 10;
+          const startPage = base + 1;
+          const endPage = Math.min(base + 10, totalPages);
+
+          return (
+            index + 1 >= startPage &&
+            index + 1 <= endPage && (
+              <S.PageButton
+                className={currentPage === index + 1 ? 'active' : ''}
+                key={index}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </S.PageButton>
+            )
+          );
+        })}
+
+        {/* 다음 페이지 버튼 */}
+        <S.PageButton
+          onClick={() =>
+            handlePageChange(Math.min(currentPage + 1, totalPages))
+          }
+          disabled={currentPage === totalPages}
+        >
+          다음
+        </S.PageButton>
       </S.Pagination>
     </>
   );
