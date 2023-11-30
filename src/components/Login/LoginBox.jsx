@@ -107,7 +107,11 @@ const LoginBox = () => {
           <S.textBox>차량 파손도 예측 및 수리비 안내 플랫폼</S.textBox>
           <S.GitBox>
             <S.GitImg src={gitLogo} />
-            <S.GitLink href="https://github.com/orgs/23-KNU-CapstoneDesign/repositories">
+            <S.GitLink
+              href="https://github.com/orgs/23-KNU-CapstoneDesign/repositories"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Re:pair 깃허브 바로가기
             </S.GitLink>
           </S.GitBox>
