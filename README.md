@@ -1,5 +1,9 @@
 # Re:pair
-딥러닝을 활용한 차량 수리비 안내 서비스
+### 딥러닝을 활용한 차량 수리비 안내 서비스
+<br/>
+<img width="100%" src="https://github.com/JJJJ55/23_KNU_CapstoneDesign/assets/89523520/edce1346-55a1-4ebb-9143-6b1cc8ec1605"/>
+<img width="100%" src="https://github.com/JJJJ55/23_KNU_CapstoneDesign/assets/89523520/4284718f-cca5-4e1a-8a3a-3f8fff1a2ce7"/>
+
 
 ### 💻 프로젝트 소개
 프로그레시브 웹앱을 기반으로 사전에 학습된 딥러닝모델에게 차량 파손이미지를 제공하면 수리방법을 예측하고 수리비를 안내해주는 서비스입니다.
@@ -13,7 +17,7 @@
 - 이삭 : 메인서버 개발, DB구축
 ****
 ### 🖥 개발환경
-- `React.Js`
+- `React.js`
 - `PWA`
 - `PHP`
 - `VS code`
