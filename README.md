@@ -5,6 +5,7 @@
 <img width="100%" src="https://github.com/JJJJ55/23_KNU_CapstoneDesign/assets/89523520/4284718f-cca5-4e1a-8a3a-3f8fff1a2ce7"/>
 
 - 실제 배포 URL : https://jjjj55.github.io/23_KNU_CapstoneDesign/
+****
 ### 💻 프로젝트 소개
 프로그레시브 웹앱을 기반으로 사전에 학습된 딥러닝모델에게 차량 파손이미지를 제공하면 수리방법을 예측하고 수리비를 안내해주는 서비스입니다.
 ****
